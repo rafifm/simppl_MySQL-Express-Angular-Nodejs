@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ["./pendaftaran-mhs-create.component.css"]
 })
 export class PendaftaranMhsCreateComponent {
-  newPost = 'No Content';
   enteredValue= '';
+  newPost= "Kosong";
 
   onAddPost(postInput: HTMLTextAreaElement){
     this.newPost = this.enteredValue;
