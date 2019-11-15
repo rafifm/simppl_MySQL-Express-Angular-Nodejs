@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: "app-pendaftaran-mhs-create",
@@ -6,11 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ["./pendaftaran-mhs-create.component.css"]
 })
 export class PendaftaranMhsCreateComponent {
-  enteredValue= '';
-  newPost= "Kosong";
+  enteredNama = "";
+  enteredNim = "";
+  enteredIPK = "";
+  enteredNokwitansi = "";
+  @Output() dataCreated = new EventEmitter();
 
-  onAddPost(postInput: HTMLTextAreaElement){
-    this.newPost = this.enteredValue;
+  onAddPost(){
+    const post = {
+      nama: this.enteredNama,
+      nim: this.enteredNim,
+      ipk: this.enteredIPK,
+      nokwitansi: this.enteredNokwitansi
+    };
+    this.dataCreated.emit(post);
   }
 
 }

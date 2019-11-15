@@ -1,8 +1,11 @@
-<mat-accordion>
-  <mat-expansion-panel>
+<mat-accordion multi="true" *ngIf="posts.length > 0">
+  <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
-      Pendaftaran Mahasiswa
+      {{ post.nama }}
     </mat-expansion-panel-header>
-    <p>Mahasiswa 1</p>
+    <p>Nim : {{ post.nim }}</p>
+    <p>Ipk : {{ post.ipk }}</p>
+    <p>No.Kwitansi : {{ post.nokwitansi }}</p>
   </mat-expansion-panel>
 </mat-accordion>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0">Gada post yang diupload</p>

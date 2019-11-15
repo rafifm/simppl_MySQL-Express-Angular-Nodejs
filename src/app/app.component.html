@@ -1,5 +1,5 @@
 <app-header></app-header>
 <main>
-  <app-pendaftaran-mhs-create></app-pendaftaran-mhs-create>
-  <app-pendaftaran-mhs-tampil></app-pendaftaran-mhs-tampil>
+  <app-pendaftaran-mhs-create (dataCreated)="onPostAdded($event)"></app-pendaftaran-mhs-create>
+  <app-pendaftaran-mhs-tampil [posts]="dataTersimpan"></app-pendaftaran-mhs-tampil>
 </main>
