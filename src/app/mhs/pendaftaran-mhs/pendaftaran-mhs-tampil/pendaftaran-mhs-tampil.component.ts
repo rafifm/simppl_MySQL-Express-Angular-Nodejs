@@ -21,7 +21,7 @@ export class PendaftaranMhsTampilComponent implements OnInit, OnDestroy {
   constructor(public PendaftaranMhsService: PendaftaranMhsService) {}
   
   ngOnInit() {
-    this.posts = this.PendaftaranMhsService.getPosts();
+    this.PendaftaranMhsService.getPosts();
     this.postsSub = this.PendaftaranMhsService.getPostUpdateListener()
       .subscribe((posts: PendaftaranMhs[]) => { 
         this.posts = posts;
