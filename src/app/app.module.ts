@@ -11,8 +11,8 @@ import {
 } from "@angular/material";
 
 import { AppComponent } from './app.component';
-import { PendaftaranMhsCreateComponent } from "./mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component";
 import { HeaderComponent } from './header/header.component';
+import { PendaftaranMhsCreateComponent } from "./mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component";
 import { PendaftaranMhsTampilComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-tampil/pendaftaran-mhs-tampil.component';
 
 @NgModule({

@@ -1,18 +1,45 @@
 <mat-card>
-  <mat-form-field>
-    <input matInput type="text" [(ngModel)]="enteredNama">
-  </mat-form-field>
-  <mat-form-field>
-      <input matInput type="text" [(ngModel)]="enteredNim">
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+        <input 
+          matInput 
+          type="text" 
+          name="nama"
+          ngModel
+          required
+          placeholder="Nama"
+          #nama="ngModel">
+          <mat-error *ngIf="nama.invalid">Masukkan nama</mat-error>
     </mat-form-field>
     <mat-form-field>
-        <input matInput type="text" [(ngModel)]="enteredIPK">
-      </mat-form-field>
-  <mat-form-field>
-    <textarea matInput rows="6" [(ngModel)]="enteredNokwitansi"></textarea>
-  </mat-form-field>
-  <button 
-  mat-raised-button
-  color="primary" 
-  (click)="onAddPost()">Save post</button>
+      <input 
+        matInput 
+        type="text"
+        name="nim" 
+        placeholder="Nim"
+        ngModel>
+    </mat-form-field>
+    <mat-form-field>
+      <input 
+        matInput 
+        type="text"
+        name="ipk" 
+        placeholder="IPK"
+        ngModel>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea 
+        matInput 
+        rows="6"
+        name="nookwitansi" 
+        placeholder="No. Kwitansi"
+        ngModel>
+      </textarea>
+    </mat-form-field>
+    <button 
+      mat-raised-button
+      color="primary" 
+      type="submit">Save post
+    </button>
+  </form>
 </mat-card>
