@@ -28,6 +28,10 @@ export class PendaftaranMhsTampilComponent implements OnInit, OnDestroy {
       });
   }
 
+  onDelete(postId) {
+    this.PendaftaranMhsService.deletePost(postId);
+  }
+
   ngOnDestroy() {
     this.postsSub.unsubscribe();
   }
