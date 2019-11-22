@@ -1,44 +1,45 @@
 <mat-card>
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
-        <input 
-          matInput 
-          type="text" 
+        <input
+          matInput
+          type="text"
           name="nama"
-          ngModel
+          [ngModel]="post?.nama"
           required
           placeholder="Nama"
           #nama="ngModel">
           <mat-error *ngIf="nama.invalid">Masukkan nama</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input 
-        matInput 
+      <input
+        matInput
         type="text"
-        name="nim" 
+        name="nim"
         placeholder="Nim"
-        ngModel>
+        [ngModel]="post?.nim">
     </mat-form-field>
     <mat-form-field>
-      <input 
-        matInput 
+      <input
+        matInput
         type="text"
-        name="ipk" 
+        name="ipk"
         placeholder="IPK"
-        ngModel>
+        [ngModel]="post?.ipk">
     </mat-form-field>
     <mat-form-field>
-      <textarea 
-        matInput 
+      <textarea
+        matInput
         rows="6"
-        name="nokwitansi" 
+        name="nokwitansi"
         placeholder="No. Kwitansi"
-        ngModel>
+        [ngModel]="post?.nokwitansi">
       </textarea>
     </mat-form-field>
-    <button 
+    <button
       mat-raised-button
-      color="primary" 
+      color="primary"
       type="submit">Save post
     </button>
   </form>

@@ -16,20 +16,23 @@ export class PendaftaranMhsTampilComponent implements OnInit, OnDestroy {
   //   {nama: 'mahasiswa tiga',nim: '123458', ipk: '3.00', nokwitansi: '781'}
   // ];
   posts: PendaftaranMhs[] = [];
+  isLoading = false;
   private postsSub: Subscription;
 
-  constructor(public PendaftaranMhsService: PendaftaranMhsService) {}
-  
+  constructor(public pendaftaranMhsService: PendaftaranMhsService) {}
+
   ngOnInit() {
-    this.PendaftaranMhsService.getPosts();
-    this.postsSub = this.PendaftaranMhsService.getPostUpdateListener()
-      .subscribe((posts: PendaftaranMhs[]) => { 
+    this.isLoading = true;
+    this.pendaftaranMhsService.getPosts();
+    this.postsSub = this.pendaftaranMhsService.getPostUpdateListener()
+      .subscribe((posts: PendaftaranMhs[]) => {
+        this.isLoading = false;
         this.posts = posts;
       });
   }
 
   onDelete(postId) {
-    this.PendaftaranMhsService.deletePost(postId);
+    this.pendaftaranMhsService.deletePost(postId);
   }
 
   ngOnDestroy() {
