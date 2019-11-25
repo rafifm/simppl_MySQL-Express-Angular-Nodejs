@@ -58,7 +58,7 @@ export class PendaftaranMhsService {
   updatePost(id: string, nama: string, nim: string, ipk: string, nokwitansi: string ) {
     const post: PendaftaranMhs = { id: id, nama: nama, nim: nim, ipk: ipk, nokwitansi: nokwitansi};
     this.http
-      .put("http://localhost:3000/api/posts/" + id, post)
+      .put("http://localhost:3000/api/posts" + id, post)
       .subscribe(response => {
         const postBaru = [...this.posts];
         const postLama = postBaru.findIndex(p => p.id === post.id);

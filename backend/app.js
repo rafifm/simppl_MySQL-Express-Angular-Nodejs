@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const pendaftaranMhsRoutes = require("./routes.posts");
+const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
 
 const app = express();
 

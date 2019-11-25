@@ -32,7 +32,7 @@ export class PendaftaranMhsCreateComponent implements OnInit {
         this.postId = paramMap.get("postId");
         this.isLoading = true;
         this.pendaftaranMhsService.getPost(this.postId).subscribe(postData => {
-          this.isLoading = true;
+          this.isLoading = false;
           this.post = {
             id: postData._id,
             nama: postData.nama,
