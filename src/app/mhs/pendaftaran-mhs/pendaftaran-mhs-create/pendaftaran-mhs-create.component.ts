@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { PendaftaranMhsService } from '../pendaftaran-mhs.service';
 import { PendaftaranMhs } from '../pendaftaran-mhs.model';
+import { mimeType } from "./mime-type.validator";
 
 @Component({
   selector: 'app-pendaftaran-mhs-create',
@@ -17,6 +18,8 @@ export class PendaftaranMhsCreateComponent implements OnInit {
   enteredNokwitansi = "";
   post: PendaftaranMhs;
   isLoading = false;
+  form: FormGroup;
+  imagePreview: string;
   private mode = 'create';
   private postId: string;
 
@@ -26,20 +29,40 @@ export class PendaftaranMhsCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.form = new FormGroup({
+      nama: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(3)]
+      }),
+      nim: new FormControl(null, {validators: [Validators.required]
+      }),
+      ipk: new FormControl(null, {validators: [Validators.required]
+      }),
+      nokwitansi: new FormControl(null, {validators: [Validators.required]
+      }),
+      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]
+      })
+    });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("postId")){
         this.mode = "edit";
         this.postId = paramMap.get("postId");
         this.isLoading = true;
         this.pendaftaranMhsService.getPost(this.postId).subscribe(postData => {
-          this.isLoading = true;
+          this.isLoading = false;
           this.post = {
             id: postData._id,
             nama: postData.nama,
             nim: postData.nim,
             ipk: postData.ipk,
-            nokwitansi: postData.nokwitansi
+            nokwitansi: postData.nokwitansi,
+            imagePath: null
           };
+          this.form.setValue({
+            nama: this.post.nama,
+            nim: this.post.nim,
+            ipk: this.post.ipk,
+            nokwitansi: this.post.nokwitansi
+          });
         });
       } else {
         this.mode = 'create';
@@ -48,23 +71,39 @@ export class PendaftaranMhsCreateComponent implements OnInit {
     });
   }
 
+  onImagePicker(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({image: file});
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
+
   onSavePost(form: NgForm){
-    if(form.invalid){
+    if(this.form.invalid){
       return;
     }
     this.isLoading = true;
     if (this.mode === 'create') {
-      this.pendaftaranMhsService.addPost(form.value.nama, form.value.nim, form.value.ipk, form.value.nokwitansi);
+      this.pendaftaranMhsService.addPost(
+        this.form.value.nama, 
+        this.form.value.nim, 
+        this.form.value.ipk, 
+        this.form.value.nokwitansi, 
+        this.form.value.image);
     } else {
       this.pendaftaranMhsService.updatePost(
         this.postId,
-        form.value.nama,
-        form.value.nim,
-        form.value.ipk,
-        form.value.nokwitansi
+        this.form.value.nama,
+        this.form.value.nim,
+        this.form.value.ipk,
+        this.form.value.nokwitansi
       );
     }
-    form.resetForm();
+    this.form.reset();
   }
 
 }

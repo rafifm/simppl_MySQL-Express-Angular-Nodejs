@@ -4,6 +4,9 @@
     <mat-expansion-panel-header>
       {{ post.nama }}
     </mat-expansion-panel-header>
+    <div class="post-image">
+      <img [src]="post.imagePath" [alt]="nama">
+    </div>
     <p>Nim : {{ post.nim }}</p>
     <p>Ipk : {{ post.ipk }}</p>
     <p>No.Kwitansi : {{ post.nokwitansi }}</p>

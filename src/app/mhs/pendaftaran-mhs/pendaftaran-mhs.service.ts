@@ -23,7 +23,8 @@ export class PendaftaranMhsService {
             nama: post.nama,
             nim: post.nim,
             ipk: post.ipk,
-            nokwitansi: post.nokwitansi
+            nokwitansi: post.nokwitansi,
+            imagePath: post.imagePath
           };
         });
       }))
@@ -41,13 +42,27 @@ export class PendaftaranMhsService {
     return this.http.get<{_id: string, nama: string, nim: string, ipk: string, nokwitansi: string }>("http://localhost:3000/api/posts/" + id);
   }
 
-  addPost(nama: string, nim: string, ipk: string, nokwitansi: string) {
-    const post: PendaftaranMhs = { id: null, nama: nama, nim: nim, ipk: ipk, nokwitansi: nokwitansi };
+  addPost(nama: string, nim: string, ipk: string, nokwitansi: string, image: File) {
+    const postData = new FormData();
+    postData.append("nama", nama);
+    postData.append("nim", nim);
+    postData.append("ipk", ipk);
+    postData.append("nokwitansi", nokwitansi);
+    postData.append("image", image, nama);
     this.http
-      .post<{message: string, postId: string}>("http://localhost:3000/api/posts", post)
+      .post<{ message: string, post: PendaftaranMhs }>(
+        "http://localhost:3000/api/posts", 
+        postData
+      )
       .subscribe((responseData) => {
-        const id = responseData.postId;
-        post.id = id;
+        const post: PendaftaranMhs = {
+          id: responseData.post.id, 
+          nama: nama, 
+          nim: nim, 
+          ipk: ipk, 
+          nokwitansi: nokwitansi,
+          imagePath: responseData.post.imagePath
+        };
         this.posts.push(post);
         this.dataMhsUpdated.next([...this.posts]);
         this.router.navigate(["/"]);
@@ -56,7 +71,7 @@ export class PendaftaranMhsService {
   }
 
   updatePost(id: string, nama: string, nim: string, ipk: string, nokwitansi: string ) {
-    const post: PendaftaranMhs = { id: id, nama: nama, nim: nim, ipk: ipk, nokwitansi: nokwitansi};
+    const post: PendaftaranMhs = { id: id, nama: nama, nim: nim, ipk: ipk, nokwitansi: nokwitansi, imagePath: null };
     this.http
       .put("http://localhost:3000/api/posts/" + id, post)
       .subscribe(response => {

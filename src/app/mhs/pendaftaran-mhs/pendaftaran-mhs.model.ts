@@ -4,4 +4,5 @@ export interface PendaftaranMhs {
   nim: string;
   ipk: string;
   nokwitansi: string;
+  imagePath: string;
 }
