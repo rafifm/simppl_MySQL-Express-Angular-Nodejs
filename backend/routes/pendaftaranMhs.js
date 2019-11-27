@@ -78,17 +78,10 @@ router.get("",(req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   PendaftaranMhs.findById(req.params.id).then(post => {
-<<<<<<< HEAD:backend/routes/pendaftarahMhs.js
     if(post) {
       res.status(200).json(post);
     } else {
       res.status(404).json({ message: "Postingan tidak ditemukan"});
-=======
-    if(post){
-      res.status(200).json(post);
-    } else {
-      res.status(404).json({ message: "Post gak ada "});
->>>>>>> 794ee415bddd5ce679af5ec1acf186cf4760f49a:backend/routes/pendaftaranMhs.js
     }
   });
 });

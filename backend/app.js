@@ -3,11 +3,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
-const pendaftaranMhsRoutes = require("./routes/pendaftarahMhs");
-=======
 const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
->>>>>>> 794ee415bddd5ce679af5ec1acf186cf4760f49a
 
 const app = express();
 
