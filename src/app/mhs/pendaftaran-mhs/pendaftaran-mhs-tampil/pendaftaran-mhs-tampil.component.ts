@@ -3,6 +3,7 @@ import { Subscription } from "rxjs";
 
 import { PendaftaranMhs } from "../pendaftaran-mhs.model";
 import { PendaftaranMhsService } from '../pendaftaran-mhs.service';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: "app-pendaftaran-mhs-tampil",
@@ -17,22 +18,37 @@ export class PendaftaranMhsTampilComponent implements OnInit, OnDestroy {
   // ];
   posts: PendaftaranMhs[] = [];
   isLoading = false;
+  totalPosts = 0;
+  postsPerPage= 2;
+  currentPage= 1;
+  pageSizeOptions = [1, 2, 5, 10];
   private postsSub: Subscription;
 
   constructor(public pendaftaranMhsService: PendaftaranMhsService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.pendaftaranMhsService.getPosts();
+    this.pendaftaranMhsService.getPosts(this.postsPerPage, this.currentPage);
     this.postsSub = this.pendaftaranMhsService.getPostUpdateListener()
-      .subscribe((posts: PendaftaranMhs[]) => {
+      .subscribe((postData: { posts: PendaftaranMhs[], postCount: number}) => {
         this.isLoading = false;
-        this.posts = posts;
+        this.totalPosts = postData.postCount;
+        this.posts = postData.posts;
       });
   }
 
+  onChangedPage(pageData: PageEvent) {
+    this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.postsPerPage = pageData.pageSize;
+    this.pendaftaranMhsService.getPosts(this.postsPerPage, this.currentPage);
+  }
+
   onDelete(postId) {
-    this.pendaftaranMhsService.deletePost(postId);
+    this.isLoading = true;
+    this.pendaftaranMhsService.deletePost(postId).subscribe(() => {
+      this.pendaftaranMhsService.getPosts(this.postsPerPage, this.currentPage);
+    });
   }
 
   ngOnDestroy() {

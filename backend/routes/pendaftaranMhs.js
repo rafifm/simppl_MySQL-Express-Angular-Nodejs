@@ -67,12 +67,25 @@ router.put("/:id", (req, res, next) => {
 });
 
 router.get("",(req, res, next) => {
-  PendaftaranMhs.find()
-    .then(documents => {
+  const pageSize = +req.query.pagesize;
+  const currentPage = +req.query.page;
+  const postQuery = PendaftaranMhs.find();
+  let fetchedPosts;
+  if(pageSize && currentPage) {
+    postQuery
+      .skip(pageSize * (currentPage - 1))
+      .limit(pageSize);
+  }
+  postQuery.then(documents => {
+    fetchedPosts = documents
+      return PendaftaranMhs.count();
+    })
+    .then(count => {
       res.status(200).json({
-        message: 'Data berhasil diupload',
-        posts: documents
-      });
+        message: "post berhasil diambil",
+        posts: fetchedPosts,
+        maxPosts: count
+      })
     });
 });
 

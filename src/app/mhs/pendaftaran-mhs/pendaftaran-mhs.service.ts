@@ -9,15 +9,17 @@ import { PendaftaranMhs } from './pendaftaran-mhs.model';
 @Injectable({providedIn: 'root'})
 export class PendaftaranMhsService {
   private posts: PendaftaranMhs[] = [];
-  private dataMhsUpdated = new Subject<PendaftaranMhs[]>();
+  private dataMhsUpdated = new Subject<{ posts: PendaftaranMhs[], postCount: number }>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  getPosts() {
-    this.http.get<{message: string, posts: any}>(
-      'http://localhost:3000/api/posts')
+  getPosts( postsPerPage: number, currentPage: number) {
+    const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
+    this.http
+      .get<{message: string, posts: any, maxPosts: number}>(
+      'http://localhost:3000/api/posts' + queryParams )
       .pipe(map(postData => {
-        return postData.posts.map(post => {
+        return { posts: postData.posts.map(post => {
           return {
             id: post._id,
             nama: post.nama,
@@ -26,11 +28,16 @@ export class PendaftaranMhsService {
             nokwitansi: post.nokwitansi,
             imagePath: post.imagePath
           };
+        }), 
+        maxPosts: postData.maxPosts };
+      })
+      )
+      .subscribe(dataBaruSdhDiubah => {
+        this. posts = dataBaruSdhDiubah.posts;
+        this.dataMhsUpdated.next({
+          posts: [...this.posts], 
+          postCount: dataBaruSdhDiubah.maxPosts
         });
-      }))
-      .subscribe((dataSdhDiubah) => {
-        this. posts = dataSdhDiubah;
-        this.dataMhsUpdated.next([...this.posts]);
       });
   }
 
@@ -55,16 +62,6 @@ export class PendaftaranMhsService {
         postData
       )
       .subscribe((responseData) => {
-        const post: PendaftaranMhs = {
-          id: responseData.post.id, 
-          nama: nama, 
-          nim: nim, 
-          ipk: ipk, 
-          nokwitansi: nokwitansi,
-          imagePath: responseData.post.imagePath
-        };
-        this.posts.push(post);
-        this.dataMhsUpdated.next([...this.posts]);
         this.router.navigate(["/"]);
       });
 
@@ -75,23 +72,13 @@ export class PendaftaranMhsService {
     this.http
       .put("http://localhost:3000/api/posts/" + id, post)
       .subscribe(response => {
-        const postBaru = [...this.posts];
-        const postLama = postBaru.findIndex(p => p.id === post.id);
-        postBaru[postLama] = post;
-        this.posts = postBaru;
-        this.dataMhsUpdated.next([...this.posts]);
         this.router.navigate(["/"]);
       });
 
   }
 
   deletePost(postId: string) {
-    this.http.delete("http://localhost:3000/api/posts/" + postId)
-      .subscribe(() => {
-        const postsTerbaharui = this.posts.filter(post => post.id !== postId);
-        this.posts = postsTerbaharui;
-        this.dataMhsUpdated.next([...this.posts]);
-      });
+    return this.http.delete("http://localhost:3000/api/posts/" + postId);
   }
 
 }
