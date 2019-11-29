@@ -18,13 +18,15 @@ import { HeaderComponent } from './header/header.component';
 import { PendaftaranMhsCreateComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component';
 import { PendaftaranMhsTampilComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-tampil/pendaftaran-mhs-tampil.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PendaftaranMhsCreateComponent,
     HeaderComponent,
-    PendaftaranMhsTampilComponent
+    PendaftaranMhsCreateComponent,
+    PendaftaranMhsTampilComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
