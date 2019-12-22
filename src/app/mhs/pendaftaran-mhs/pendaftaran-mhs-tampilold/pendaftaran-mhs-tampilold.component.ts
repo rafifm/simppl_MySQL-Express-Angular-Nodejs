@@ -6,11 +6,11 @@ import { PendaftaranMhsService } from '../pendaftaran-mhs.service';
 import { PageEvent } from '@angular/material';
 
 @Component({
-  selector: "app-pendaftaran-mhs-tampil",
-  templateUrl: "./pendaftaran-mhs-tampil.component.html",
-  styleUrls: ["./pendaftaran-mhs-tampil.component.css"]
+  selector: "app-pendaftaran-mhs-tampilold",
+  templateUrl: "./pendaftaran-mhs-tampilold.component.html",
+  styleUrls: ["./pendaftaran-mhs-tampilold.component.css"]
 })
-export class PendaftaranMhsTampilComponent implements OnInit, OnDestroy {
+export class PendaftaranMhsTampiloldComponent implements OnInit, OnDestroy {
   // posts = [
   //   {nama: 'mahasiswa satu',nim: '123456', ipk: '3.00', nokwitansi: '789'},
   //   {nama: 'mahasiswa dua',nim: '123457', ipk: '3.00', nokwitansi: '780'},

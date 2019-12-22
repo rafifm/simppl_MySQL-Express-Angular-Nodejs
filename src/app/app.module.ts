@@ -16,7 +16,7 @@ import {
 import { AppComponent } from './app.component';
 import { HeaderoldComponent } from './headerold/headerold.component';
 import { PendaftaranMhsCreateComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component';
-import { PendaftaranMhsTampilComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-tampil/pendaftaran-mhs-tampil.component';
+import { PendaftaranMhsTampiloldComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-tampilold/pendaftaran-mhs-tampilold.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './auth/login/login.component';
 import { DefaultModule } from './layouts/default/default.module';
@@ -27,7 +27,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     AppComponent,
     HeaderoldComponent,
     PendaftaranMhsCreateComponent,
-    PendaftaranMhsTampilComponent,
+    PendaftaranMhsTampiloldComponent,
     LoginComponent,
     SignupComponent
   ],
