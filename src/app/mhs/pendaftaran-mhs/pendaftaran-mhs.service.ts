@@ -18,8 +18,8 @@ export class PendaftaranMhsService {
     this.http
       .get<{message: string, posts: any, maxPosts: number}>(
       'http://localhost:3000/api/posts' + queryParams )
-      .pipe(map(postData => {
-        return { posts: postData.posts.map(post => {
+      .pipe(map(datamhs => {
+        return { posts: datamhs.posts.map(post => {
           return {
             id: post._id,
             nama: post.nama,
@@ -29,7 +29,7 @@ export class PendaftaranMhsService {
             imagePath: post.imagePath
           };
         }), 
-        maxPosts: postData.maxPosts };
+        maxPosts: datamhs.maxPosts };
       })
       )
       .subscribe(dataBaruSdhDiubah => {
@@ -58,7 +58,7 @@ export class PendaftaranMhsService {
     postData.append("image", image, nama);
     this.http
       .post<{ message: string, post: PendaftaranMhs }>(
-        "http://localhost:3000/api/posts", 
+        "http://localhost:3000/api/", 
         postData
       )
       .subscribe((responseData) => {

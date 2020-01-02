@@ -62,7 +62,7 @@ export class PendaftaranMhsService {
         postData
       )
       .subscribe((responseData) => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/pendaftaranmhstampil"]);
       });
 
   }

@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+    <mat-form-field>
+        <input
+          matInput
+          type="text"
+          formControlName="nama"
+          placeholder="Nama">
+          <mat-error *ngIf="form.get('nama').invalid">Masukkan nama</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nim"
+        placeholder="Nim">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="ipk"
+        placeholder="IPK">
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Upload Foto</button>
+      <input type="file" #filePicker (change)="onImagePicker($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+      <img [src]="imagePreview" [alt]="form.value.nama">
+    </div>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        formControlName="nokwitansi"
+        placeholder="No. Kwitansi">
+      </textarea>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save post
+    </button>
+  </form>
+</mat-card>

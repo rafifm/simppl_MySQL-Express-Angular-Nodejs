@@ -38,7 +38,7 @@ router.post("", multer({storage: storage}).single("image"),(req, res, next) => {
   });
   post.save().then(postBaru => {
     res.status(201).json({
-      message: " Pendaftaran berhasil",
+      message: " Pendaftaran berhasil ini",
       post: {
         id: postBaru._id,
         nama: postBaru.nama,
