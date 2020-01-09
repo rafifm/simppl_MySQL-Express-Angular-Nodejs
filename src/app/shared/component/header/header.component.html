@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button (click)="toggleSideBar()">
+  <mat-toolbar-row >
+    <button *ngIf="userIsAuthenticated" mat-icon-button (click)="toggleSideBar()">
       <mat-icon>menu</mat-icon>
     </button>
     <span> App Logo</span>
@@ -21,13 +21,17 @@
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <li mat-menu-item>
               <mat-icon>person</mat-icon>
-              Log In
-            </button>
-            <button mat-menu-item>
+              <a mat-button routerLink="/login" routerLinkActive="mat-accent">Sign In</a>
+            </li>
+            <li mat-menu-item>
+              <mat-icon>person_add</mat-icon>
+              <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign Up</a>
+            </li>
+            <button mat-menu-item *ngIf="userIsAuthenticated">
               <mat-icon>exit_to_app</mat-icon>
-              Sign Out
+              <a mat-button routerLink="" routerLinkActive="mat-accent">Sign Out</a>
             </button>
           </mat-menu>
         </li>

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
   MatInputModule,
   MatCardModule,
@@ -14,18 +14,17 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { HeaderoldComponent } from './headerold/headerold.component';
 import { PendaftaranMhsCreateComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component';
 import { PendaftaranMhsTampiloldComponent } from './mhs/pendaftaran-mhs/pendaftaran-mhs-tampilold/pendaftaran-mhs-tampilold.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './auth/login/login.component';
 import { DefaultModule } from './layouts/default/default.module';
-import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './layouts/auth/login/login.component';
+import { SignupComponent } from './layouts/auth/signup/signup.component';
+import { AuthInterceptor } from './layouts/auth/auth-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderoldComponent,
     PendaftaranMhsCreateComponent,
     PendaftaranMhsTampiloldComponent,
     LoginComponent,
@@ -47,7 +46,9 @@ import { SignupComponent } from './auth/signup/signup.component';
     HttpClientModule,
     DefaultModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
