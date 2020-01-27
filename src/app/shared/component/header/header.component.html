@@ -22,17 +22,24 @@
           </button>
           <mat-menu #menu="matMenu">
             <li mat-menu-item>
-              <mat-icon>person</mat-icon>
-              <a mat-button routerLink="/login" routerLinkActive="mat-accent">Sign In</a>
+              <a mat-button routerLink="/login" routerLinkActive="mat-accent">
+                <mat-icon>person</mat-icon>
+                Sign In
+              </a>
             </li>
             <li mat-menu-item>
-              <mat-icon>person_add</mat-icon>
-              <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign Up</a>
+              <a mat-button routerLink="/signup" routerLinkActive="mat-accent">
+                <mat-icon>person_add</mat-icon>
+                Sign Up
+              </a>
             </li>
-            <button mat-menu-item *ngIf="userIsAuthenticated">
-              <mat-icon>exit_to_app</mat-icon>
-              <a mat-button routerLink="" routerLinkActive="mat-accent">Sign Out</a>
-            </button>
+            <li mat-menu-item *ngIf="userIsAuthenticated">
+              
+              <button (click)="onLogout()" mat-button routerLink="" routerLinkActive="mat-accent">
+                <mat-icon>exit_to_app</mat-icon>
+                Sign Out
+              </button>
+            </li>
           </mat-menu>
         </li>
       </ul>

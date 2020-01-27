@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 
+const dbmysql = require("../models/dbmysql-config");
 const PendaftaranMhs = require("../models/pendaftaranmhs");
 const checkAuth = require("../middleware/check-auth");
 
@@ -41,6 +42,26 @@ router.post(
     nokwitansi: req.body.nokwitansi,
     imagePath: url + "/images/" + req.file.filename
   });
+  
+  dbmysql.connect((err) => {
+    if(err) throw err;
+    
+    let sql = `INSERT INTO pendaftaranmhs (nama, nim, ipk, nokwitansi, foto_mhs) VALUES (?)`;
+    var isi = [
+      req.body.nama,
+      req.body.nim,
+      req.body.ipk,
+      req.body.nokwitansi,
+      url + "/images/" + req.file.filename,
+      // req.body.id,
+    ];
+    
+    dbmysql.query(sql, [isi], (err, result) => {
+      if(err) throw err;
+      console.log('yg berhasil diinput: ' + result.affectedRows);
+    });  
+  });
+
   post.save().then(postBaru => {
     res.status(201).json({
       message: " Pendaftaran berhasil ini",
@@ -54,7 +75,7 @@ router.post(
       }
     });
   });
-
+  
 });
 
 router.put("/:id", (req, res, next) => {
@@ -75,6 +96,22 @@ router.get("",(req, res, next) => {
   const pageSize = +req.query.pagesize;
   const currentPage = +req.query.page;
   const postQuery = PendaftaranMhs.find();
+  dbmysql.getConnection((err, connection) => {
+    if(err) throw err;
+    let sql = 'SELECT * FROM pendaftaranmhs';  
+    connection.query(sql, (err, result) => {
+      if(err) throw err;
+      if(pageSize && currentPage) {
+        let paginate = 'SELECT * FROM pendaftaranmhs LIMIT ' + pageSize + ' OFFSET ' + (pageSize * (currentPage - 1));
+        connection.query(paginate, (err, result) => {
+          if(err) throw err;
+          console.log(result);
+          connection.release();
+        });
+      }
+    });  
+  });
+
   let fetchedPosts;
   if(pageSize && currentPage) {
     postQuery

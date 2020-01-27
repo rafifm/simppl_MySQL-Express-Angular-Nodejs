@@ -1,5 +1,8 @@
 <div>
     <div>
+      <button *ngIf="userIsAuthenticated" mat-icon-button routerLink="/pendaftaranmhsbuat">
+        <mat-icon>add_box</mat-icon>
+      </button>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Position Column -->
         <ng-container matColumnDef="nim">
@@ -34,7 +37,7 @@
         <ng-container matColumnDef="aksi">
           <th mat-header-cell *matHeaderCellDef> Aksi </th>
           <td mat-cell *matCellDef="let post"> 
-            <mat-action-row>
+            <mat-action-row *ngIf="userIsAuthenticated">
               <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
               <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
             </mat-action-row>

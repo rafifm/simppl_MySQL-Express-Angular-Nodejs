@@ -15,10 +15,13 @@ import {
   MatProgressSpinnerModule,
   MatExpansionModule,
   MatCardModule,
-  MatButtonModule} from '@angular/material';
+  MatButtonModule,
+  MatIconModule} from '@angular/material';
 import { PendaftaranMhsTampilComponent } from 'src/app/modules/mhs/pendaftaran-mhs/pendaftaran-mhs-tampil/pendaftaran-mhs-tampil.component';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { PendaftaranMhsCreateComponent } from 'src/app/modules/mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component';
+import { SignupComponent } from '../auth/signup/signup.component';
+import { LoginComponent } from '../auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { PendaftaranMhsCreateComponent } from 'src/app/modules/mhs/pendaftaran-m
     DashboardComponent,
     PostsComponent,
     PendaftaranMhsTampilComponent,
-    PendaftaranMhsCreateComponent
+    PendaftaranMhsCreateComponent,
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +48,9 @@ import { PendaftaranMhsCreateComponent } from 'src/app/modules/mhs/pendaftaran-m
     MatSidenavModule,
     MatDividerModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
   ]
 })
 export class DefaultModule { }
