@@ -10,7 +10,7 @@ const router = express.Router();
 const MIME_TYPE_MAP ={
   'image/png' : 'png',
   'image/jpeg' : 'jpg',
-  'image/jpg' : 'jpg'
+  'image/jpg' : 'jpeg,
 };
 
 const storage = multer.diskStorage({
