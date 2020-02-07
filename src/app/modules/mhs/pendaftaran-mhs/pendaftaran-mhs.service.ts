@@ -46,7 +46,7 @@ export class PendaftaranMhsService {
   }
 
   getPost(id: string){
-    return this.http.get<{_id: string, nama: string, nim: string, ipk: string, nokwitansi: string }>("http://localhost:3000/api/posts/" + id);
+    return this.http.get<{ _id: string, nama: string, nim: string, ipk: string, nokwitansi: string, imagePath: string }>("http://localhost:3000/api/posts/" + id);
   }
 
   addPost(nama: string, nim: string, ipk: string, nokwitansi: string, image: File) {
@@ -67,14 +67,31 @@ export class PendaftaranMhsService {
 
   }
 
-  updatePost(id: string, nama: string, nim: string, ipk: string, nokwitansi: string ) {
-    const post: PendaftaranMhs = { id: id, nama: nama, nim: nim, ipk: ipk, nokwitansi: nokwitansi, imagePath: null };
+  updatePost(id: string, nama: string, nim: string, ipk: string, nokwitansi: string, image: File | string ) {
+    let postData: PendaftaranMhs | FormData;
+    if(typeof image === "object") {
+      postData = new FormData();
+      postData.append("id", id);
+      postData.append("nama", nama);
+      postData.append("nim", nim);
+      postData.append("ipk", ipk);
+      postData.append("nokwitansi", nokwitansi);
+      postData.append("image", image);
+    } else {
+      postData = {
+        id: id,
+        nama: nama,
+        nim: nim,
+        ipk: ipk,
+        nokwitansi: nokwitansi,
+        imagePath: image
+      };
+    }
     this.http
-      .put("http://localhost:3000/api/posts/" + id, post)
+      .put("http://localhost:3000/api/posts/" + id, postData)
       .subscribe(response => {
         this.router.navigate(["/"]);
       });
-
   }
 
   deletePost(postId: string) {

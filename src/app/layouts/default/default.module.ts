@@ -31,7 +31,7 @@ import { LoginComponent } from '../auth/login/login.component';
     PendaftaranMhsTampilComponent,
     PendaftaranMhsCreateComponent,
     SignupComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,

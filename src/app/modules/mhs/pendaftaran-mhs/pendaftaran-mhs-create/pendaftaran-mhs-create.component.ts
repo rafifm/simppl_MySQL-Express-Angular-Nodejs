@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { PendaftaranMhsService } from '../pendaftaran-mhs.service';
 import { PendaftaranMhs } from '../pendaftaran-mhs.model';
 import { mimeType } from "./mime-type.validator";
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/layouts/auth/auth.service';
 
 @Component({
   selector: 'app-pendaftaran-mhs-create',
   templateUrl: './pendaftaran-mhs-create.component.html',
   styleUrls: ['./pendaftaran-mhs-create.component.css']
 })
-export class PendaftaranMhsCreateComponent implements OnInit {
+export class PendaftaranMhsCreateComponent implements OnInit, OnDestroy {
   enteredNama = "";
   enteredNim = "";
   enteredIPK = "";
@@ -22,13 +24,20 @@ export class PendaftaranMhsCreateComponent implements OnInit {
   imagePreview: string;
   private mode = 'create';
   private postId: string;
+  private authStatusSub: Subscription;
 
   constructor(
     public pendaftaranMhsService: PendaftaranMhsService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe(authStatus => {
+        this.isLoading = false;
+      });
     this.form = new FormGroup({
       nama: new FormControl(null, {
         validators: [Validators.required, Validators.minLength(3)]
@@ -55,13 +64,14 @@ export class PendaftaranMhsCreateComponent implements OnInit {
             nim: postData.nim,
             ipk: postData.ipk,
             nokwitansi: postData.nokwitansi,
-            imagePath: null
+            imagePath: postData.imagePath
           };
           this.form.setValue({
             nama: this.post.nama,
             nim: this.post.nim,
             ipk: this.post.ipk,
-            nokwitansi: this.post.nokwitansi
+            nokwitansi: this.post.nokwitansi,
+            image: this.post.imagePath
           });
         });
       } else {
@@ -100,10 +110,15 @@ export class PendaftaranMhsCreateComponent implements OnInit {
         this.form.value.nama,
         this.form.value.nim,
         this.form.value.ipk,
-        this.form.value.nokwitansi
+        this.form.value.nokwitansi,
+        this.form.value.image
       );
     }
     this.form.reset();
+  }
+
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 
 }
