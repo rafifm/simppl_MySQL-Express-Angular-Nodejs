@@ -58,7 +58,7 @@ export class PendaftaranMhsService {
     postData.append("image", image, nama);
     this.http
       .post<{ message: string, post: PendaftaranMhs }>(
-        "http://localhost:3000/api/", 
+        "http://localhost:3000/api/posts", 
         postData
       )
       .subscribe((responseData) => {
