@@ -7,18 +7,12 @@
     <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
   </div>
 
+  <h2 MatSubheader>Tools</h2>
   <mat-divider></mat-divider>
-
-  <h2 matSubheader>Pages</h2>
-
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Posts</a>
-  <ng-material-multilevel-menu  
-    [configuration]='config'
-    [items]='appitems'
-    >
-</ng-material-multilevel-menu>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/pendaftaranmhstampil">Mahasiswa</a>
+  <ng-material-multilevel-menu [configuration]='config' [items]='ddpengguna'></ng-material-multilevel-menu>
+  <ng-material-multilevel-menu [configuration]='config' [items]='ddsklh'></ng-material-multilevel-menu>
+  <ng-material-multilevel-menu [configuration]='config' [items]='ddmhs'></ng-material-multilevel-menu>
   <mat-divider></mat-divider>
 
   <h2 MatSubheader>Tools</h2>

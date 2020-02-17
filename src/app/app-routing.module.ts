@@ -8,6 +8,10 @@ import { PendaftaranMhsCreateComponent } from './modules/mhs/pendaftaran-mhs/pen
 import { LoginComponent } from './layouts/auth/login/login.component';
 import { SignupComponent } from './layouts/auth/signup/signup.component';
 import { AuthGuard } from './layouts/auth/auth.guard';
+import { PenilaianMhsGuruTampilComponent } from './modules/mhs/penilaian-mhs-guru/penilaian-mhs-guru-tampil/penilaian-mhs-guru-tampil.component';
+import { PenilaianMhsGuruInputComponent } from './modules/mhs/penilaian-mhs-guru/penilaian-mhs-guru-input/penilaian-mhs-guru-input.component';
+import { PenilaianMhsDosenInputComponent } from './modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-input/penilaian-mhs-dosen-input.component';
+import { PenilaianMhsDosenTampilComponent } from './modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-tampil/penilaian-mhs-dosen-tampil.component';
 
 
 const routes: Routes = [{ 
@@ -28,6 +32,18 @@ const routes: Routes = [{
   }, {
     path: 'login',
     component: LoginComponent
+  }, {
+    path: 'nilaigurutampil',
+    component: PenilaianMhsGuruTampilComponent
+  }, {
+    path: 'nilaiguruinput',
+    component: PenilaianMhsGuruInputComponent
+  },{
+    path: 'nilaidoseninput',
+    component: PenilaianMhsDosenInputComponent
+  },{
+    path: 'nilaidosentampil',
+    component: PenilaianMhsDosenTampilComponent
   },] 
   },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },

@@ -4,48 +4,48 @@ const PendaftaranMhs = require("../models/pendaftaranmhs");
 exports.tambahmhs = (req, res, next) => {
     const url = req.protocol + '://' + req.get("host");
     
-    dbmysql.getConnection((err, connection) => {
-      if(err) throw err;
+    // dbmysql.getConnection((err, connection) => {
+    //   if(err) throw err;
       
-      let sql = `INSERT INTO pendaftaranmhs (nama, nim, ipk, nokwitansi, foto_mhs, id_mhs) VALUES (?)`;
-      var isi = [
-        req.body.nama,
-        req.body.nim,
-        req.body.ipk,
-        req.body.nokwitansi,
-        url + "/images/" + req.file.filename,
-        req.body.id_mhs,
-      ];
-      dbmysql.query(sql, [isi], (err, result) => {
-        if(err) throw err;
-        console.log('yg berhasil diinput: ' + result.affectedRows);
-        res.status(201).json({
-          message: "Pendaftaran berhasil"
-        });
-        connection.release();
-      }); 
-    });
+    //   let sql = `INSERT INTO pendaftaranmhs (nama, nim, ipk, nokwitansi, foto_mhs, id_mhs) VALUES (?)`;
+    //   var isi = [
+    //     req.body.nama,
+    //     req.body.nim,
+    //     req.body.ipk,
+    //     req.body.nokwitansi,
+    //     url + "/images/" + req.file.filename,
+    //     req.body.id_mhs,
+    //   ];
+    //   dbmysql.query(sql, [isi], (err, result) => {
+    //     if(err) throw err;
+    //     console.log('yg berhasil diinput: ' + result.affectedRows);
+    //     res.status(201).json({
+    //       message: "Pendaftaran berhasil"
+    //     });
+    //     connection.release();
+    //   }); 
+    // });
   
-    // const post = new PendaftaranMhs({
-    //   nama: req.body.nama,
-    //   nim: req.body.nim,
-    //   ipk: req.body.ipk,
-    //   nokwitansi: req.body.nokwitansi,
-    //   imagePath: url + "/images/" + req.file.filename
-    // });
-    // post.save().then(postBaru => {
-    //   res.status(201).json({
-    //     message: " Pendaftaran berhasil ini",
-    //     post: {
-    //       // id: postBaru._id,
-    //       nama: postBaru.nama,
-    //       nim: postBaru.nim,
-    //       ipk: postBaru.ipk,
-    //       nokwitansi: postBaru.nokwitansi,
-    //       imagePath: postBaru.imagePath
-    //     }
-    //   });
-    // });
+    const post = new PendaftaranMhs({
+      nama: req.body.nama,
+      nim: req.body.nim,
+      ipk: req.body.ipk,
+      nokwitansi: req.body.nokwitansi,
+      imagePath: url + "/images/" + req.file.filename
+    });
+    post.save().then(postBaru => {
+      res.status(201).json({
+        message: " Pendaftaran berhasil ini",
+        post: {
+          // id: postBaru._id,
+          nama: postBaru.nama,
+          nim: postBaru.nim,
+          ipk: postBaru.ipk,
+          nokwitansi: postBaru.nokwitansi,
+          imagePath: postBaru.imagePath
+        }
+      });
+    });
   }
 
 exports.editmhs = (req, res, next) => {
@@ -85,20 +85,20 @@ exports.tampilmhs = (req, res, next) => {
     const pageSize = +req.query.pagesize;
     const currentPage = +req.query.page;
   
-    dbmysql.getConnection((err, connection) => {
-      if(err) throw err;
-      let sql = 'SELECT * FROM pendaftaranmhs';  
-      connection.query(sql, (err, result) => {
-        if(err) throw err;
-        if(pageSize && currentPage) {
-          let paginate = 'SELECT * FROM pendaftaranmhs LIMIT ' + pageSize + ' OFFSET ' + (pageSize * (currentPage - 1));
-          connection.query(paginate, (err, result) => {
-            if(err) throw err;
-            connection.release();
-          });
-        }
-      });  
-    });
+    // dbmysql.getConnection((err, connection) => {
+    //   if(err) throw err;
+    //   let sql = 'SELECT * FROM pendaftaranmhs';  
+    //   connection.query(sql, (err, result) => {
+    //     if(err) throw err;
+    //     if(pageSize && currentPage) {
+    //       let paginate = 'SELECT * FROM pendaftaranmhs LIMIT ' + pageSize + ' OFFSET ' + (pageSize * (currentPage - 1));
+    //       connection.query(paginate, (err, result) => {
+    //         if(err) throw err;
+    //         connection.release();
+    //       });
+    //     }
+    //   });  
+    // });
   
     const postQuery = PendaftaranMhs.find();
     let fetchedPosts;
