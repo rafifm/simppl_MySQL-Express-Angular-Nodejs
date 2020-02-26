@@ -6,6 +6,7 @@ const mysql = require("mysql");
 
 const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
 const userRoutes = require("./routes/user");
+const dosenRoutes = require("./routes/datadosen");
 
 const app = express();
 
@@ -50,5 +51,6 @@ app.use((req, res, next) => {
 
 app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/dosen", dosenRoutes);
 
 module.exports = app;

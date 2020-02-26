@@ -64,7 +64,6 @@ export class PendaftaranMhsService {
       .subscribe((responseData) => {
         this.router.navigate(["/pendaftaranmhstampil"]);
       });
-
   }
 
   updatePost(id: string, nama: string, nim: string, ipk: string, nokwitansi: string, image: File | string ) {

@@ -1,1 +1,55 @@
-<p>datadosentampil works!</p>
+<div>
+  <div>
+    <button *ngIf="userIsAuthenticated" mat-icon-button routerLink="/datadosentambah">
+      <mat-icon>add_box</mat-icon>
+    </button>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="nama">
+        <th mat-header-cell *matHeaderCellDef> nama. </th>
+        <td mat-cell *matCellDef="let post"> {{post.nama}}</td>
+      </ng-container>
+      <ng-container matColumnDef="foto">
+        <th mat-header-cell *matHeaderCellDef> foto </th>
+        <td mat-cell *matCellDef="let post"> 
+          <div class="post-image">
+            <img [src]="post.imagePath" [alt]="nama">
+          </div>
+        </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="jabatan">
+        <th mat-header-cell *matHeaderCellDef> jabatan</th>
+        <td mat-cell *matCellDef="let post">{{post.jabatan}} </td>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="pangkat">
+        <th mat-header-cell *matHeaderCellDef> pangkat </th>
+        <td mat-cell *matCellDef="let post"> {{post.pangkat}} </td>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="golongan">
+        <th mat-header-cell *matHeaderCellDef> golongan </th>
+        <td mat-cell *matCellDef="let post"> {{post.golongan}} </td>
+      </ng-container>
+      <ng-container matColumnDef="npwp">
+        <th mat-header-cell *matHeaderCellDef> npwp </th>
+        <td mat-cell *matCellDef="let post"> {{post.npwp}} </td>
+      </ng-container>
+      <ng-container matColumnDef="aksi">
+        <th mat-header-cell *matHeaderCellDef> Aksi </th>
+        <td mat-cell *matCellDef="let post"> 
+          <mat-action-row *ngIf="userIsAuthenticated">
+            <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+            <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+          </mat-action-row>
+        </td>
+      </ng-container>      
+      <tr mat-header-row *matHeaderRowDef="kolomtabel"></tr>
+      <tr mat-row *matRowDef="let row; columns: kolomtabel;"></tr>
+    </table>
+    <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" *ngIf="nomordata.length > 0 "></mat-paginator>    
+  </div>
+</div>

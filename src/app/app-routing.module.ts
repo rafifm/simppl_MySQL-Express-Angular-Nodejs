@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
-import { PostsComponent } from './modules/posts/posts.component';
 import { PendaftaranMhsTampilComponent } from './modules/mhs/pendaftaran-mhs/pendaftaran-mhs-tampil/pendaftaran-mhs-tampil.component';
 import { PendaftaranMhsCreateComponent } from './modules/mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component';
 import { LoginComponent } from './layouts/auth/login/login.component';
@@ -12,6 +11,8 @@ import { PenilaianMhsGuruTampilComponent } from './modules/mhs/penilaian-mhs-gur
 import { PenilaianMhsGuruInputComponent } from './modules/mhs/penilaian-mhs-guru/penilaian-mhs-guru-input/penilaian-mhs-guru-input.component';
 import { PenilaianMhsDosenInputComponent } from './modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-input/penilaian-mhs-dosen-input.component';
 import { PenilaianMhsDosenTampilComponent } from './modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-tampil/penilaian-mhs-dosen-tampil.component';
+import { DatadosentambahComponent } from './modules/staff/datadosen/datadosentambah/datadosentambah.component';
+import { DatadosentampilComponent } from './modules/staff/datadosen/datadosentampil/datadosentampil.component';
 
 
 const routes: Routes = [{ 
@@ -20,9 +21,6 @@ const routes: Routes = [{
   children: [{
     path: '',
     component: DashboardComponent
-  }, {
-    path: 'posts',
-    component: PostsComponent
   }, {
     path: 'pendaftaranmhstampil',
     component: PendaftaranMhsTampilComponent, canActivate: [AuthGuard]
@@ -44,6 +42,12 @@ const routes: Routes = [{
   },{
     path: 'nilaidosentampil',
     component: PenilaianMhsDosenTampilComponent
+  }, {
+    path: 'datadosentambah',
+    component: DatadosentambahComponent
+  }, {
+    path: 'datadosentampil',
+    component: DatadosentampilComponent
   },] 
   },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },

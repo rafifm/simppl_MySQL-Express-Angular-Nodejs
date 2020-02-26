@@ -68,7 +68,7 @@ exports.editmhs = (req, res, next) => {
     ipk: req.body.ipk,
     nokwitansi: req.body.nokwitansi,
     imagePath: imagePath
-  })
+  });
   PendaftaranMhs.updateOne({_id: req.params.id}, post)
     .then(result => {
       console.log(result);

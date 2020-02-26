@@ -57,7 +57,7 @@ export class SidebarComponent implements OnInit {
           },
           {
               label: 'Data Dosen',
-              link: '/nilaidosentampil'
+              link: '/datadosentampil'
           },
           {
               label: 'Data Guru',
