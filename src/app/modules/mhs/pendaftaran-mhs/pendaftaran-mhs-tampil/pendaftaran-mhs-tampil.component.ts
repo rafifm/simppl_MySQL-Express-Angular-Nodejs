@@ -59,6 +59,8 @@ export class PendaftaranMhsTampilComponent implements OnInit {
     this.isLoading = true;
     this.pendaftaranMhsService.deletePost(postId).subscribe(() => {
       this.pendaftaranMhsService.getPosts(this.postsPerPage, this.currentPage);
+    }, () => {
+      this.isLoading = false;
     });
   }
 

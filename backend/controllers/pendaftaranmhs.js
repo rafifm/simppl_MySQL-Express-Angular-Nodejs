@@ -2,30 +2,28 @@ const dbmysql = require("../models/dbmysql-config");
 const PendaftaranMhs = require("../models/pendaftaranmhs");
 
 exports.tambahmhs = (req, res, next) => {
-    const url = req.protocol + '://' + req.get("host");
+  // dbmysql.getConnection((err, connection) => {
+  //   if(err) throw err;
     
-    // dbmysql.getConnection((err, connection) => {
-    //   if(err) throw err;
-      
-    //   let sql = `INSERT INTO pendaftaranmhs (nama, nim, ipk, nokwitansi, foto_mhs, id_mhs) VALUES (?)`;
-    //   var isi = [
-    //     req.body.nama,
-    //     req.body.nim,
-    //     req.body.ipk,
-    //     req.body.nokwitansi,
-    //     url + "/images/" + req.file.filename,
-    //     req.body.id_mhs,
-    //   ];
-    //   dbmysql.query(sql, [isi], (err, result) => {
-    //     if(err) throw err;
-    //     console.log('yg berhasil diinput: ' + result.affectedRows);
-    //     res.status(201).json({
-    //       message: "Pendaftaran berhasil"
-    //     });
-    //     connection.release();
-    //   }); 
-    // });
-  
+  //   let sql = `INSERT INTO pendaftaranmhs (nama, nim, ipk, nokwitansi, foto_mhs, id_mhs) VALUES (?)`;
+  //   var isi = [
+  //     req.body.nama,
+  //     req.body.nim,
+  //     req.body.ipk,
+  //     req.body.nokwitansi,
+  //     url + "/images/" + req.file.filename,
+  //     req.body.id_mhs,
+  //   ];
+  //   dbmysql.query(sql, [isi], (err, result) => {
+  //     if(err) throw err;
+  //     console.log('yg berhasil diinput: ' + result.affectedRows);
+  //     res.status(201).json({
+  //       message: "Pendaftaran berhasil"
+  //     });
+  //     connection.release();
+  //   }); 
+  // });
+    const url = req.protocol + '://' + req.get("host"); 
     const post = new PendaftaranMhs({
       nama: req.body.nama,
       nim: req.body.nim,
@@ -44,6 +42,11 @@ exports.tambahmhs = (req, res, next) => {
           nokwitansi: postBaru.nokwitansi,
           imagePath: postBaru.imagePath
         }
+      });
+    })
+    .catch(error => {
+      res.status(500).json({
+        message: "daftar gagal"
       });
     });
   }
@@ -71,8 +74,11 @@ exports.editmhs = (req, res, next) => {
   });
   PendaftaranMhs.updateOne({_id: req.params.id}, post)
     .then(result => {
-      console.log(result);
-      res.status(200).json({message: "update berhasul"});
+      if(result.nModified > 0) {
+        res.status(200).json({ message: "update sukses"});
+      } else {
+        res.status(401).json({ message: "not authorized"});
+      }
     })
     .catch(error => {
       res.status(500).json({
@@ -117,33 +123,58 @@ exports.tampilmhs = (req, res, next) => {
           posts: fetchedPosts,
           maxPosts: count
         })
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: "gagal ngambil data"
+        });
       });
   }
 
 exports.tampilmhsid = (req, res, next) => {
-  dbmysql.getConnection((err, connection) => {
-    if(err) throw err;
-    connection.query('SELECT * FROM pendaftaranmhs WHERE id_mhs='+req.params.id, (err, result) => {
-      if(err) throw err;
+  // dbmysql.getConnection((err, connection) => {
+  //   if(err) throw err;
+  //   connection.query('SELECT * FROM pendaftaranmhs WHERE id_mhs='+req.params.id, (err, result) => {
+  //     if(err) throw err;
+  //   });
+  // });
+  //   dbmysql.query('SELECT * FROM pendaftaranmhs WHERE id_mhs='+req.params.id).then(post => {
+  //     if(post) {
+  //       res.status(200).json(post);
+  //     } else {
+  //       res.status(404).json({ message: "Postingan tidak ditemukan"});
+  //     }
+  //   });
+  PendaftaranMhs.findById(req.params.id).then(udata => {
+    if(udata) {
+      res.status(200).json(udata);
+    } else {
+      res.status(404).json({ message: "data tidak ada"})
+    }
+  }).catch(error => {
+    res.status(500).json({
+      message: "gagal ngambil data"
     });
   });
-    dbmysql.query('SELECT * FROM pendaftaranmhs WHERE id_mhs='+req.params.id).then(post => {
-      if(post) {
-        res.status(200).json(post);
-      } else {
-        res.status(404).json({ message: "Postingan tidak ditemukan"});
-      }
-    });
   }
 
 exports.hapusmhs = (req, res,next) => {
-    dbmysql.getConnection((err, connection) => {
-      connection.query('DELETE FROM pendaftaranmhs WHERE id_mhs='+ req.params.id, (err, result) => {
-        if(err) throw err;
-        console.log(result);
-      });
-    });
+    // dbmysql.getConnection((err, connection) => {
+    //   connection.query('DELETE FROM pendaftaranmhs WHERE id_mhs='+ req.params.id, (err, result) => {
+    //     if(err) throw err;
+    //     console.log(result);
+    //   });
+    // });
     PendaftaranMhs.deleteOne({_id: req.params.id}).then(result => {
-      res.status(200).json({message: " Post terhapus"});
+      console.log(result);
+      if ( result.n > 0) {
+        res.status(200).json({ message: "terhapus"});
+      } else {
+        res.status(401).json({ message: "blum login"});
+      }
+    }).catch(error => {
+      res.status(500).json({
+        message: "gagal ngambil data"
+      });
     });
   }

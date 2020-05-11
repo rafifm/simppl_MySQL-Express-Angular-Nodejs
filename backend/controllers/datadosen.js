@@ -1,7 +1,7 @@
 const datadosen = require("../models/datadosen");
 
 exports.tambahdosen = (req, res, next) => {
-  const url = req.protocol + '://' + req.get("host");
+  const url = req.protocol + "://" + req.get("host");
   const datadsn = new datadosen ({
     nama: req.body.nama,
     nip: req.body.nip,

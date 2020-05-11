@@ -7,17 +7,17 @@ const dbmysql = require("../models/dbmysql-config");
 exports.createUser = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
       .then(hash => {
-        dbmysql.getConnection((err) => {
-          if(err) throw err;
-          var pengguna = [
-            req.body.email,
-            hash
-          ];
+        // dbmysql.getConnection((err) => {
+        //   if(err) throw err;
+        //   var pengguna = [
+        //     req.body.email,
+        //     hash
+        //   ];
   
-          dbmysql.query("INSERT INTO pengguna_mhs (email_mhs, pass_mhs) VALUES (?)", [pengguna],(err, result) => {
-            if(err) throw err;
-          });
-        });
+        //   dbmysql.query("INSERT INTO pengguna_mhs (email_mhs, pass_mhs) VALUES (?)", [pengguna],(err, result) => {
+        //     if(err) throw err;
+        //   });
+        // });
         const user = new User({
           email: req.body.email,
           password: hash
