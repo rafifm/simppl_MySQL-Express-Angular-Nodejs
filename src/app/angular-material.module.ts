@@ -7,6 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
+import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 @NgModule({
     imports: [
@@ -28,6 +34,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
         MatProgressSpinnerModule,
         MatPaginatorModule,
         MatDialogModule,
+        MatDividerModule,
+        MatIconModule,
+        MatRadioModule,
+        MatSidenavModule,
+        MatTableModule,
+        NgMaterialMultilevelMenuModule
     ]
 
 })
