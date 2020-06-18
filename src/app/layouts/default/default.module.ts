@@ -31,6 +31,8 @@ import { DatagurutambahComponent } from '../../modules/staff/dataguru/dataguruta
 import { DatagurutampilComponent } from '../../modules/staff/dataguru/datagurutampil/datagurutampil.component';
 import { DatastafftampilComponent } from '../../modules/staff/datastaff/datastafftampil/datastafftampil.component';
 import { DatastafftambahComponent } from '../../modules/staff/datastaff/datastafftambah/datastafftambah.component';
+import { PenilaiandsnComponent } from '../../modules/penilaian/penilaiandsn/penilaiandsn.component';
+import { PenilaianguruComponent } from '../../modules/penilaian/penilaianguru/penilaianguru.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { DatastafftambahComponent } from '../../modules/staff/datastaff/datastaf
     DatagurutambahComponent,
     DatagurutampilComponent,
     DatastafftampilComponent,
-    DatastafftambahComponent
+    DatastafftambahComponent,
+    PenilaiandsnComponent,
+    PenilaianguruComponent
   ],
   imports: [
     CommonModule,
