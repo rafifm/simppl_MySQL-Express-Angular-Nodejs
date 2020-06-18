@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { datadosen } from '../datadosen.model';
 import { Subscription } from 'rxjs';
-import { MatPaginator, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { DatadosenService } from '../datadosen.service';
 import { AuthService } from 'src/app/layouts/auth/auth.service';
 
