@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "simppl"
+  "defaultProject": "simppl",
+  "cli": {
+    "analytics": "8a5df59b-c8dd-46ab-a140-acef50b702d9"
+  }
 }
