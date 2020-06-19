@@ -7,7 +7,9 @@ import { GurutampbahnilaiComponent } from './gurutampbahnilai/gurutampbahnilai.c
 
 
 @NgModule({
-  declarations: [GurutampilnilaiComponent, GurutampbahnilaiComponent],
+  declarations: [
+    GurutampilnilaiComponent, 
+    GurutampbahnilaiComponent],
   imports: [
     CommonModule,
     GuruRoutingModule

@@ -27,13 +27,21 @@ const routes: Routes = [{
   }, {
     path: 'pendaftaranmhsbuat',
     component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
-  },{
+  }, {
     path: 'dosen',
     loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
-  },
-   {
-    path: 'login',
-    component: LoginComponent
+  }, {
+    path: 'guru',
+    loadChildren: () => import('./modules/guru/guru.module').then(m => m.GuruModule)
+  }, {
+    path: 'penempatan',
+    loadChildren: () => import('./modules/kaprodi/penempatan/penempatan.module').then(m => m.PenempatanModule)
+  }, {
+    path: 'penentuan',
+    loadChildren: () => import('./modules/kaprodi/penentuan/penentuan.module').then(m => m.PenentuanModule)
+  }, {
+    path: 'laporan',
+    loadChildren: () => import('./modules/admin/laporan/laporan.module').then(m => m.LaporanModule)
   }, {
     path: 'nilaigurutampil',
     component: PenilaianMhsGuruTampilComponent
@@ -54,6 +62,7 @@ const routes: Routes = [{
     component: DatadosentampilComponent
   },] 
   },
+  { path: 'login', component: LoginComponent },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:postId', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
   { path: "signup", component: SignupComponent }

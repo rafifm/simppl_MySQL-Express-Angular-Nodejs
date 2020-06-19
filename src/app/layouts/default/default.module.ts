@@ -24,6 +24,8 @@ import { PenempatanModule } from '../../modules/kaprodi/penempatan/penempatan.mo
 import { StaffModule } from '../../modules/staff/staff.module';
 import { DosenModule } from '../../modules/dosen/dosen.module';
 import { GuruModule } from '../../modules/guru/guru.module';
+import { PenentuanModule } from 'src/app/modules/kaprodi/penentuan/penentuan.module';
+import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
 
 @NgModule({
   declarations: [
@@ -51,10 +53,12 @@ import { GuruModule } from '../../modules/guru/guru.module';
     FormsModule,
     ReactiveFormsModule,
     AngularMateriaModule,
-    PenempatanModule,
     StaffModule,
     DosenModule,
-    GuruModule
+    GuruModule,
+    PenempatanModule,
+    PenentuanModule,
+    LaporanModule
   ]
 })
 export class DefaultModule { }
