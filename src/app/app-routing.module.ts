@@ -27,7 +27,11 @@ const routes: Routes = [{
   }, {
     path: 'pendaftaranmhsbuat',
     component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
-  }, {
+  },{
+    path: 'dosen',
+    loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
+  },
+   {
     path: 'login',
     component: LoginComponent
   }, {

@@ -21,6 +21,9 @@ import { DatagurutampilComponent } from '../../modules/staff/dataguru/dataguruta
 import { DatastafftampilComponent } from '../../modules/staff/datastaff/datastafftampil/datastafftampil.component';
 import { DatastafftambahComponent } from '../../modules/staff/datastaff/datastafftambah/datastafftambah.component';
 import { PenempatanModule } from '../../modules/kaprodi/penempatan/penempatan.module';
+import { StaffModule } from '../../modules/staff/staff.module';
+import { DosenModule } from '../../modules/dosen/dosen.module';
+import { GuruModule } from '../../modules/guru/guru.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { PenempatanModule } from '../../modules/kaprodi/penempatan/penempatan.mo
     FormsModule,
     ReactiveFormsModule,
     AngularMateriaModule,
-    PenempatanModule
+    PenempatanModule,
+    StaffModule,
+    DosenModule,
+    GuruModule
   ]
 })
 export class DefaultModule { }
