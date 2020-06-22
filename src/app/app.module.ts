@@ -10,7 +10,7 @@ import { DefaultModule } from './layouts/default/default.module';
 import { AuthInterceptor } from './layouts/auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
-import { AngularMateriaModule } from './angular-material.module';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { AngularMateriaModule } from './angular-material.module';
     BrowserAnimationsModule,
     HttpClientModule,
     DefaultModule,
-    AngularMateriaModule
+    AngularMaterialModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

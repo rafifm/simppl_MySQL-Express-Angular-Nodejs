@@ -13,18 +13,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-    imports: [
-        MatInputModule,
-        MatCardModule,
-        MatButtonModule,
-        MatToolbarModule,
-        MatExpansionModule,
-        MatProgressSpinnerModule,
-        MatPaginatorModule,
-        MatDialogModule,
-    ],
     exports: [
         MatInputModule,
         MatCardModule,
@@ -39,8 +30,9 @@ import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
         MatRadioModule,
         MatSidenavModule,
         MatTableModule,
-        NgMaterialMultilevelMenuModule
+        NgMaterialMultilevelMenuModule,
+        MatSelectModule
     ]
 
 })
-export class AngularMateriaModule {}
+export class AngularMaterialModule {}

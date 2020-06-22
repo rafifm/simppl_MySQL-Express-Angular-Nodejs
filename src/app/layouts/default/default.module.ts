@@ -5,7 +5,7 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularMateriaModule } from '../../angular-material.module';
+import { AngularMaterialModule } from '../../angular-material.module';
 import { PendaftaranMhsTampilComponent } from 'src/app/modules/mhs/pendaftaran-mhs/pendaftaran-mhs-tampil/pendaftaran-mhs-tampil.component';
 import { PendaftaranMhsCreateComponent } from 'src/app/modules/mhs/pendaftaran-mhs/pendaftaran-mhs-create/pendaftaran-mhs-create.component';
 import { SignupComponent } from '../auth/signup/signup.component';
@@ -52,7 +52,7 @@ import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularMateriaModule,
+    AngularMaterialModule,
     StaffModule,
     DosenModule,
     GuruModule,

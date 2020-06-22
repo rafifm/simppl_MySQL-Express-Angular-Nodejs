@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TambahSekolahComponent } from './tambah-sekolah/tambah-sekolah.component';
 import { TambahKuotaComponent } from './tambah-kuota/tambah-kuota.component';
 import { PenentuanRoutingModule } from './penentuan-routing.module';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 
 
@@ -13,7 +14,8 @@ import { PenentuanRoutingModule } from './penentuan-routing.module';
   ],
   imports: [
     CommonModule,
-    PenentuanRoutingModule
+    PenentuanRoutingModule,
+    AngularMaterialModule
   ]
 })
 export class PenentuanModule { }
