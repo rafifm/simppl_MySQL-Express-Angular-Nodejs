@@ -37,8 +37,8 @@
         <th mat-header-cell *matHeaderCellDef> Penempatan </th>
         <td mat-cell *matCellDef="let post"> 
           <mat-action-row >
-            <mat-select>
-              <mat-option *ngFor="let option of sekolah" [value]= "option.id"> {{option.nama}} </mat-option>
+            <mat-select placeholder="pilih sekolah">
+              <mat-option *ngFor="let option of sekolah" [value]= "option.id" > {{option.nama}} </mat-option>
             </mat-select>
             <!-- <a mat-button color="primary">EDIT</a>
             <button mat-button color="warn">DELETE</button> -->

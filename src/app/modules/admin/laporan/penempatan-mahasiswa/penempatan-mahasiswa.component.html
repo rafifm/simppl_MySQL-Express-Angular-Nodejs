@@ -1,1 +1,47 @@
 <p>penempatan-mahasiswa works!</p>
+
+<div>
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Name Column -->
+        <ng-container matColumnDef="nomor">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let post">{{post.nomor}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="nim">
+          <th mat-header-cell *matHeaderCellDef> NIM </th>
+          <td mat-cell *matCellDef="let post"> {{post.nim}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="nama">
+          <th mat-header-cell *matHeaderCellDef> Nama </th>
+          <td mat-cell *matCellDef="let post"> {{post.nama}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="progstud">
+          <th mat-header-cell *matHeaderCellDef> Program Studi </th>
+          <td mat-cell *matCellDef="let post"> {{post.progstud}}</td>
+        </ng-container>    
+        <!-- Weight Column -->
+        <ng-container matColumnDef="sekolah">
+          <th mat-header-cell *matHeaderCellDef> Sekolah </th>
+          <td mat-cell *matCellDef="let post"> {{post.sekolah}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dospem">
+            <th mat-header-cell *matHeaderCellDef> Dosen Pembimbing </th>
+            <td mat-cell *matCellDef="let post"> {{post.dospem}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="guru">
+            <th mat-header-cell *matHeaderCellDef> Guru Pamong </th>
+            <td mat-cell *matCellDef="let post"> {{post.guru}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <!--<mat-paginator [length]="totalmahasiswa" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)" *ngIf="posts.length > 0 "></mat-paginator>-->    
+    </div>
+  </div>
