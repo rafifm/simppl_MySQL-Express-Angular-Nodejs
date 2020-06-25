@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
     exports: [
@@ -31,7 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatSidenavModule,
         MatTableModule,
         NgMaterialMultilevelMenuModule,
-        MatSelectModule
+        MatSelectModule,
+        MatGridListModule
     ]
 
 })
