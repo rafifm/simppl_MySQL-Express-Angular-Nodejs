@@ -20,12 +20,11 @@ import { DatagurutambahComponent } from '../../modules/staff/dataguru/dataguruta
 import { DatagurutampilComponent } from '../../modules/staff/dataguru/datagurutampil/datagurutampil.component';
 import { DatastafftampilComponent } from '../../modules/staff/datastaff/datastafftampil/datastafftampil.component';
 import { DatastafftambahComponent } from '../../modules/staff/datastaff/datastafftambah/datastafftambah.component';
-import { PenempatanModule } from '../../modules/kaprodi/penempatan/penempatan.module';
 import { StaffModule } from '../../modules/staff/staff.module';
 import { DosenModule } from '../../modules/dosen/dosen.module';
 import { GuruModule } from '../../modules/guru/guru.module';
-import { PenentuanModule } from 'src/app/modules/kaprodi/penentuan/penentuan.module';
 import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
+import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
 
 @NgModule({
   declarations: [
@@ -56,8 +55,7 @@ import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
     StaffModule,
     DosenModule,
     GuruModule,
-    PenempatanModule,
-    PenentuanModule,
+    KaprodiModule,
     LaporanModule
   ]
 })

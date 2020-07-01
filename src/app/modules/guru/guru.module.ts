@@ -5,6 +5,7 @@ import { GuruRoutingModule } from './guru-routing.module';
 import { GurutampilnilaiComponent } from './gurutampilnilai/gurutampilnilai.component';
 import { GurutampbahnilaiComponent } from './gurutampbahnilai/gurutampbahnilai.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
   imports: [
     CommonModule,
     GuruRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SharedModule
   ]
 })
 export class GuruModule { }

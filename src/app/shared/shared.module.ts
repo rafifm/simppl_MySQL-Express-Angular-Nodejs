@@ -12,13 +12,23 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+import { SidebarguruComponent } from './component/sidebar/sidebarguru/sidebarguru.component';
+import { SidebardosenComponent } from './component/sidebar/sidebardosen/sidebardosen.component';
+import { SidebaradminComponent } from './component/sidebar/sidebaradmin/sidebaradmin.component';
+import { SidebarkaprodiComponent } from './component/sidebar/sidebarkaprodi/sidebarkaprodi.component';
+import { SidebarstaffComponent } from './component/sidebar/sidebarstaff/sidebarstaff.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarguruComponent,
+    SidebardosenComponent,
+    SidebaradminComponent,
+    SidebarkaprodiComponent,
+    SidebarstaffComponent
   ],
   imports: [
     CommonModule,

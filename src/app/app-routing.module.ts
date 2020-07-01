@@ -13,6 +13,8 @@ import { PenilaianMhsDosenInputComponent } from './modules/mhs/penilaian-mhs-dos
 import { PenilaianMhsDosenTampilComponent } from './modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-tampil/penilaian-mhs-dosen-tampil.component';
 import { DatadosentambahComponent } from './modules/staff/datadosen/datadosentambah/datadosentambah.component';
 import { DatadosentampilComponent } from './modules/staff/datadosen/datadosentampil/datadosentampil.component';
+import { SidebarComponent } from './shared/component/sidebar/sidebar.component';
+import { SidebarguruComponent } from './shared/component/sidebar/sidebarguru/sidebarguru.component';
 
 
 const routes: Routes = [{ 
@@ -29,16 +31,15 @@ const routes: Routes = [{
     component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
   }, {
     path: 'dosen',
+    // component: SidebarComponent,
+    // outlet: 'sidebar',
     loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
   }, {
     path: 'guru',
     loadChildren: () => import('./modules/guru/guru.module').then(m => m.GuruModule)
   }, {
-    path: 'penempatan',
-    loadChildren: () => import('./modules/kaprodi/penempatan/penempatan.module').then(m => m.PenempatanModule)
-  }, {
-    path: 'penentuan',
-    loadChildren: () => import('./modules/kaprodi/penentuan/penentuan.module').then(m => m.PenentuanModule)
+    path: 'kaprodi',
+    loadChildren: () => import('./modules/kaprodi/kaprodi.module').then(m => m.KaprodiModule)
   }, {
     path: 'laporan',
     loadChildren: () => import('./modules/admin/laporan/laporan.module').then(m => m.LaporanModule)
