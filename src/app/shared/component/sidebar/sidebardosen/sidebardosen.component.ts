@@ -12,6 +12,10 @@ export class SidebardosenComponent implements OnInit {
         label: 'Mahasiswa',
         items: [
           {
+            label: ' - Nilai UAS',
+            link: '/pendaftaranmhstampil'
+          },
+          {
               label: 'Pendaftaran Mahasiswa',
               link: '/pendaftaranmhstampil'
           },
@@ -41,26 +45,6 @@ export class SidebardosenComponent implements OnInit {
           },
           {
               label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
-  ddpengguna = [
-    {
-        label: 'Data pengguna',
-        items: [
-          {
-              label: 'Data Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Data Dosen',
-              link: '/datadosentampil'
-          },
-          {
-              label: 'Data Guru',
               link: '/nilaigurutampil'
           }
         ]

@@ -12,25 +12,9 @@ export class SidebarguruComponent implements OnInit {
         label: 'Mahasiswa',
         items: [
           {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
+            label: ' - Nilai Ujian',
+            link: '/pendaftaranmhstampil'
           },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
-  ddsklh = [
-    {
-        label: 'Sekolah',
-        items: [
           {
               label: 'Pendaftaran Mahasiswa',
               link: '/pendaftaranmhstampil'
@@ -47,20 +31,20 @@ export class SidebarguruComponent implements OnInit {
     }
   ];
 
-  ddpengguna = [
+  ddkelas = [
     {
-        label: 'Data pengguna',
+        label: 'Kelas',
         items: [
           {
-              label: 'Data Mahasiswa',
+              label: 'Pendaftaran Mahasiswa',
               link: '/pendaftaranmhstampil'
           },
           {
-              label: 'Data Dosen',
-              link: '/datadosentampil'
+              label: 'Penilaian Dosen',
+              link: '/nilaidosentampil'
           },
           {
-              label: 'Data Guru',
+              label: 'Penilaian Guru',
               link: '/nilaigurutampil'
           }
         ]

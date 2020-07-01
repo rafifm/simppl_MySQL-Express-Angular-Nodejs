@@ -9,7 +9,7 @@ export class SidebarkaprodiComponent implements OnInit {
 
   ddmhs = [
     {
-        label: 'Mahasiswa',
+        label: 'Dosen Pembimbing',
         items: [
           {
               label: 'Pendaftaran Mahasiswa',
@@ -29,7 +29,7 @@ export class SidebarkaprodiComponent implements OnInit {
 
   ddsklh = [
     {
-        label: 'Sekolah',
+        label: 'Mahasiswa',
         items: [
           {
               label: 'Pendaftaran Mahasiswa',
@@ -49,7 +49,7 @@ export class SidebarkaprodiComponent implements OnInit {
 
   ddpengguna = [
     {
-        label: 'Data pengguna',
+        label: 'Sekolah',
         items: [
           {
               label: 'Data Mahasiswa',
