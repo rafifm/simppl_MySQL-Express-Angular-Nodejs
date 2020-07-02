@@ -31,8 +31,6 @@ const routes: Routes = [{
     component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
   }, {
     path: 'dosen',
-    // component: SidebarComponent,
-    // outlet: 'sidebar',
     loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
   }, {
     path: 'guru',
@@ -43,6 +41,9 @@ const routes: Routes = [{
   }, {
     path: 'laporan',
     loadChildren: () => import('./modules/admin/laporan/laporan.module').then(m => m.LaporanModule)
+  }, {
+    path: 'staff',
+    loadChildren: () => import('./modules/staff/staff.module').then(m => m.StaffModule)
   }, {
     path: 'nilaigurutampil',
     component: PenilaianMhsGuruTampilComponent

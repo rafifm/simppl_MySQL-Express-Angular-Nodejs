@@ -38,12 +38,7 @@ import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
     PenilaianMhsGuruInputComponent,
     PenilaianMhsDosenInputComponent,
     PenilaianMhsDosenTampilComponent,
-    DatadosentampilComponent,
-    DatadosentambahComponent,
-    DatagurutambahComponent,
-    DatagurutampilComponent,
-    DatastafftampilComponent,
-    DatastafftambahComponent
+    
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,16 @@
-<p>sidebaradmin works!</p>
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h2>Rafif</h2>
+      <h4>Email</h4>
+    </div>
+    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+  </div>
+
+  <h2 MatSubheader>Tools</h2>
+  <mat-divider></mat-divider>
+  <ng-material-multilevel-menu [configuration]='config' [items]='ddsekolah'></ng-material-multilevel-menu>
+  <ng-material-multilevel-menu [configuration]='config' [items]='ddpenempatan'></ng-material-multilevel-menu>
+  <mat-divider></mat-divider>
+
+</mat-nav-list>
