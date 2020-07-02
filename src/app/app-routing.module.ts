@@ -18,53 +18,56 @@ import { SidebarguruComponent } from './shared/component/sidebar/sidebarguru/sid
 
 
 const routes: Routes = [{ 
-  path: '', 
+  path: 'dashboard', 
   component: DefaultComponent,
   children: [{
-    path: '',
-    component: DashboardComponent
-  }, {
-    path: 'pendaftaranmhstampil',
-    component: PendaftaranMhsTampilComponent, canActivate: [AuthGuard]
-  }, {
-    path: 'pendaftaranmhsbuat',
-    component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
-  }, {
-    path: 'dosen',
-    loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
-  }, {
-    path: 'guru',
-    loadChildren: () => import('./modules/guru/guru.module').then(m => m.GuruModule)
-  }, {
-    path: 'kaprodi',
-    loadChildren: () => import('./modules/kaprodi/kaprodi.module').then(m => m.KaprodiModule)
-  }, {
-    path: 'laporan',
-    loadChildren: () => import('./modules/admin/laporan/laporan.module').then(m => m.LaporanModule)
-  }, {
-    path: 'staff',
-    loadChildren: () => import('./modules/staff/staff.module').then(m => m.StaffModule)
-  }, {
-    path: 'nilaigurutampil',
-    component: PenilaianMhsGuruTampilComponent
-  }, {
-    path: 'nilaiguruinput',
-    component: PenilaianMhsGuruInputComponent
-  },{
-    path: 'nilaidoseninput',
-    component: PenilaianMhsDosenInputComponent
-  },{
-    path: 'nilaidosentampil',
-    component: PenilaianMhsDosenTampilComponent
-  }, {
-    path: 'datadosentambah',
-    component: DatadosentambahComponent
-  }, {
-    path: 'datadosentampil',
-    component: DatadosentampilComponent
-  },] 
+      path: '',
+      component: DashboardComponent
+    }, {
+      path: 'pendaftaranmhstampil',
+      component: PendaftaranMhsTampilComponent, canActivate: [AuthGuard]
+    }, {
+      path: 'pendaftaranmhsbuat',
+      component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
+    }, {
+      path: 'dosen',
+      loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
+    }, {
+      path: 'guru',
+      loadChildren: () => import('./modules/guru/guru.module').then(m => m.GuruModule)
+    }, {
+      path: 'kaprodi',
+      loadChildren: () => import('./modules/kaprodi/kaprodi.module').then(m => m.KaprodiModule)
+    }, {
+      path: 'laporan',
+      loadChildren: () => import('./modules/admin/laporan/laporan.module').then(m => m.LaporanModule)
+    }, {
+      path: 'staff',
+      loadChildren: () => import('./modules/staff/staff.module').then(m => m.StaffModule)
+    }, {
+      path: 'nilaigurutampil',
+      component: PenilaianMhsGuruTampilComponent
+    }, {
+      path: 'nilaiguruinput',
+      component: PenilaianMhsGuruInputComponent
+    },{
+      path: 'nilaidoseninput',
+      component: PenilaianMhsDosenInputComponent
+    },{
+      path: 'nilaidosentampil',
+      component: PenilaianMhsDosenTampilComponent
+    }, {
+      path: 'datadosentambah',
+      component: DatadosentambahComponent
+    }, {
+      path: 'datadosentampil',
+      component: DatadosentampilComponent
+    },] 
   },
-  { path: 'login', component: LoginComponent },
+  { 
+    path: 'login',
+    loadChildren: () => import('./layouts/auth/auth.module').then(m => m.AuthModule)
+  },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:postId', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
   { path: "signup", component: SignupComponent }
