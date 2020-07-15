@@ -17,6 +17,7 @@ import { DosenModule } from '../../modules/dosen/dosen.module';
 import { GuruModule } from '../../modules/guru/guru.module';
 import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
 import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
     DosenModule,
     GuruModule,
     KaprodiModule,
-    LaporanModule
+    LaporanModule,
+    AuthModule
   ]
 })
 export class DefaultModule { }

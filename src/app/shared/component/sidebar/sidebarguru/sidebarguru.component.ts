@@ -13,19 +13,11 @@ export class SidebarguruComponent implements OnInit {
         items: [
           {
             label: ' - Nilai Ujian',
-            link: '/pendaftaranmhstampil'
+            link: '/dashboard/guru/tambahnilai'
           },
           {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
+              label: 'Lihat Nilai Ujian',
+              link: '/dashboard/guru/tampilnilai'
           }
         ]
     }

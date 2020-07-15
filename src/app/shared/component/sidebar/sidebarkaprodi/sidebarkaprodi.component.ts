@@ -12,16 +12,8 @@ export class SidebarkaprodiComponent implements OnInit {
         label: 'Dosen Pembimbing',
         items: [
           {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
+              label: 'Penempatan Dosen',
+              link: '/dashboard/kaprodi/pilihtempatdosen'
           }
         ]
     }
@@ -52,16 +44,12 @@ export class SidebarkaprodiComponent implements OnInit {
         label: 'Sekolah',
         items: [
           {
-              label: 'Data Mahasiswa',
-              link: '/pendaftaranmhstampil'
+              label: 'Tambah Sekolah',
+              link: '/dashboard/kaprodi/tambahsekolah'
           },
           {
-              label: 'Data Dosen',
-              link: '/datadosentampil'
-          },
-          {
-              label: 'Data Guru',
-              link: '/nilaigurutampil'
+              label: 'Tambah Kuota Sekolah',
+              link: '/dashboard/kaprodi/tambahkuota'
           }
         ]
     }

@@ -13,19 +13,10 @@ export class SidebardosenComponent implements OnInit {
         items: [
           {
             label: ' - Nilai UAS',
-            link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
+            link: '/dashboard/dosen/tambahnilai'
+          },{
+            label: ' Lihat Nilai UAS',
+            link: '/dashboard/dosen/tampilnilai'
           }
         ]
     }

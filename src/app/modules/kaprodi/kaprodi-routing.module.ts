@@ -10,24 +10,19 @@ const routes: Routes = [
   {
     path: '',
     component:SidebarkaprodiComponent,
-    outlet: 'sidebarkaprodi',
-    children: [
-      {
-        path: 'pilihtempatdosen',
-        component: PilihTmptDosenComponent
-      }, 
-      {
-        path: 'pilihtempatguru',
-        component: PilihTmptGuruComponent
-      },
-      {
-        path: 'tambahkuota',
-        component: TambahKuotaComponent
-      }, {
-        path: 'tambahsekolah',
-        component: TambahSekolahComponent
-      }
-    ]
+    outlet: 'sidebarkaprodi'
+  }, {
+    path: 'pilihtempatdosen',
+    component: PilihTmptDosenComponent
+  }, {
+    path: 'pilihtempatguru',
+    component: PilihTmptGuruComponent
+  }, {
+    path: 'tambahkuota',
+    component: TambahKuotaComponent
+  }, {
+    path: 'tambahsekolah',
+    component: TambahSekolahComponent   
   }
 ];
 

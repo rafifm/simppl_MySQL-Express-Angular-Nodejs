@@ -52,5 +52,8 @@ app.use((req, res, next) => {
 app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
+});
 
 module.exports = app;
