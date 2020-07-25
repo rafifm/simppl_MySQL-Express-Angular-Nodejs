@@ -1,4 +1,3 @@
-const dbmysql = require("../models/dbmysql-config");
 const PendaftaranMhs = require("../models/pendaftaranmhs");
 
 exports.tambahmhs = (req, res, next) => {
@@ -103,12 +102,6 @@ exports.tampilmhsid = (req, res, next) => {
   }
 
 exports.hapusmhs = (req, res,next) => {
-    // dbmysql.getConnection((err, connection) => {
-    //   connection.query('DELETE FROM pendaftaranmhs WHERE id_mhs='+ req.params.id, (err, result) => {
-    //     if(err) throw err;
-    //     console.log(result);
-    //   });
-    // });
     PendaftaranMhs.deleteOne({_id: req.params.id}).then(result => {
       console.log(result);
       if ( result.n > 0) {

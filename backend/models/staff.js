@@ -1,20 +1,13 @@
-const sql = require("./dbmysql");
-
-const Staff = function(staff) {
-  this.nama = staff.nama;
-  this.email = staff.email;
-  this.password = staff.password;
-};
-
-Staff.create = (staffBaru, result) => {
-  sql.query("INSERT INTO staff SET ?", staffBaru, (err, res) => {
-    if (err) {
-      console.log("error : ", err);
-      result(err,null);
-      return;
+module.exports = (sequelize, Sequelize) => {
+  const Staff = sequelize.define("staff", {
+    nama_staff: {
+      type: Sequelize.STRING
+    }, email_staff: {
+      type: Sequelize.STRING
+    }, pass_staff: {
+      type: Sequelize.STRING
     }
-
-    console.log("staff telah ditambahkan : ", { id: res.insertd, ...staffBaru });
-    result(null, { id: res.insertd, ...staffBaru });
   });
+
+  return Staff;
 };

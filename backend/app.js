@@ -1,8 +1,14 @@
 const express = require("express");
-const path = require("path");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const mysql = require("mysql");
+const path = require("path");
+const cors = require("cors");
+const db = require("./models/dbmysql");
+
+var corsOptions = {
+  origin: "http://localhost:4000"
+};
+// const mongoose = require("mongoose");
+// const mysql = require("mysql");
 
 const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
 const userRoutes = require("./routes/user");
@@ -10,28 +16,16 @@ const dosenRoutes = require("./routes/datadosen");
 
 const app = express();
 
-mongoose.connect(
-    "mongodb+srv://rafif:mkGq2uhkmCpiVZQG@simppl-xgalo.mongodb.net/simppl",
-    { useNewUrlParser: true , useUnifiedTopology: true}
-  ).then(() => {
-    console.log("Database berhasil terkoneksi");
-  }).catch(() => {
-    console.log("Koneksi gagal");
-  });
-
-// dbmysql.connect((err) => {
-//   if (err) throw err;
-  
-//   let sql = `INSERT INTO pendaftaranmhs (nama, nim, ipk, nokwitansi, foto_mhs, id_mhs, email, password_mhs) VALUES ('a', '2', '2', '2', 'a', '2', 'a', 'a')`;
-
-//   dbmysql.query(sql, (err, result) => {
-//     if (err) throw err;
-//     console.log("1 baris dimasukkan");
+// mongoose.connect(
+//     "mongodb+srv://rafif:mkGq2uhkmCpiVZQG@simppl-xgalo.mongodb.net/simppl",
+//     { useNewUrlParser: true , useUnifiedTopology: true}
+//   ).then(() => {
+//     console.log("Database berhasil terkoneksi");
+//   }).catch(() => {
+//     console.log("Koneksi gagal");
 //   });
-// });
 
-
-
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
@@ -54,6 +48,15 @@ app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
+});
+
+db.sequelize.sync();
+
+const PORT = process.env.PORT || 4000;
+
+require("./routes/staff")(app);
+app.listen(PORT, () => {
+  console.log("server jalan di port : " + PORT);
 });
 
 module.exports = app;
