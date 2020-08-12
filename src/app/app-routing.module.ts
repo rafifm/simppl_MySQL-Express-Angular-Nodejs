@@ -25,7 +25,7 @@ const routes: Routes = [{
       component: DashboardComponent
     }, {
       path: 'pendaftaranmhstampil',
-      component: PendaftaranMhsTampilComponent, canActivate: [AuthGuard]
+      component: PendaftaranMhsTampilComponent
     }, {
       path: 'pendaftaranmhsbuat',
       component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]

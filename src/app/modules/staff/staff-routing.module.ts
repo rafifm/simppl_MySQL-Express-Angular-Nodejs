@@ -4,6 +4,7 @@ import { SidebarstaffComponent } from 'src/app/shared/component/sidebar/sidebars
 import { DatadosentambahComponent } from './datadosen/datadosentambah/datadosentambah.component';
 import { DatagurutambahComponent } from './dataguru/datagurutambah/datagurutambah.component';
 import { DatastafftambahComponent } from './datastaff/datastafftambah/datastafftambah.component';
+import { DatastafftampilComponent } from './datastaff/datastafftampil/datastafftampil.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,9 @@ const routes: Routes = [
   }, {
     path: 'tambahstaff',
     component: DatastafftambahComponent
+  }, {
+    path: 'tampilstaff',
+    component: DatastafftampilComponent
   }
 ];
 

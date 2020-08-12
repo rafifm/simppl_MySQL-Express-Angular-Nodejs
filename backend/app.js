@@ -4,10 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const db = require("./models/dbmysql");
 
-var corsOptions = {
-  origin: "http://localhost:4000"
-};
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 // const mysql = require("mysql");
 
 const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
@@ -25,7 +22,11 @@ const app = express();
 //     console.log("Koneksi gagal");
 //   });
 
-app.use(cors(corsOptions));
+// var corsOptions = {
+//   origin: "http://localhost:4000"
+// };
+
+// app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));

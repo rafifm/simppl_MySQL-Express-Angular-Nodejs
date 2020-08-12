@@ -1,5 +1,6 @@
 export interface Staff {
-  nama: string;
-  email: string;
-  password: string;
+  id: string;
+  nama_staff: string;
+  email_staff: string;
+  pass_staff: string;
 }

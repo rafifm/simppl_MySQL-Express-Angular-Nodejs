@@ -37,6 +37,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "ng-material-multilevel-menu": "^4.12.2",
+    "ngx-pagination": "^5.0.0",
     "nodemon": "^2.0.4",
     "parser": "^0.1.4",
     "rxjs": "~6.5.5",

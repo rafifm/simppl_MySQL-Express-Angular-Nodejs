@@ -33,6 +33,7 @@ export class PendaftaranMhsService {
       })
       )
       .subscribe(dataBaruSdhDiubah => {
+        console.log(dataBaruSdhDiubah);
         this. posts = dataBaruSdhDiubah.posts;
         this.dataMhsUpdated.next({
           posts: [...this.posts], 

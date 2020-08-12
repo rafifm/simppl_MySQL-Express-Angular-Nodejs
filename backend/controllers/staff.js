@@ -2,6 +2,21 @@ const db = require("../models/dbmysql");
 const Staff = db.staff;
 const Op = db.Sequelize.Op;
 
+const getPagination = (page, size) => {
+  const limit = size ? +size : 3;
+  const offset = page ? page * limit : 0;
+
+  return{ limit, offset};
+}
+
+const getPagingData = (data, page, limit) => {
+  const { count:totalStaff, rows: Staff } = data;
+  const halamanSekarang = page ? +page : 0;
+  const totalHalaman = Math.ceil(totalStaff / limit);
+
+  return { totalStaff, Staff, totalHalaman, halamanSekarang};
+}
+
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
   //validate request
@@ -35,12 +50,15 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const nama_staff = req.query.nama_staff;
-  var condition = nama_staff ? { nama_staff: { [Op.like]: `%${title}%`}} : null;
+  const { page, size, nama_staff} = req.query;
+  var condition = nama_staff ? { nama_staff: { [Op.like]: `%${nama_staff}%`}} : null;
 
-  Staff.findAll({ where: condition})
+  const { limit, offset } = getPagination(page, size);
+
+  Staff.findAndCountAll({ where: condition, limit, offset})
     .then(data => {
-      res.send(data);
+      const response = getPagingData(data, page, limit);
+      res.send(response);
     })
     .catch(err => {
       res.status(500).send({
