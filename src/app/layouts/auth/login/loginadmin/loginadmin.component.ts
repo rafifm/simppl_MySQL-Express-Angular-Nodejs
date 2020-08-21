@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-loginadmin',
@@ -6,10 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loginadmin.component.css']
 })
 export class LoginadminComponent implements OnInit {
+  isLoading=false;
+  private authStatusSub: Subscription;
+  
+  constructor(public authService: AuthService) {}
 
-  constructor() { }
+  ngOnInit() {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      }
+    );
+  }
 
-  ngOnInit(): void {
+  onLogin(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    this.isLoading = true;
+    this.authService.login(form.value.email, form.value.password);
+  }
+
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
   }
 
 }

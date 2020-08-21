@@ -16,24 +16,32 @@ export class DatastaffService {
   ambilSemuaStaff( akunPerHlmn: number, HlmnSekarang: number ) {
     const query = `?page=${HlmnSekarang}&size=${akunPerHlmn}`;
     this.http
-      .get<{message: string, staff: any, maxData: number}>(
+      .get<{message: string, staff: any, totalHalaman: number}>(
       'http://localhost:4000/api/staff' + query )
+      // .subscribe(upStaff => {
+      //   console.log(upStaff);
+      //   this.staff = upStaff;
+      // })
+      .pipe(map(dataStaff => {
+        console.log(dataStaff);
+        return { 
+          staffUp: dataStaff.staff.map(staffini => {
+          return {
+            id: staffini.id,
+            nama_staff: staffini.nama,
+            email_staff: staffini.email,
+            pass_staff: staffini.password
+          };
+        }),
+        totalHalaman: dataStaff.totalHalaman};
+      }))
       .subscribe(staffBaruSdhDiubah => {
         console.log(staffBaruSdhDiubah);
-        this.staff = staffBaruSdhDiubah.staff;
-        // this.staffdiperbaharui.next(this.staff);
-      // .pipe(map(dataStaff => {
-      //   return { staffUp: dataStaff.staff.map(staffini => {
-      //     return {
-      //       id: staffini._id,
-      //       nama_staff: staffini.nama,
-      //       email_staff: staffini.email,
-      //       pass_staff: staffini.password
-      //     };
-      //   }),
-      //   maxData: dataStaff.maxData};
-      // }))
-      });
+        this.staff = staffBaruSdhDiubah.staffUp;
+        this.staffdiperbaharui.next({
+          staff: [...this.staff],
+          jumlahStaff: staffBaruSdhDiubah.totalHalaman});
+        });
   }
 
   tambahstaff(nama: string, email: string, password: string) {

@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,12 +23,13 @@ import { AuthModule } from './layouts/auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
     BrowserAnimationsModule,
+    AngularMaterialModule,
+    NgxPaginationModule,
     HttpClientModule,
     DefaultModule,
-    AngularMaterialModule,
-    AuthModule
+    FormsModule,
+    AuthModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

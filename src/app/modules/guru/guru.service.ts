@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
-const urlGuru = 'http://localhost:4000/api/guru';
+const urlGuru = 'http://localhost:8080/api/tutorials';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataguruService {
+export class GuruService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   ambilSemua(params): Observable<any> {
     return this.http.get(urlGuru, { params }); 
@@ -21,7 +20,7 @@ export class DataguruService {
   }
 
   buat(data): Observable<any> {
-    return this.http.post(`${urlGuru}/buat`, data);
+    return this.http.post(urlGuru, data);
   }
 
   update(id, data): Observable<any> {

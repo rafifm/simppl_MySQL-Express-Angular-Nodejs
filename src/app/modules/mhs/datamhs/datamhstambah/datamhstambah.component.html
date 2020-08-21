@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="formMhs" (submit)="simpanAkunMhs()" *ngIf="!isLoading">
+    <mat-form-field>
+        <input
+          matInput
+          type="text"
+          formControlName="nama_mhs"
+          placeholder="Nama">
+          <mat-error *ngIf="formMhs.get('nama_mhs').invalid">Masukkan nama</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nim_mhs"
+        placeholder="Nim">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="ipk_mhs"
+        placeholder="IPK">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nokwitansi_mhs"
+        placeholder="No.Kwitansi">
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save post
+    </button>
+  </form>
+</mat-card>

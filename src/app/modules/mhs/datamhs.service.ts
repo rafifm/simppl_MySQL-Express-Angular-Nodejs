@@ -3,37 +3,38 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-const urlGuru = 'http://localhost:4000/api/guru';
+const urlMhs = 'http://localhost:4000/api/mhs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataguruService {
+export class DatamhsService {
 
+  
   constructor(private http: HttpClient, private router: Router) { }
 
   ambilSemua(params): Observable<any> {
-    return this.http.get(urlGuru, { params }); 
+    return this.http.get(urlMhs, { params }); 
   }
 
   ambil(id): Observable<any> {
-    return this.http.get(`${urlGuru}/${id}`);
+    return this.http.get(`${urlMhs}/${id}`);
   }
 
   buat(data): Observable<any> {
-    return this.http.post(`${urlGuru}/buat`, data);
+    return this.http.post(`${urlMhs}/buat`, data);
   }
 
   update(id, data): Observable<any> {
-    return this.http.put(`${urlGuru}/${id}`, data);
+    return this.http.put(`${urlMhs}/${id}`, data);
   }
 
   hapus(id): Observable<any> {
-    return this.http.delete(`${urlGuru}/${id}`);
+    return this.http.delete(`${urlMhs}/${id}`);
   }
 
   hapusSemua(): Observable<any> {
-    return this.http.delete(urlGuru);
+    return this.http.delete(urlMhs);
   }
 
 }

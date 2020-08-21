@@ -5,6 +5,7 @@ import { DatadosentambahComponent } from './datadosen/datadosentambah/datadosent
 import { DatagurutambahComponent } from './dataguru/datagurutambah/datagurutambah.component';
 import { DatastafftambahComponent } from './datastaff/datastafftambah/datastafftambah.component';
 import { DatastafftampilComponent } from './datastaff/datastafftampil/datastafftampil.component';
+import { DatagurutampilComponent } from './dataguru/datagurutampil/datagurutampil.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,9 @@ const routes: Routes = [
   }, {
     path: 'tampilstaff',
     component: DatastafftampilComponent
+  }, {
+    path: 'tampilguru',
+    component: DatagurutampilComponent
   }
 ];
 

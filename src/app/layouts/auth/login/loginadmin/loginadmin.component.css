@@ -7,7 +7,7 @@ mat-spinner {
 }
 
 :host {
-  width: 30%;
+  width: 100%;
   display: block;
   margin: auto;
 }

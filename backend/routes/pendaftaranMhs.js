@@ -91,7 +91,7 @@ router.get("",(req, res, next) => {
       res.status(200).json({
         message: "post berhasil diambil",
         posts: fetchedPosts,
-        maxPosts: count
+        totalHalaman: count
       })
     });
 });

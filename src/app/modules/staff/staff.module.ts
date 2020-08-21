@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { StaffRoutingModule } from './staff-routing.module';
 import { DatadosentampilComponent } from './datadosen/datadosentampil/datadosentampil.component';
@@ -25,10 +26,12 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
   imports: [
     CommonModule,
     StaffRoutingModule,
-    SharedModule,
-    FormsModule,
     ReactiveFormsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SharedModule,
+    NgxPaginationModule,
+    FormsModule,
+
   ]
 })
 export class StaffModule { }

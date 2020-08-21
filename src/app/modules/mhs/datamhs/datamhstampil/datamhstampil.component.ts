@@ -1,0 +1,95 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { DatamhsService } from '../../datamhs.service';
+import { MatTableDataSource } from '@angular/material/table';
+
+@Component({
+  selector: 'app-datamhstampil',
+  templateUrl: './datamhstampil.component.html',
+  styleUrls: ['./datamhstampil.component.css']
+})
+export class DatamhstampilComponent implements OnInit {
+
+  mhs: any;
+  dataMhsSekarang = null;
+  currentIndex = -1;
+  nama_mhs = '';
+  dataAkunMhs;
+
+  halaman = 1;
+  totalAkunMhs = 0;
+  totalDataPerHalaman = 3;
+  banyakPerHalaman = [5, 10, 15];
+
+  kolomMhs: string[] = ["nama", "nim", "ipk", "nokwitansi", "aksi"];
+  @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
+
+  constructor(private dataMhs: DatamhsService) { }
+
+  ngOnInit(): void {
+    this.ambilDataMhs();
+  }
+
+  getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
+    let params = {};
+
+    if (searchTitle) {
+      params[`nama_mhs`] = searchTitle;
+    }
+
+    if (halaman) {
+      params[`page`] = halaman - 1;
+    }
+
+    if (totalDataPerHalaman) {
+      params[`size`] = totalDataPerHalaman;
+    }
+
+    return params;
+  }
+
+  ambilDataMhs() {
+    const params = this.getRequestParams(this.nama_mhs, this.halaman, this.totalDataPerHalaman);
+
+    this.dataMhs.ambilSemua(params)
+      .subscribe((ambilDataMhs: { mhs: any, totalAkunMhs: number}) => {
+        this.mhs = ambilDataMhs.mhs;
+        this.totalAkunMhs = ambilDataMhs.totalAkunMhs;
+        this.dataAkunMhs = new MatTableDataSource<any>(this.mhs);
+
+      })
+      error => {
+        console.log(error);
+      }
+
+  }
+
+  handlePageChange(event): void {
+    this.halaman = event;
+    this.ambilDataMhs();
+  }
+
+  handlePageSizeChange(event): void {
+    this.totalDataPerHalaman = event.target.value;
+    this.halaman = 1;
+    this.ambilDataMhs();
+  }
+
+  setActiveTutorial(mhsTampil, index): void {
+    this.dataMhsSekarang = mhsTampil;
+    this.currentIndex = index;
+  }
+
+  hapusSemuaDataMhs(): void {
+    this.dataMhs.hapusSemua()
+      .subscribe(
+        response => {
+          console.log(response);
+          this.ambilDataMhs();
+        },
+        error => {
+          console.log(error);
+        });
+  }
+
+}

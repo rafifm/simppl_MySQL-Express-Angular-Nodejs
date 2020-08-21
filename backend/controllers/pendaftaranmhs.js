@@ -71,13 +71,13 @@ exports.tampilmhs = (req, res, next) => {
     }
     postQuery.then(dokumen => {
       fetchedPosts = dokumen
-        return PendaftaranMhs.count();
+        return PendaftaranMhs.estimatedDocumentCount();
       })
       .then(count => {
         res.status(200).json({
           message: "post berhasil diambil",
           posts: fetchedPosts,
-          maxPosts: count
+          totalHalaman: count
         })
       })
       .catch(error => {

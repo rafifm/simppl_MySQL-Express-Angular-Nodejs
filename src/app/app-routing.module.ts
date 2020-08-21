@@ -45,6 +45,9 @@ const routes: Routes = [{
       path: 'staff',
       loadChildren: () => import('./modules/staff/staff.module').then(m => m.StaffModule)
     }, {
+      path: 'mhs',
+      loadChildren: () => import('./modules/mhs/datamhs.module').then(m => m.DatamhsModule)
+    }, {
       path: 'nilaigurutampil',
       component: PenilaianMhsGuruTampilComponent
     }, {

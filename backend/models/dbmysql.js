@@ -1,7 +1,7 @@
 const dbconfig = require("../config/db.config.mysql");
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,
+const database = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,
   {
     host: dbconfig.HOST,
     dialect: dbconfig.dialect,
@@ -18,8 +18,10 @@ const sequelize = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,
 const db = {};
 
 db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+db.databaseConf = database;
 
-db.staff = require("./staff") (sequelize, Sequelize);
+db.staff = require("./staff") (database, Sequelize);
+db.guru = require("./guru") (database, Sequelize);
+db.mhs = require("./mhs") (database, Sequelize);
 
-module.exports = db;
+module.exports = db ;

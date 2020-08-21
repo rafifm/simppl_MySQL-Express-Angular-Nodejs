@@ -13,14 +13,14 @@ const dosenRoutes = require("./routes/datadosen");
 
 const app = express();
 
-// mongoose.connect(
-//     "mongodb+srv://rafif:mkGq2uhkmCpiVZQG@simppl-xgalo.mongodb.net/simppl",
-//     { useNewUrlParser: true , useUnifiedTopology: true}
-//   ).then(() => {
-//     console.log("Database berhasil terkoneksi");
-//   }).catch(() => {
-//     console.log("Koneksi gagal");
-//   });
+mongoose.connect(
+    "mongodb+srv://rafif:mkGq2uhkmCpiVZQG@simppl-xgalo.mongodb.net/simppl",
+    { useNewUrlParser: true , useUnifiedTopology: true}
+  ).then(() => {
+    console.log("Database berhasil terkoneksi");
+  }).catch(() => {
+    console.log("Koneksi gagal");
+  });
 
 // var corsOptions = {
 //   origin: "http://localhost:4000"
@@ -51,11 +51,13 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
-db.sequelize.sync();
+db.databaseConf.sync();
 
 const PORT = process.env.PORT || 4000;
 
 require("./routes/staff")(app);
+require("./routes/guru")(app);
+require("./routes/mhs")(app);
 app.listen(PORT, () => {
   console.log("server jalan di port : " + PORT);
 });
