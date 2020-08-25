@@ -5,6 +5,7 @@ import { PilihTmptGuruComponent } from './penempatan/pilih-tmpt-guru/pilih-tmpt-
 import { TambahKuotaComponent } from './penentuan/tambah-kuota/tambah-kuota.component';
 import { TambahSekolahComponent } from './penentuan/tambah-sekolah/tambah-sekolah.component';
 import { SidebarkaprodiComponent } from 'src/app/shared/component/sidebar/sidebarkaprodi/sidebarkaprodi.component';
+import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekolah.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,9 @@ const routes: Routes = [
   }, {
     path: 'tambahsekolah',
     component: TambahSekolahComponent   
+  }, {
+    path: 'tampilsekolah',
+    component: TampilSekolahComponent   
   }
 ];
 

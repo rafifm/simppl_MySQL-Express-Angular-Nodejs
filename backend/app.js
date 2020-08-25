@@ -58,6 +58,7 @@ const PORT = process.env.PORT || 4000;
 require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
+require("./routes/datasekolah")(app);
 app.listen(PORT, () => {
   console.log("server jalan di port : " + PORT);
 });
