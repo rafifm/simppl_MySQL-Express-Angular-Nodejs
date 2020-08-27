@@ -56,6 +56,7 @@ require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
 require("./routes/datasekolah")(app);
+require("./routes/akundosen")(app);
 app.listen(PORT, () => {
   console.log("server jalan di port : " + PORT);
 });

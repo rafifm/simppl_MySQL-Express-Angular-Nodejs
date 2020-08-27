@@ -1,48 +1,20 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+  <form [formGroup]="formAkunDosen" (submit)="simpanAkunDosen()" *ngIf="!isLoading">
     <mat-form-field>
         <input
           matInput
           type="text"
-          formControlName="nama"
+          formControlName="nama_dosen"
           placeholder="Nama">
-          <mat-error *ngIf="form.get('nama').invalid">Masukkan nama</mat-error>
+          <mat-error *ngIf="formAkunDosen.get('nama_dosen').invalid">Masukkan nama</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
         matInput
         type="text"
-        formControlName="nip"
-        placeholder="nip">
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        type="text"
-        formControlName="pangkat"
-        placeholder="pangkat">
-    </mat-form-field>
-    <div>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">Upload Foto</button>
-      <input type="file" #filePicker (change)="onImagePicker($event)">
-    </div>
-    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
-      <img [src]="imagePreview" [alt]="form.value.nama">
-    </div>
-    <mat-form-field>
-      <input
-        matInput
-        rows="6"
-        formControlName="golongan"
-        placeholder="Golongan">
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        rows="6"
-        formControlName="npwp"
-        placeholder="NPWP">
+        formControlName="nidn"
+        placeholder="NIDN">
     </mat-form-field>
     <button
       mat-raised-button

@@ -1,5 +1,5 @@
 const db = require("../../models/dbmysql");
-const dbMhs = db.mhs;
+const dbAkunDosen = db.akundosen;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -10,30 +10,28 @@ const getPagination = (page, size) => {
 }
 
 const getPagingData = (data, page, limit) => {
-  const { count: totalMhs, rows: mhs} = data;
+  const { count: totalAkunDosen, rows: akundosen} = data;
   const halamanSekarang = page ? + page : 0;
-  const totalHalaman = Math.ceil(totalMhs/limit);
+  const totalHalaman = Math.ceil(totalAkunDosen/limit);
 
-  return { totalMhs, mhs, totalHalaman, halamanSekarang };
+  return { totalAkunDosen, akundosen, totalHalaman, halamanSekarang };
 }
 
 exports.create = (req, res) => {
-  if(!req.body.nama_mhs) {
+  if(!req.body.nama_dosen) {
     res.status(400).send({
       message: " input kosong "
     });
     return;
   }
-  const dataMhs = {
-    nama_mhs: req.body.nama_mhs,
-    nim_mhs: req.body.nim_mhs,
-    ipk_mhs: req.body.ipk_mhs,
-    nokwitansi_mhs: req.body.nokwitansi_mhs
+  const dataDosen = {
+    nama_dosen: req.body.nama_dosen,
+    nidn: req.body.nidn,
   }
 
-  dbMhs.create(dataMhs)
-    .then(akunMhs => {
-      res.send(akunMhs);
+  dbAkunDosen.create(dataDosen)
+    .then(akundosen => {
+      res.send(akundosen);
     })
     .catch(err => {
       res.status(500).send({
@@ -44,11 +42,11 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  const { page, size, nama_mhs } = req.query;
-  var condition = nama_mhs? { nama_mhs: {[Op.like]: `%${nama_mhs}`}} : null;
+  const { page, size, nama_dosen } = req.query;
+  var condition = nama_dosen? { nama_dosen: {[Op.like]: `%${nama_dosen}`}} : null;
   const { limit, offset } =getPagination(page, size);
 
-  dbMhs.findAndCountAll ({ where: condition, limit, offset})
+  dbAkunDosen.findAndCountAll ({ where: condition, limit, offset})
     .then(data => {
       const response = getPagingData(data, page, limit);
       res.send(response);
@@ -64,9 +62,9 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  dbMhs.findByPk(id)
-    .then(akunDosen => {
-      res.send(akunDosen);
+  dbAkunDosen.findByPk(id)
+    .then(akunMhs => {
+      res.send(akunMhs);
     })
     .catch(err => {
       res.status(500).send({
@@ -78,13 +76,13 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  dbMhs.update(req.body, {
+  dbAkunDosen.update(req.body, {
     where: {id: id}
   })
     .then(num => {
       if(num == 1 ) {
         res.send({
-          message: "Akun dosen telah terupdate"
+          message: "Akun mhs telah terupdate"
         });
       } else {
         res.send ({
@@ -102,7 +100,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  dbMhs.destroy({
+  dbAkunDosen.destroy({
       where: { id: id}
   })
   .then(num => {
@@ -124,7 +122,7 @@ exports.delete = (req, res) => {
 };
 
 exports.deleteAll = (req, res) => {
-  dbMhs.destroy({
+  dbAkunDosen.destroy({
       where: {},
       truncate: false
   })

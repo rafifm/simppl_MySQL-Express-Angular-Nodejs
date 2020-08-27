@@ -6,6 +6,7 @@ import { DatagurutambahComponent } from './dataguru/datagurutambah/datagurutamba
 import { DatastafftambahComponent } from './datastaff/datastafftambah/datastafftambah.component';
 import { DatastafftampilComponent } from './datastaff/datastafftampil/datastafftampil.component';
 import { DatagurutampilComponent } from './dataguru/datagurutampil/datagurutampil.component';
+import { DatadosentampilComponent } from './datadosen/datadosentampil/datadosentampil.component';
 
 
 const routes: Routes = [
@@ -13,19 +14,21 @@ const routes: Routes = [
     path: '',
     component: SidebarstaffComponent,
     outlet: 'sidebarstaff'
-  },
-  {
-    path: 'tambadosen',
+  }, {
+    path: 'tambahdosen',
     component: DatadosentambahComponent
   }, {
-    path: 'tambahguru',
-    component: DatagurutambahComponent
+    path: 'tampildosen',
+    component: DatadosentampilComponent
   }, {
     path: 'tambahstaff',
     component: DatastafftambahComponent
   }, {
     path: 'tampilstaff',
     component: DatastafftampilComponent
+  }, {
+    path: 'tambahguru',
+    component: DatagurutambahComponent
   }, {
     path: 'tampilguru',
     component: DatagurutampilComponent

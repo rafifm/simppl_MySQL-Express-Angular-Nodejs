@@ -24,5 +24,5 @@ db.staff = require("./staff") (database, Sequelize);
 db.guru = require("./guru") (database, Sequelize);
 db.mhs = require("./mhs") (database, Sequelize);
 db.sekolah = require("./datasekolah") (database, Sequelize);
-
+db.akundosen = require("./akundosen") (database,Sequelize);
 module.exports = db ;
