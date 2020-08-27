@@ -6,6 +6,7 @@ import { TambahKuotaComponent } from './penentuan/tambah-kuota/tambah-kuota.comp
 import { TambahSekolahComponent } from './penentuan/tambah-sekolah/tambah-sekolah.component';
 import { SidebarkaprodiComponent } from 'src/app/shared/component/sidebar/sidebarkaprodi/sidebarkaprodi.component';
 import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekolah.component';
+import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   }, {
     path: 'pilihtempatguru',
     component: PilihTmptGuruComponent
+  }, {
+    path: 'pilihtempatmhs',
+    component: PilihTmptMhsComponent
   }, {
     path: 'tambahkuota',
     component: TambahKuotaComponent

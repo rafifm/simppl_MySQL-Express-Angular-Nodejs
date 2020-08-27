@@ -8,5 +8,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         }
     });
+
+    guru.sync().then(() => {
+        console.log('table guru created');
+      });
+
     return guru;
 }

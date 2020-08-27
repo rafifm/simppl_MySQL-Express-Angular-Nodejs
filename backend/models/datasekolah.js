@@ -6,5 +6,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER
       }
     });
+
+    sekolah.sync().then(() => {
+      console.log('table sekolah created');
+    });
+
     return sekolah;
   }

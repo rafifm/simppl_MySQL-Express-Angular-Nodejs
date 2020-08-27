@@ -10,5 +10,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.BIGINT
     }
   });
+
+  mhs.sync().then(() => {
+    console.log('table mhs created');
+  });
+
   return mhs;
 }

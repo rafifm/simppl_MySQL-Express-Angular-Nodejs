@@ -26,7 +26,7 @@ mongoose.connect(
 //   origin: "http://localhost:4000"
 // };
 
-// app.use(cors(corsOptions));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
@@ -35,7 +35,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
@@ -47,11 +47,8 @@ app.use((req, res, next) => {
 app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
 
-db.databaseConf.sync();
+// db.databaseConf.sync();
 
 const PORT = process.env.PORT || 4000;
 

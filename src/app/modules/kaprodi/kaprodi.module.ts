@@ -8,6 +8,7 @@ import { TambahKuotaComponent } from './penentuan/tambah-kuota/tambah-kuota.comp
 import { TambahSekolahComponent } from './penentuan/tambah-sekolah/tambah-sekolah.component';
 import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekolah.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PilihTmptGuruComponent,
     TambahKuotaComponent,
     TambahSekolahComponent,
-    TampilSekolahComponent
+    TampilSekolahComponent,
+    PilihTmptMhsComponent
   ],
   imports: [
     CommonModule,
