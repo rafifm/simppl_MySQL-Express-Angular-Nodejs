@@ -27,6 +27,7 @@ exports.create = (req, res) => {
   const dataMhs = {
     nama_mhs: req.body.nama_mhs,
     nim_mhs: req.body.nim_mhs,
+    no_hp_mhs: req.body.no_hp_mhs,
     ipk_mhs: req.body.ipk_mhs,
     nokwitansi_mhs: req.body.nokwitansi_mhs
   }

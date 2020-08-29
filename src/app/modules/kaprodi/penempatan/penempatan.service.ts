@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
+const urlGuru = 'http://localhost:4000/api/guru';
+const urlDosen = 'http://localhost:4000/api/akundosen';
 const urlMhs = 'http://localhost:4000/api/mhs';
 const urlSekolah = 'http://localhost:4000/api/sekolah';
 
@@ -19,6 +21,14 @@ export class PenempatanService {
 
   ambilSemuaSekolah(params): Observable<any> {
     return this.http.get(urlSekolah, { params }); 
+  }
+
+  ambilSemuaDosen(params): Observable<any> {
+    return this.http.get(urlDosen, { params }); 
+  }
+
+  ambilSemuaGuru(params): Observable<any> {
+    return this.http.get(urlGuru, { params }); 
   }
 
   ambil(id): Observable<any> {

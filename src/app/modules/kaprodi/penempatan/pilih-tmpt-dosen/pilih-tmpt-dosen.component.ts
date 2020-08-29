@@ -1,28 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-
-export interface PeriodicElement {
-  nomor: number;
-  sekolah: string;
-  nama: string;
-  nim: number;
-  notelp: number;
-  dospem: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { nomor: 1, sekolah: 'SMAN', nama: 'salman', nim: 32, notelp: 9320932, dospem: 'hartono'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 11, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 14, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 42, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 23, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 33, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 44, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 17, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 55, notelp: 9320932, dospem: 'zainal'},
-  { nomor: 2, sekolah: 'SMAN', nama: 'salman', nim: 32, notelp: 9320932, dospem: 'zainal'},
-];
+import { PenempatanService } from '../penempatan.service';
 
 @Component({
   selector: 'app-pilih-tmpt-dosen',
@@ -31,25 +9,91 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class PilihTmptDosenComponent implements OnInit {
 
-  sekolah = [
-    { id: 1,nama: 'SMAN 1'},
-    { id: 2,nama: 'SMAN 2'},
-    { id: 3,nama: 'SMAN 3'},
-    { id: 4,nama: 'SMAN 4'},
-    { id: 5,nama: 'SMAN 5'},
-  ]
+  sekolah: any;
+  datadosen: any;
+  dataDosenSekarang = null;
+  nama_dosen = '';
+  currentIndex = -1;
 
-  displayedColumns: string[] = ["nomor", "sekolah", "nama", "nim", "notelp", "dospem", "penempatan"];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  halaman = 1;
+  totalDataSekolah = 0;
+  totalDataDosen = 0;
+  totalDataPerHalaman = 5;
+  banyakPerHalaman = [5, 10, 15];
 
+  kolomDosen: string[] = ["namaDosen", "nidn", "penempatan"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
 
-  constructor() { }
+  constructor(
+    private dataPenempatan: PenempatanService) { }
 
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit(): void {
+    this.ambilData();
   }
 
+  getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
+    let params = {};
 
+    if (searchTitle) {
+      params[`nama_dosen`] = searchTitle;
+    }
 
+    if (halaman) {
+      params[`page`] = halaman - 1;
+    }
+
+    if (totalDataPerHalaman) {
+      params[`size`] = totalDataPerHalaman;
+    }
+
+    return params;
+  }
+
+  ambilData() {
+    const params = this.getRequestParams(this.nama_dosen, this.halaman, this.totalDataPerHalaman);
+    this.dataPenempatan.ambilSemuaDosen(params)
+      .subscribe((ambilDataDosen: { akundosen: any, totalDataDosen: number }) => {
+        this.datadosen = ambilDataDosen.akundosen;
+        this.totalDataDosen = ambilDataDosen.totalDataDosen;
+      });error => {
+        console.log(error);
+      };
+    this.dataPenempatan.ambilSemuaSekolah(params)
+      .subscribe((ambilDataSekolah: { sekolah: any, totalDataSekolah: number }) => {
+        this.sekolah = ambilDataSekolah.sekolah;
+        this.totalDataSekolah = ambilDataSekolah.totalDataSekolah;
+      });error => {
+        console.log(error);
+      };
+    
+
+  }
+
+  handlePageChange(event): void {
+    this.halaman = event;
+    this.ambilData();
+  }
+
+  handlePageSizeChange(event): void {
+    this.totalDataPerHalaman = event.target.value;
+    this.halaman = 1;
+    this.ambilData();
+  }
+
+  setActiveTutorial(akunDosen, index): void {
+    this.dataDosenSekarang = akunDosen;
+    this.currentIndex = index;
+  }
+
+  hapusSemuaDataDosen(): void {
+    this.dataPenempatan.hapusSemua()
+      .subscribe(
+        response => {
+          console.log(response);
+          this.ambilData();
+        },
+        error => {
+          console.log(error);
+        });
+  }
 }

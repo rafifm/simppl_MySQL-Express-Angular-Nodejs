@@ -17,6 +17,10 @@
         <th mat-header-cell *matHeaderCellDef> Nim </th>
         <td mat-cell *matCellDef="let mhs">{{mhs.nim_mhs}} </td>
       </ng-container>
+      <ng-container matColumnDef="no_hp_mhs">
+        <th mat-header-cell *matHeaderCellDef> Nomor Handphone </th>
+        <td mat-cell *matCellDef="let mhs">{{mhs.no_hp_mhs}} </td>
+      </ng-container>
       <ng-container matColumnDef="ipk">
         <th mat-header-cell *matHeaderCellDef> IPK </th>
         <td mat-cell *matCellDef="let mhs">{{mhs.ipk_mhs}} </td>

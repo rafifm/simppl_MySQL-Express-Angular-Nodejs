@@ -26,9 +26,9 @@
      }
 
      const metaGuru = {
-         nama: req.body.nama,
-         email: req.body.email,
-         password: req.body.password
+         nama_guru: req.body.nama_guru,
+         email_guru: req.body.email_guru,
+         pass_guru: req.body.pass_guru
      }
 
      guru.create(metaGuru)

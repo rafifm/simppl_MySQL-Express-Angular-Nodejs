@@ -1,17 +1,25 @@
 <div>
   <div>
-    <button mat-icon-button routerLink="/datadosentambah">
+    <button mat-icon-button routerLink="/dashboard/staff/tambahdosen">
       <mat-icon>add_box</mat-icon>
     </button>
     <table mat-table [dataSource]="dataTabelAkunDosen" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="nama_dosen">
-        <th mat-header-cell *matHeaderCellDef> nama. </th>
+        <th mat-header-cell *matHeaderCellDef> Nama </th>
         <td mat-cell *matCellDef="let akundosen"> {{akundosen.nama_dosen}}</td>
       </ng-container>
-      <ng-container matColumnDef="nidn">
-        <th mat-header-cell *matHeaderCellDef> NIDN</th>
-        <td mat-cell *matCellDef="let akundosen">{{akundosen.nidn}} </td>
+      <ng-container matColumnDef="nip">
+        <th mat-header-cell *matHeaderCellDef> NIP</th>
+        <td mat-cell *matCellDef="let akundosen">{{akundosen.nip}} </td>
+      </ng-container>
+      <ng-container matColumnDef="no_hp_dosen">
+        <th mat-header-cell *matHeaderCellDef> Nomor Handphone </th>
+        <td mat-cell *matCellDef="let akundosen">{{akundosen.no_hp_dosen}} </td>
+      </ng-container>
+      <ng-container matColumnDef="pangkat_dosen">
+        <th mat-header-cell *matHeaderCellDef> Pangkat/Golongan/Jabatan </th>
+        <td mat-cell *matCellDef="let akundosen">{{akundosen.pangkat_dosen}} </td>
       </ng-container>
       <ng-container matColumnDef="aksi">
         <th mat-header-cell *matHeaderCellDef> Aksi </th>

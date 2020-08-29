@@ -19,6 +19,7 @@ export class DatamhstambahComponent implements OnInit {
     this.formMhs = new FormGroup({
       nama_mhs: new FormControl(null, { validators: [Validators.required, Validators.minLength(3)]}),
       nim_mhs: new FormControl(null, {validators: [Validators.required]}),
+      no_hp_mhs: new FormControl(null, {validators: [Validators.required]}),
       ipk_mhs: new FormControl(null, {validators: [Validators.required]}),
       nokwitansi_mhs: new FormControl(null, {validators: [Validators.required]}),
     });
@@ -31,6 +32,7 @@ export class DatamhstambahComponent implements OnInit {
     const data = {
       nama_mhs: this.formMhs.value.nama_mhs,
       nim_mhs: this.formMhs.value.nim_mhs,
+      no_hp_mhs: this.formMhs.value.no_hp_mhs,
       ipk_mhs: this.formMhs.value.ipk_mhs,
       nokwitansi_mhs: this.formMhs.value.nokwitansi_mhs
     };

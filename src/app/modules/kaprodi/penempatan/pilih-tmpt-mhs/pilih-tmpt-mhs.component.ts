@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { PenempatanService } from '../penempatan.service';
-import { MatTableDataSource } from '@angular/material/table';
-
 @Component({
   selector: 'app-pilih-tmpt-mhs',
   templateUrl: './pilih-tmpt-mhs.component.html',
@@ -60,8 +58,6 @@ export class PilihTmptMhsComponent implements OnInit {
       .subscribe((ambilDataMhs: { mhs: any, totalAkunMhs: number}) => {
         this.mhs = ambilDataMhs.mhs;
         this.totalAkunMhs = ambilDataMhs.totalAkunMhs;
-        this.dataAkunMhs = new MatTableDataSource<any>(this.mhs);
-
       })
       error => {
         console.log(error);

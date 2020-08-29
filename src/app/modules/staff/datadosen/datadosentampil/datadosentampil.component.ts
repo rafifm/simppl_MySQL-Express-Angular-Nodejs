@@ -20,7 +20,7 @@ export class DatadosentampilComponent implements OnInit {
   totalDataPerHalaman = 3;
   banyakPerHalaman = [5, 10, 15];
 
-  kolomDosen: string[] = ["nama_dosen", "nidn", "aksi"];
+  kolomDosen: string[] = ["nama_dosen", "nip","no_hp_dosen","pangkat_dosen", "aksi"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
 
   constructor(private dataAkunDosen: DatadosenService) { }
@@ -33,7 +33,7 @@ export class DatadosentampilComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-      params[`nama_mhs`] = searchTitle;
+      params[`nama_dosen`] = searchTitle;
     }
 
     if (halaman) {

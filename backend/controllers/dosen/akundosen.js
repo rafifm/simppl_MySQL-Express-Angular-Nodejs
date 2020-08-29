@@ -26,7 +26,9 @@ exports.create = (req, res) => {
   }
   const dataDosen = {
     nama_dosen: req.body.nama_dosen,
-    nidn: req.body.nidn,
+    nip: req.body.nip,
+    no_hp_dosen: req.body.no_hp_dosen,
+    pangkat_dosen: req.body.pangkat_dosen,
   }
 
   dbAkunDosen.create(dataDosen)

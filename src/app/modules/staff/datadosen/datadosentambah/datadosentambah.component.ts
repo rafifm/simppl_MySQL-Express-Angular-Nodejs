@@ -17,7 +17,10 @@ export class DatadosentambahComponent implements OnInit {
   ngOnInit(): void {
     this.formAkunDosen = new FormGroup({
       nama_dosen: new FormControl(null, { validators: [Validators.required, Validators.minLength(3)]}),
-      nidn: new FormControl(null, {validators: [Validators.required]})});
+      nip: new FormControl(null, {validators: [Validators.required]}),
+      no_hp_dosen: new FormControl(null, {validators: [Validators.required]}),
+      pangkat_dosen: new FormControl(null, {validators: [Validators.required]})
+    });
   }
 
   simpanAkunDosen(formAkunDosen: NgForm){
@@ -26,7 +29,9 @@ export class DatadosentambahComponent implements OnInit {
     }
     const dataAkunDosen = {
       nama_dosen: this.formAkunDosen.value.nama_dosen,
-      nidn: this.formAkunDosen.value.nidn
+      nip: this.formAkunDosen.value.nip,
+      no_hp_dosen: this.formAkunDosen.value.no_hp_dosen,
+      pangkat_dosen: this.formAkunDosen.value.pangkat_dosen
     };
 
     this.datadosenService.buat(dataAkunDosen)

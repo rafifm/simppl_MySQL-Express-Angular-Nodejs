@@ -21,7 +21,7 @@ export class DatamhstampilComponent implements OnInit {
   totalDataPerHalaman = 3;
   banyakPerHalaman = [5, 10, 15];
 
-  kolomMhs: string[] = ["nama", "nim", "ipk", "nokwitansi", "aksi"];
+  kolomMhs: string[] = ["nama", "nim", "no_hp_mhs","ipk", "nokwitansi", "aksi"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
 
   constructor(private dataMhs: DatamhsService) { }
