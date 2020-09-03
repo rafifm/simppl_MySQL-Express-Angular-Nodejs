@@ -6,7 +6,7 @@
       <button class="m-3 btn btn-sm btn-danger" (click)="hapusSemuaDataSekolah()">
         Remove All
       </button>
-      <table mat-table [dataSource]="dataAkunSekolah" class="mat-elevation-z8">
+      <table mat-table [dataSource]="sekolah" class="mat-elevation-z8">
         <!-- Position Column -->
         <ng-container matColumnDef="nama_sekolah">
           <th mat-header-cell *matHeaderCellDef> Nama Sekolah. </th>
@@ -21,8 +21,8 @@
           <th mat-header-cell *matHeaderCellDef> Aksi </th>
           <td mat-cell *matCellDef="let sekolah"> 
             <mat-action-row >
-              <a mat-button color="primary" [routerLink]="['/edit', sekolah.id]">EDIT</a>
-              <button mat-button color="warn" (click)="hapusSemuaDataSekolah()">DELETE</button>
+              <a mat-button color="primary" [routerLink]="['ubahsekolah', sekolah.id]" >EDIT</a>
+              <button mat-button color="warn" (click)="hapusSekolah(sekolah.id)">DELETE</button>
             </mat-action-row>
           </td>
         </ng-container>      

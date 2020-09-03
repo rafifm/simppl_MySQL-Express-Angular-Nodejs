@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 import { DatamhsService } from '../../datamhs.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-datamhstambah',
@@ -12,8 +12,14 @@ export class DatamhstambahComponent implements OnInit {
 
   submitted = false;
   formMhs: FormGroup;
+  dataMhs: any;
+  private mode = 'buat';
+  private idMhs: string;
 
-  constructor(private datamhsService: DatamhsService, private router: Router) { }
+  constructor(
+    private datamhsService: DatamhsService, 
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.formMhs = new FormGroup({
@@ -23,21 +29,39 @@ export class DatamhstambahComponent implements OnInit {
       ipk_mhs: new FormControl(null, {validators: [Validators.required]}),
       nokwitansi_mhs: new FormControl(null, {validators: [Validators.required]}),
     });
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if(paramMap.has('id')){
+        this.mode = 'edit';
+        this.idMhs = paramMap.get('id');
+        this.datamhsService.ambil(this.idMhs).subscribe(upMhs => {
+          this.dataMhs = upMhs;
+          this.formMhs.setValue({
+            nama_mhs: this.dataMhs.nama_mhs,
+            nim_mhs: this.dataMhs.nim_mhs,
+            no_hp_mhs: this.dataMhs.no_hp_mhs,
+            ipk_mhs: this.dataMhs.ipk_mhs,
+            nokwitansi_mhs: this.dataMhs.nokwitansi_mhs
+          });
+        });
+      } else {
+        this.mode = 'buat';
+        this.idMhs = null;
+      }
+    });
   }
 
   simpanAkunMhs(formMhs: NgForm){
     if(this.formMhs.invalid){
       return;
     }
-    const data = {
-      nama_mhs: this.formMhs.value.nama_mhs,
-      nim_mhs: this.formMhs.value.nim_mhs,
-      no_hp_mhs: this.formMhs.value.no_hp_mhs,
-      ipk_mhs: this.formMhs.value.ipk_mhs,
-      nokwitansi_mhs: this.formMhs.value.nokwitansi_mhs
-    };
-
-    this.datamhsService.buat(data)
+    if( this.mode === 'buat' ) {
+      this.datamhsService.buat({
+        nama_mhs: this.formMhs.value.nama_mhs,
+        nim_mhs: this.formMhs.value.nim_mhs,
+        no_hp_mhs: this.formMhs.value.no_hp_mhs,
+        ipk_mhs: this.formMhs.value.ipk_mhs,
+        nokwitansi_mhs: this.formMhs.value.nokwitansi_mhs
+      })
       .subscribe(akunMhs => {
         console.log(akunMhs);
         this.submitted = true;
@@ -45,6 +69,23 @@ export class DatamhstambahComponent implements OnInit {
       error => {
         console.log(error);
       });
+    } else {
+      this.datamhsService.update(
+        this.dataMhs.id,
+        this.dataMhs = {
+          nama_mhs: this.formMhs.value.nama_mhs,
+          nim_mhs: this.formMhs.value.nim_mhs,
+          no_hp_mhs: this.formMhs.value.no_hp_mhs,
+          ipk_mhs: this.formMhs.value.ipk_mhs,
+          nokwitansi_mhs: this.formMhs.value.nokwitansi_mhs
+        }
+      ).subscribe(dataUploadMhs => {
+        console.log(dataUploadMhs);
+        this.submitted = true;
+      }, error=> {
+        console.log(error);
+      });
+    }    
     this.formMhs.reset();
     this.router.navigate(["/dashboard/mhs/tampilmhs"]);
   }

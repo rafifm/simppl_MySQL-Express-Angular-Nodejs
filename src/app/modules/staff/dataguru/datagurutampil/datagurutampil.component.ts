@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataguruService } from '../dataguru.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-datagurutampil',
@@ -56,8 +55,6 @@ export class DatagurutampilComponent implements OnInit {
       .subscribe((ambilAkunGuru: {guru: any, totalAkunGuru: number}) => {
           this.guru = ambilAkunGuru.guru;
           this.totalAkunGuru = ambilAkunGuru.totalAkunGuru;
-          this.dataAkunGuru = new MatTableDataSource<any>(this.guru);
-          console.log(ambilAkunGuru.guru);
         },
         error => {
           console.log(error);
@@ -78,6 +75,18 @@ export class DatagurutampilComponent implements OnInit {
   setActiveTutorial(guruTampil, index): void {
     this.dataGuruSekarang = guruTampil;
     this.currentIndex = index;
+  }
+
+  hapusGuru(id){
+    this.dataGuru.hapus(id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.ambilDataGuru();
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   hapusSemuaDataGuru(): void {

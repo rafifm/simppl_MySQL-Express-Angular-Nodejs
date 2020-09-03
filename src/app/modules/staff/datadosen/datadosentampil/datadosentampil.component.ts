@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { DatadosenService } from '../datadosen.service';
 @Component({
   selector: 'app-datadosentampil',
@@ -13,7 +12,6 @@ export class DatadosentampilComponent implements OnInit {
   dataDosenSekarang = null;
   currentIndex = -1;
   nama_dosen = '';
-  dataTabelAkunDosen;
 
   halaman = 1;
   totalAkunDosen = 0;
@@ -49,13 +47,10 @@ export class DatadosentampilComponent implements OnInit {
 
   ambilDataDosen() {
     const params = this.getRequestParams(this.nama_dosen, this.halaman, this.totalDataPerHalaman);
-
     this.dataAkunDosen.ambilSemua(params)
       .subscribe((ambilDataAkunDosen: { akundosen: any, totalAkunDosen: number}) => {
         this.akundosen = ambilDataAkunDosen.akundosen;
         this.totalAkunDosen = ambilDataAkunDosen.totalAkunDosen;
-        this.dataTabelAkunDosen = new MatTableDataSource<any>(this.akundosen);
-
       })
       error => {
         console.log(error);
@@ -77,6 +72,18 @@ export class DatadosentampilComponent implements OnInit {
   setActiveTutorial(dosenTampil, index): void {
     this.dataDosenSekarang = dosenTampil;
     this.currentIndex = index;
+  }
+
+  hapusDosen(id) {
+    this.dataAkunDosen.hapus(id)
+    .subscribe(
+      response => {
+        console.log(response);
+        this.ambilDataDosen();
+      },
+      error => {
+        console.log(error);
+      });
   }
 
   hapusSemuaDataMhs(): void {

@@ -60,9 +60,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  dbSekolah.findByPk(id)
+  dbSekolah.findByPk(req.params.id)
     .then(akunSekolah => {
       res.send(akunSekolah);
     })
@@ -79,8 +77,9 @@ exports.update = (req, res) => {
   dbSekolah.update(req.body, {
     where: {id: id}
   })
-    .then(num => {
-      if(num == 1 ) {
+    .then(status => {
+      if(status == 1 ) {
+        console.log(status);
         res.send({
           message: "Akun Sekolah telah terupdate"
         });

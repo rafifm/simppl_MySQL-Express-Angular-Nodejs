@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatamhsService } from '../../datamhs.service';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-datamhstampil',
@@ -55,8 +54,6 @@ export class DatamhstampilComponent implements OnInit {
       .subscribe((ambilDataMhs: { mhs: any, totalAkunMhs: number}) => {
         this.mhs = ambilDataMhs.mhs;
         this.totalAkunMhs = ambilDataMhs.totalAkunMhs;
-        this.dataAkunMhs = new MatTableDataSource<any>(this.mhs);
-
       })
       error => {
         console.log(error);
@@ -78,6 +75,18 @@ export class DatamhstampilComponent implements OnInit {
   setActiveTutorial(mhsTampil, index): void {
     this.dataMhsSekarang = mhsTampil;
     this.currentIndex = index;
+  }
+
+  hapusMhs(id){
+    this.dataMhs.hapus(id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.ambilDataMhs();
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   hapusSemuaDataMhs(): void {

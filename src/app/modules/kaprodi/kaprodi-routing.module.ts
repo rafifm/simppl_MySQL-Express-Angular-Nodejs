@@ -31,6 +31,9 @@ const routes: Routes = [
   }, {
     path: 'tampilsekolah',
     component: TampilSekolahComponent   
+  }, {
+    path: 'tampilsekolah/ubahsekolah/:id',
+    component: TambahSekolahComponent   
   }
 ];
 

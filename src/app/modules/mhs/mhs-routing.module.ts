@@ -16,6 +16,9 @@ const routes: Routes = [
   }, {
     path: 'tampilmhs',
     component: DatamhstampilComponent
+  }, {
+    path: 'tampilmhs/ubahdata/:id',
+    component: DatamhstambahComponent
   }
 ];
 

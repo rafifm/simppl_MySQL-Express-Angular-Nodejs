@@ -1,6 +1,5 @@
 <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="formSekolah" (submit)="simpanDataSekolah()" *ngIf="!isLoading">
+  <form [formGroup]="formSekolah" (submit)="simpanDataSekolah()" >
     <mat-form-field>
         <input
           matInput

@@ -28,7 +28,7 @@ const routes: Routes = [{
       component: PendaftaranMhsTampilComponent
     }, {
       path: 'pendaftaranmhsbuat',
-      component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard]
+      component: PendaftaranMhsCreateComponent
     }, {
       path: 'dosen',
       loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
@@ -72,13 +72,13 @@ const routes: Routes = [{
     loadChildren: () => import('./layouts/auth/auth.module').then(m => m.AuthModule)
   },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
-  { path: 'edit/:postId', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
+  { path: 'edit/:postId', component: PendaftaranMhsCreateComponent},
   { path: "signup", component: SignupComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: []
 })
 export class AppRoutingModule {}

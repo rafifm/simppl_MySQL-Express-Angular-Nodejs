@@ -6,7 +6,7 @@
     <button class="m-3 btn btn-sm btn-danger" (click)="hapusSemuaDataMhs()">
       Remove All
     </button>
-    <table mat-table [dataSource]="dataAkunMhs" class="mat-elevation-z8">
+    <table mat-table [dataSource]="mhs" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="nama">
         <th mat-header-cell *matHeaderCellDef> Nama. </th>
@@ -33,8 +33,8 @@
         <th mat-header-cell *matHeaderCellDef> Aksi </th>
         <td mat-cell *matCellDef="let mhs"> 
           <mat-action-row >
-            <a mat-button color="primary" [routerLink]="['/edit', mhs.id]">EDIT</a>
-            <button mat-button color="warn" (click)="hapusSemuaDataMhs()">DELETE</button>
+            <a mat-button color="primary" [routerLink]="['ubahdata', mhs.id]">EDIT</a>
+            <button mat-button color="warn" (click)="hapusMhs(mhs.id)">DELETE</button>
           </mat-action-row>
         </td>
       </ng-container>      

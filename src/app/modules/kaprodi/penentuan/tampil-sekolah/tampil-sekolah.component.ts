@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { DatasekolahService } from '../datasekolah.service';
-import { MatTableDataSource } from '@angular/material/table';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-tampil-sekolah',
@@ -14,17 +14,17 @@ export class TampilSekolahComponent implements OnInit {
   dataSekolahSekarang = null;
   currentIndex = -1;
   nama_sekolah = '';
-  dataAkunSekolah;
+  idSekolah;
 
   halaman = 1;
   totalAkunMhs = 0;
-  totalDataPerHalaman = 3;
+  totalDataPerHalaman = 10;
   banyakPerHalaman = [5, 10, 15];
 
   kolomSekolah: string[] = ["nama_sekolah", "kuotamhs", "aksi"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
 
-  constructor(private dataSekolah: DatasekolahService) { }
+  constructor(private dataSekolah: DatasekolahService){}
 
   ngOnInit(): void {
     this.ambilDataSekolah();
@@ -55,8 +55,6 @@ export class TampilSekolahComponent implements OnInit {
       .subscribe((ambilDataSekolah: { sekolah: any, totalAkunMhs: number}) => {
         this.sekolah = ambilDataSekolah.sekolah;
         this.totalAkunMhs = ambilDataSekolah.totalAkunMhs;
-        this.dataAkunSekolah = new MatTableDataSource<any>(this.sekolah);
-
       })
       error => {
         console.log(error);
@@ -78,6 +76,18 @@ export class TampilSekolahComponent implements OnInit {
   setActiveTutorial(mhsTampil, index): void {
     this.dataSekolahSekarang = mhsTampil;
     this.currentIndex = index;
+  }
+
+  hapusSekolah(id){
+    this.dataSekolah.hapus(id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.ambilDataSekolah();
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   hapusSemuaDataSekolah(): void {

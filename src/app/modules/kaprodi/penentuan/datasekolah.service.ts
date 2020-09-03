@@ -24,8 +24,9 @@ export class DatasekolahService {
     return this.http.post(`${urlSekolah}/buat`, dataSekolah);
   }
 
-  update(id, data): Observable<any> {
-    return this.http.put(`${urlSekolah}/${id}`, data);
+  update(id, dataSekolah): Observable<any> {
+    console.log(id);
+    return this.http.put(`${urlSekolah}/${id}`, dataSekolah);
   }
 
   hapus(id): Observable<any> {

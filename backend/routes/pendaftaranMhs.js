@@ -30,7 +30,6 @@ const storage = multer.diskStorage({
 
 router.post(
   "",
-  checkAuth, 
   multer({storage: storage}).single("image"),
   (req, res, next) => {
   const url = req.protocol + '://' + req.get("host");

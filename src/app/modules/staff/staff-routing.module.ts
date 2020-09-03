@@ -18,6 +18,9 @@ const routes: Routes = [
     path: 'tambahdosen',
     component: DatadosentambahComponent
   }, {
+    path: 'tampildosen/ubahdata/:id',
+    component: DatadosentambahComponent
+  }, {
     path: 'tampildosen',
     component: DatadosentampilComponent
   }, {
@@ -32,6 +35,9 @@ const routes: Routes = [
   }, {
     path: 'tampilguru',
     component: DatagurutampilComponent
+  }, {
+    path: 'tampilguru/ubahdata/:id',
+    component: DatagurutambahComponent
   }
 ];
 
