@@ -15,8 +15,8 @@ export class DatadosentampilComponent implements OnInit {
 
   halaman = 1;
   totalAkunDosen = 0;
-  totalDataPerHalaman = 3;
-  banyakPerHalaman = [5, 10, 15];
+  totalDataPerHalaman = 10;
+  banyakPerHalaman = [10, 20];
 
   kolomDosen: string[] = ["nama_dosen", "nip","no_hp_dosen","pangkat_dosen", "aksi"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;

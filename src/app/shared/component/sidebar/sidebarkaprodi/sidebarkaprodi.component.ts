@@ -24,17 +24,17 @@ export class SidebarkaprodiComponent implements OnInit {
         label: 'Mahasiswa',
         items: [
           {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
+              label: 'Penempatan',
+              link: '/dashboard/kaprodi/pilihtempatmhs'
           },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
+          // {
+          //     label: 'Penilaian Dosen',
+          //     link: '/nilaidosentampil'
+          // },
+          // {
+          //     label: 'Penilaian Guru',
+          //     link: '/nilaigurutampil'
+          // }
         ]
     }
   ];
@@ -47,10 +47,10 @@ export class SidebarkaprodiComponent implements OnInit {
               label: 'Tambah Sekolah',
               link: '/dashboard/kaprodi/tambahsekolah'
           },
-          {
-              label: 'Tambah Kuota Sekolah',
-              link: '/dashboard/kaprodi/tambahkuota'
-          }
+          // {
+          //     label: 'Tambah Kuota Sekolah',
+          //     link: '/dashboard/kaprodi/tambahkuota'
+          // }
         ]
     }
   ];

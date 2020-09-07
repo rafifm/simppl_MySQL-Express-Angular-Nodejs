@@ -20,8 +20,8 @@ export class PilihTmptMhsComponent implements OnInit {
   halaman = 1;
   totalAkunMhs = 0;
   totalDataSekolah = 0;
-  totalDataPerHalaman = 3;
-  banyakPerHalaman = [5, 10, 15];
+  totalDataPerHalaman = 10;
+  banyakPerHalaman = [10, 20];
 
   kolomMhs: string[] = ["namaMahasiswa", "nim_mhs", "penempatan"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;

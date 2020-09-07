@@ -25,4 +25,7 @@ db.guru = require("./guru") (database, Sequelize);
 db.mhs = require("./mhs") (database, Sequelize);
 db.sekolah = require("./datasekolah") (database, Sequelize);
 db.akundosen = require("./akundosen") (database,Sequelize);
+
+db.sekolah.hasMany(db.mhs);
+db.mhs.belongsTo(db.sekolah);
 module.exports = db ;

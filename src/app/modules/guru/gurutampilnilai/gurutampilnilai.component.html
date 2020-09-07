@@ -1,8 +1,5 @@
-<p>gurutampilnilai works!</p>
-
 <div>
   <div>
-    <p> Tabel </p>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!-- Name Column -->
@@ -23,6 +20,10 @@
       <ng-container matColumnDef="dospem">
         <th mat-header-cell *matHeaderCellDef> Dosen Pembimbing </th>
         <td mat-cell *matCellDef="let post"> {{post.dospem}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nilai">
+        <th mat-header-cell *matHeaderCellDef> Nilai </th>
+        <td mat-cell *matCellDef="let post"> {{post.nilai}} </td>
       </ng-container>
       
       <ng-container matColumnDef="aksi">

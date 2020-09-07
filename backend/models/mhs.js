@@ -13,9 +13,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  mhs.sync().then(() => {
-    console.log('table mhs created');
-  });
-
   return mhs;
 }

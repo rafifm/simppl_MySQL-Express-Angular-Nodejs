@@ -5,6 +5,7 @@ import { DosenRoutingModule } from './dosen-routing.module';
 import { DosentambahnilaiComponent } from './dosentambahnilai/dosentambahnilai.component';
 import { DosentampilnilaiComponent } from './dosentampilnilai/dosentampilnilai.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
   imports: [
     CommonModule,
     DosenRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SharedModule
   ]
 })
 export class DosenModule { }

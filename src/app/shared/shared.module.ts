@@ -45,7 +45,11 @@ import { SidebarstaffComponent } from './component/sidebar/sidebarstaff/sidebars
   exports: [
     HeaderComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    SidebardosenComponent,
+    SidebarkaprodiComponent,
+    SidebardosenComponent,
+    SidebarguruComponent
   ]
 })
 export class SharedModule { }

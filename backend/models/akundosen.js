@@ -11,9 +11,5 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
   
-    akundosen.sync().then(() => {
-      console.log('table akundosen created');
-    });
-  
     return akundosen;
   }

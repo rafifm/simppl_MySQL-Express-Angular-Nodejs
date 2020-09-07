@@ -3,10 +3,10 @@
     <button *ngIf="userIsAuthenticated" mat-icon-button (click)="toggleSideBar()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span> App Logo</span>
+    <span style="color:yellow">SIMPPL</span>
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
-        <li>
+        <!-- <li>
           <button mat-icon-button>
             <mat-icon>settings</mat-icon>
           </button>
@@ -15,9 +15,12 @@
           <button mat-icon-button>
             <mat-icon>help_outline</mat-icon>
           </button>
-        </li>
+        </li> -->
         <li>
-          <button mat-button [matMenuTriggerFor]="menu">
+          <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <!-- <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
@@ -40,7 +43,7 @@
                 Sign Out
               </button>
             </li>
-          </mat-menu>
+          </mat-menu> -->
         </li>
       </ul>
     </div>

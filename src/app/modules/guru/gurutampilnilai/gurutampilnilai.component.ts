@@ -7,19 +7,20 @@ export interface PeriodicElement {
   nim: number;
   progstud: string;
   dospem: string;
+  nilai: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { nama: 'Hydrogen',  nim: 12, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Helium', nim: 11, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Lithium', nim: 14, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Beryllium', nim: 42, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Boron', nim: 23, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Carbon', nim: 33, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Nitrogen', nim: 44, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Oxygen', nim: 17, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Fluorine', nim: 55, progstud: 'matematika',dospem: 'zainal'},
-  { nama: 'Neon', nim: 32, progstud: 'matematika',dospem: 'zainal'},
+  { nama: 'Arya Dharmawan Wijaya Kusuma',  nim: 1710118110003, progstud: 'matematika',dospem: 'Dr. Hj. Noor Fajriah, M.Si.', nilai: 70},
+  { nama: 'Rini Astuti', nim: 1710118120025, progstud: 'matematika',dospem: 'Dr. Hj. Noor Fajriah, M.Si.', nilai: 77},
+  { nama: 'Muhammad Irfan Maulana', nim: 1710118210023, progstud: 'matematika',dospem: 'Dr. Hj. Noor Fajriah, M.Si.', nilai: 76},
+  { nama: 'Yuhana Rahmi', nim: 1710118320043, progstud: 'matematika',dospem: 'Siti Mawaddah, M.Pd.', nilai: 67},
+  { nama: 'Aliya Ulfah', nim: 1710118120001, progstud: 'matematika',dospem: 'Siti Mawaddah, M.Pd.', nilai: 75},
+  { nama: 'Tiara Rahmini Pertiwi', nim: 1710118120029, progstud: 'matematika',dospem: 'Siti Mawaddah, M.Pd.', nilai: 74},
+  { nama: 'Herlina Yuriska', nim: 1710118320012, progstud: 'matematika',dospem: 'Siti Mawaddah, M.Pd.', nilai: 78},
+  { nama: 'Litasari Ananda Saputri', nim: 1710118320018, progstud: 'matematika',dospem: 'Dr. H. Karim, M.Si.', nilai: 73},
+  { nama: 'Ahmad Rifky', nim: 1710118210004, progstud: 'matematika',dospem: 'Dr. H. Karim, M.Si.', nilai: 68},
+  { nama: 'Fitria Agustina', nim: 1710118320010, progstud: 'matematika',dospem: 'Dr. H. Karim, M.Si.', nilai: 75},
 ];
 
 
@@ -30,7 +31,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class GurutampilnilaiComponent implements OnInit {
 
-  displayedColumns: string[] = ["nama", "nim", "progstud","dospem", "aksi"];
+  displayedColumns: string[] = ["nama", "nim", "progstud","dospem", "nilai", "aksi"];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;

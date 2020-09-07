@@ -81,8 +81,9 @@ exports.update = (req, res) => {
   dbAkunDosen.update(req.body, {
     where: {id: id}
   })
-    .then(num => {
-      if(num == 1 ) {
+    .then(ubah => {
+      console.log(ubah);
+      if(ubah == 1 ) {
         res.send({
           message: "Akun mhs telah terupdate"
         });

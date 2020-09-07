@@ -17,7 +17,7 @@ export class DatamhstampilComponent implements OnInit {
 
   halaman = 1;
   totalAkunMhs = 0;
-  totalDataPerHalaman = 3;
+  totalDataPerHalaman = 10;
   banyakPerHalaman = [5, 10, 15];
 
   kolomMhs: string[] = ["nama", "nim", "no_hp_mhs","ipk", "nokwitansi", "aksi"];

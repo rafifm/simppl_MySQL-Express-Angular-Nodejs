@@ -1,3 +1,6 @@
+<div style="text-align: center;">
+  <h4> Pendaftaran Mahasiswa </h4>
+</div>
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="formMhs" (submit)="simpanAkunMhs()" *ngIf="!isLoading">
@@ -40,7 +43,7 @@
     <button
       mat-raised-button
       color="primary"
-      type="submit">Save post
+      type="submit">Simpan
     </button>
   </form>
 </mat-card>

@@ -9,9 +9,5 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  Staff.sync().then(() => {
-    console.log('table staff created');
-  });
-
   return Staff;
 }

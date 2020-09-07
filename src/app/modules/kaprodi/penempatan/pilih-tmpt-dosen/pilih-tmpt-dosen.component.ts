@@ -18,8 +18,8 @@ export class PilihTmptDosenComponent implements OnInit {
   halaman = 1;
   totalDataSekolah = 0;
   totalDataDosen = 0;
-  totalDataPerHalaman = 5;
-  banyakPerHalaman = [5, 10, 15];
+  totalDataPerHalaman = 10;
+  banyakPerHalaman = [ 10, 20];
 
   kolomDosen: string[] = ["namaDosen", "nidn", "penempatan"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;

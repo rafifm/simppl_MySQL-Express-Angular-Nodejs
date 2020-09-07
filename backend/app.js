@@ -48,7 +48,9 @@ app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
 
-// db.databaseConf.sync();
+db.databaseConf.sync({ force: true}).then(() => {
+  console.log('table direfresh');
+});
 
 const PORT = process.env.PORT || 4000;
 

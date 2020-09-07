@@ -22,26 +22,6 @@ export class SidebardosenComponent implements OnInit {
     }
   ];
 
-  ddsklh = [
-    {
-        label: 'Sekolah',
-        items: [
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
   config = {
     highlightOnSelect: true,
     interfaceWithRoute: true,

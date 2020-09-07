@@ -1,5 +1,3 @@
-<p>dosentampilnilai works!</p>
-
 <div>
   <div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -22,13 +20,17 @@
         <th mat-header-cell *matHeaderCellDef> Dosen Pembimbing </th>
         <td mat-cell *matCellDef="let post"> {{post.dospem}} </td>
       </ng-container>
-      
+      <ng-container matColumnDef="nilai">
+        <th mat-header-cell *matHeaderCellDef> Nilai </th>
+        <td mat-cell *matCellDef="let post"> {{post.nilai}} </td>
+      </ng-container>      
       <ng-container matColumnDef="aksi">
         <th mat-header-cell *matHeaderCellDef> Aksi </th>
         <td mat-cell *matCellDef="let post"> 
           <mat-action-row >
-            <a mat-button color="primary">EDIT</a>
-            <button mat-button color="warn">DELETE</button>
+            <a mat-button color="nilai" routerLink='/dashboard/dosen/tambahnilai'>Nilai</a>
+            <!-- <a mat-button color="primary">EDIT</a> -->
+            <!-- <button mat-button color="warn">DELETE</button> -->
           </mat-action-row>
         </td>
       </ng-container>

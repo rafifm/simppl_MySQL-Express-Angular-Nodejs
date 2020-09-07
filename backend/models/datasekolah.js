@@ -7,9 +7,5 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
 
-    sekolah.sync().then(() => {
-      console.log('table sekolah created');
-    });
-
     return sekolah;
   }
