@@ -45,7 +45,7 @@ export class TambahSekolahComponent implements OnInit {
     });
   }
 
-  simpanDataSekolah(formSekolah: NgForm){
+  simpanDataSekolah(){
     if(this.formSekolah.invalid){
       return;
     }

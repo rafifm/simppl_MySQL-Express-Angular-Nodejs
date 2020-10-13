@@ -29,8 +29,8 @@ export class DatamhsService {
     return this.http.put(`${urlMhs}/${id}`, data);
   }
 
-  hapus(id): Observable<any> {
-    return this.http.delete(`${urlMhs}/${id}`);
+  hapus(idm): Observable<any> {
+    return this.http.delete(`${urlMhs}/${idm}`);
   }
 
   hapusSemua(): Observable<any> {

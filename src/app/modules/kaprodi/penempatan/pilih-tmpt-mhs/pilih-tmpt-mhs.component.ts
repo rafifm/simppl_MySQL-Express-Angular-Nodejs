@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { PenempatanService } from '../penempatan.service';
+import { FormGroup } from '@angular/forms';
+import { MatSelectChange } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-pilih-tmpt-mhs',
   templateUrl: './pilih-tmpt-mhs.component.html',
@@ -8,6 +12,7 @@ import { PenempatanService } from '../penempatan.service';
 })
 export class PilihTmptMhsComponent implements OnInit {
 
+  vsekolah: any;
   sekolah: any;
   mhs: any;
   dataSekolahSekarang = null;
@@ -22,15 +27,32 @@ export class PilihTmptMhsComponent implements OnInit {
   totalDataSekolah = 0;
   totalDataPerHalaman = 10;
   banyakPerHalaman = [10, 20];
+  formPilihSekolah: FormGroup;
+  private idMhs: string;
+  private idSekolah;
+  private idMahasiswa;
 
   kolomMhs: string[] = ["namaMahasiswa", "nim_mhs", "penempatan"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
 
   constructor(
-    private dataPenempatan: PenempatanService) { }
+    private dataPenempatan: PenempatanService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((paramMap:ParamMap) => {
+      if (paramMap.has("id")){
+        this.idMhs = paramMap.get("id");
+        this.dataPenempatan.ambil(this.idMhs).subscribe(ambilidmhs => {
+          this.mhs = ambilidmhs;
+        });    
+      } else {
+        this.idMhs = null;
+      }
+    });
     this.ambilData();
+    console.log(this.mhs);
   }
 
   getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
@@ -66,8 +88,30 @@ export class PilihTmptMhsComponent implements OnInit {
       .subscribe((ambilDataSekolah: { sekolah: any, totalDataSekolah: number }) => {
         this.sekolah = ambilDataSekolah.sekolah;
         this.totalDataSekolah = ambilDataSekolah.totalDataSekolah;
-      })
+      });
+    
+  }
 
+  changeRatio(event: MatSelectChange) {
+    this.dataPenempatan.insert(event.value); 
+    console.log(event.value);
+  }
+
+  // {
+  //   pilihSekolah: this.formPilihSekolah.value.pilihSekolah
+  // }
+  insertSekolah(vidSekolah, vidMhs){
+    let idSekolah = vidSekolah.value;
+    console.log("idSekolah :",idSekolah);
+    let idMhs = vidMhs;
+    console.log("idMhs :",idMhs);
+    this.dataPenempatan.insertSekolah(
+      idMhs, idSekolah
+    ).subscribe(inSekolah => {
+      console.log(inSekolah);
+    }, error => {
+      console.log(error);
+    });
   }
 
   handlePageChange(event): void {

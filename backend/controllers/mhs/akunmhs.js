@@ -1,5 +1,6 @@
 const db = require("../../models/dbmysql");
 const dbMhs = db.mhs;
+const dbSekolah = db.sekolah;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -75,6 +76,57 @@ exports.findOne = (req, res) => {
       });
     });
 };
+
+exports.insertSekolah = (req, res) => {
+  let coba =[5];
+  let mhs;
+  const idMhs = req.params.idmhs;
+  const idSekolah = req.params.idSekolah;
+  console.log("param sekolah ",idSekolah);
+  console.log("params mhs",idMhs);
+  // find the user & project
+  dbMhs.findOne({
+     where: { id: idMhs } 
+    }).then(idMahasiswa => {
+      // mhs = idMahasiswa.id;
+      return dbSekolah.findOne({
+        where: {id: idSekolah}
+      }).then(sekolahId => {
+        console.log("sekolah id nih : ",sekolahId);
+        idMahasiswa.setSekolah(sekolahId);
+        res.send(mhs);
+      });
+      console.log("id sekolah nih: ", coba);
+      console.log("id mahasiswa ni: ",idMahasiswa.id);
+      // const fkSekolah = mhs.setSekolah(idSekolah);
+      // console.log(fkSekolah);
+      // res.send(mhs);
+    }).catch(err => {
+      res.status(500).send({
+        message: "error dbmhs "+ err
+      });
+    });
+  // dbSekolah.findOne({ 
+  //   where: { id: idSekolah } 
+  // }).then(idSklh => {
+  //   res.send(idSklh);
+  //   console.log(idSklh);
+  // })
+  // .catch(err => {
+  //   res.status(500).send({
+  //     message: "error pengambilan mhs dengan id"
+  //   });
+  // });
+  console.log("mhs: ", mhs);
+  // dbMhs.setSekolah(idSekolah).then(hasil=> {
+  //   console.log(hasil);
+  // })
+  // .catch(err => {
+  //   res.status(500).send({
+  //     message: "error dbmhs dua "+ err
+  //   });
+  // });
+}
 
 exports.update = (req, res) => {
   const id = req.params.id;

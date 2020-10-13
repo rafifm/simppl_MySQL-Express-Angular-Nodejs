@@ -10,6 +10,8 @@ module.exports = app => {
 
   router.put("/:id", mhs.update);
 
+  router.get("/:idmhs/:idSekolah", mhs.insertSekolah);
+
   router.delete("/:id", mhs.delete);
 
   router.delete("/", mhs.deleteAll);

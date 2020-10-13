@@ -12,15 +12,14 @@
         </ng-container>  
         <ng-container matColumnDef="penempatan">
           <th mat-header-cell *matHeaderCellDef> Penempatan </th>
-          <td mat-cell *matCellDef="let mhs"> 
+          <td mat-cell *matCellDef="let mhs" > 
             <mat-action-row >
-              <mat-select placeholder="pilih sekolah">
-                <mat-option *ngFor="let pilih of sekolah" [value]= "pilih.nama_sekolah"> {{pilih.nama_sekolah}} </mat-option>
+              <mat-select (selectionChange)="insertSekolah($event, mhs.id)"  placeholder="pilih sekolah">
+                <mat-option  type="submit" *ngFor="let pilih of sekolah" [value]= "pilih.id"> {{pilih.nama_sekolah}} </mat-option>
               </mat-select>
             </mat-action-row>
           </td>
         </ng-container>
-  
         <tr mat-header-row *matHeaderRowDef="kolomMhs"></tr>
         <tr mat-row *matRowDef="let row; columns: kolomMhs;"></tr>
       </table>

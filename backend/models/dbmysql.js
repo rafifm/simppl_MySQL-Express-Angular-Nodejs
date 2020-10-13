@@ -15,7 +15,7 @@ const database = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,
   }
 );
 
-const db = {};
+const db = { };
 
 db.Sequelize = Sequelize;
 db.databaseConf = database;
@@ -26,6 +26,6 @@ db.mhs = require("./mhs") (database, Sequelize);
 db.sekolah = require("./datasekolah") (database, Sequelize);
 db.akundosen = require("./akundosen") (database,Sequelize);
 
-db.sekolah.hasMany(db.mhs);
-db.mhs.belongsTo(db.sekolah);
+db.sekolah.hasMany(db.mhs,{as: 'sekolah', foreignKey: 'idSklh' });
+db.mhs.belongsTo(db.sekolah,{as: 'sekolah', foreignKey: 'idSklh' });
 module.exports = db ;

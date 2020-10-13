@@ -39,8 +39,16 @@ export class PenempatanService {
     return this.http.post(`${urlMhs}/buat`, data);
   }
 
+  insert(data): Observable<any>{
+    return this.http.post(`${urlMhs}/insert`, data);
+  }
+
   update(id, data): Observable<any> {
     return this.http.put(`${urlMhs}/${id}`, data);
+  }
+
+  insertSekolah(idMhs, idSekolah): Observable<any> {
+    return this.http.get(`${urlMhs}/${idMhs}/${idSekolah}`);
   }
 
   hapus(id): Observable<any> {
