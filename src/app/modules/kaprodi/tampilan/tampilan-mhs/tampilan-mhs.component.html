@@ -1,0 +1,29 @@
+<div>
+    <div>
+      <button mat-icon-button routerLink="/dashboard/mhs/tambahmhs">
+        <mat-icon>add_box</mat-icon>
+      </button>
+      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="hapusSemuaDataMhs()">
+        Remove All
+      </button> -->
+      <table mat-table [dataSource]="penempatan" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="nama">
+          <th mat-header-cell *matHeaderCellDef> Nama. </th>
+          <td mat-cell *matCellDef="let penempatan"> {{penempatan.nama_mhs}}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="nim">
+          <th mat-header-cell *matHeaderCellDef> Nim </th>
+          <td mat-cell *matCellDef="let penempatan">{{penempatan.nim_mhs}} </td>
+        </ng-container>
+        <ng-container matColumnDef="sekolah">
+            <th mat-header-cell *matHeaderCellDef> Sekolah </th>
+            <td mat-cell *matCellDef="let penempatan">{{ penempatan.sekolah.nama_sekolah }} </td>
+          </ng-container> 
+        <tr mat-header-row *matHeaderRowDef="kolomPenempatan"></tr>
+        <tr mat-row *matRowDef="let row; columns: kolomPenempatan;"></tr>
+      </table>
+      <!-- <mat-paginator [length]="totalAkunMhs" [pageSize]="ukuranHalaman" [pageSizeOptions]="banyakPerHalaman" (page)="handlePageChange($event)"></mat-paginator>     -->
+    </div>
+  </div>

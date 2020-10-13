@@ -27,6 +27,7 @@ export class DatamhstampilComponent implements OnInit {
 
   ngOnInit(): void {
     this.ambilDataMhs();
+    console.log(this.mhs.nama_mhs)
   }
 
   getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
@@ -54,7 +55,6 @@ export class DatamhstampilComponent implements OnInit {
       .subscribe((ambilDataMhs: { mhs: any, totalAkunMhs: number}) => {
         this.mhs = ambilDataMhs.mhs;
         this.totalAkunMhs = ambilDataMhs.totalAkunMhs;
-        console.log(this.mhs);
       })
       error => {
         console.log(error);

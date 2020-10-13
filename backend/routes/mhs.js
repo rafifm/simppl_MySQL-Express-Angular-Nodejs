@@ -6,6 +6,8 @@ module.exports = app => {
 
   router.get("/", mhs.findAll);
 
+  router.get("/penempatan", mhs.ambilMhsSekolah);
+
   router.get("/:id", mhs.findOne);
 
   router.put("/:id", mhs.update);

@@ -45,10 +45,26 @@ exports.create = (req, res) => {
     });
 };
 
+exports.ambilMhsSekolah = (req, res) => {
+  const { page, size, nama_mhs } = req.query;
+  var condition = nama_mhs? { nama_mhs: {[Op.like]: `%${nama_mhs}`}} : null;
+
+  return dbMhs.findAll({ where: condition, include: [
+    {model: dbSekolah}
+  ]})
+  .then(sekolahan => {
+    res.send(sekolahan);
+  })
+  .catch(err => {
+    res.status(500).send({ message: err.message || "error pengambilan data"});
+  });
+
+}
+
 exports.findAll = (req, res) => {
   const { page, size, nama_mhs } = req.query;
   var condition = nama_mhs? { nama_mhs: {[Op.like]: `%${nama_mhs}`}} : null;
-  const { limit, offset } =getPagination(page, size);
+  const { limit, offset } = getPagination(page, size);
 
   dbMhs.findAndCountAll ({ where: condition, limit, offset})
     .then(data => {
@@ -78,54 +94,22 @@ exports.findOne = (req, res) => {
 };
 
 exports.insertSekolah = (req, res) => {
-  let coba =[5];
-  let mhs;
   const idMhs = req.params.idmhs;
   const idSekolah = req.params.idSekolah;
-  console.log("param sekolah ",idSekolah);
-  console.log("params mhs",idMhs);
-  // find the user & project
   dbMhs.findOne({
      where: { id: idMhs } 
     }).then(idMahasiswa => {
-      // mhs = idMahasiswa.id;
       return dbSekolah.findOne({
         where: {id: idSekolah}
       }).then(sekolahId => {
-        console.log("sekolah id nih : ",sekolahId);
         idMahasiswa.setSekolah(sekolahId);
-        res.send(mhs);
+        res.send(idMahasiswa);
       });
-      console.log("id sekolah nih: ", coba);
-      console.log("id mahasiswa ni: ",idMahasiswa.id);
-      // const fkSekolah = mhs.setSekolah(idSekolah);
-      // console.log(fkSekolah);
-      // res.send(mhs);
     }).catch(err => {
       res.status(500).send({
         message: "error dbmhs "+ err
       });
     });
-  // dbSekolah.findOne({ 
-  //   where: { id: idSekolah } 
-  // }).then(idSklh => {
-  //   res.send(idSklh);
-  //   console.log(idSklh);
-  // })
-  // .catch(err => {
-  //   res.status(500).send({
-  //     message: "error pengambilan mhs dengan id"
-  //   });
-  // });
-  console.log("mhs: ", mhs);
-  // dbMhs.setSekolah(idSekolah).then(hasil=> {
-  //   console.log(hasil);
-  // })
-  // .catch(err => {
-  //   res.status(500).send({
-  //     message: "error dbmhs dua "+ err
-  //   });
-  // });
 }
 
 exports.update = (req, res) => {
