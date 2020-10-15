@@ -157,3 +157,18 @@ exports.insertMhs = (req, res) => {
     });
   });
 }
+
+exports.ambilDosenMhs = (req, res) => {
+  const { page, size, nama_mhs } = req.query;
+  var condition = nama_dosen? { nama_dosen: {[Op.like]: `%${nama_dosen}`}} : null;
+
+  return dbAkunDosen.findAll({
+    where: condition,
+    include: [{model: dbMhs}]
+  }).then(mahasiswa => {
+    res.send(mahasiswa)
+  }).catch(err => {
+    res.status(500).send({message: err.message || "error pengambilan datanya"});
+  });
+
+}

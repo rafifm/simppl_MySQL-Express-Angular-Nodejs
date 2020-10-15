@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TampilanService } from '../tampilan.service';
+import { PenempatanService } from '../../penempatan.service';
 
 @Component({
   selector: 'app-tampilan-mhs',
@@ -12,15 +12,13 @@ export class TampilanMhsComponent implements OnInit {
   halaman = 1;
   totalDataPerHalaman = 10;
 
-  penempatan: any;
+  mhs: any;
   totalAkunMhs: number;
+  kolomMhs: string[] = ["nama","nim","sekolah"];
 
-  kolomPenempatan: string[] = ["nama","nim","sekolah"];
-
-  constructor(private dataMhs: TampilanService) { }
+  constructor(private dataMhs: PenempatanService) { }
 
   ngOnInit(): void {
-    this.ambilDataPenempatan();
   }
 
   getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
@@ -41,17 +39,17 @@ export class TampilanMhsComponent implements OnInit {
     return params;
   }
 
-  ambilDataPenempatan() {
+  ambilDataMhs() {
     const params = this.getRequestParams(this.nama_mhs, this.halaman, this.totalDataPerHalaman);
-    
-    this.dataMhs.ambilSemua(params)
+    this.dataMhs.ambilSemuaMhs(params)
       .subscribe(ambilData => {
-        this.penempatan = ambilData;
+        this.mhs = ambilData;
+        console.log(this.mhs);
       })
       error => {
         console.log(error);
       }
-
   }
+
 
 }
