@@ -1,18 +1,20 @@
 const express = require("express");
 
-const controllerDsn = require("../controllers/datadosen");
+const controllerDsn = require("../controllers/dosen/akundosen");
 const checkAuth = require("../middleware/check-auth");
 const extractFile = require("../middleware/file");
 const router = express.Router();
 
-router.post("",  extractFile, controllerDsn.tambahdosen);
+router.post("",  extractFile, controllerDsn.create);
 
-router.put("/:id",  extractFile, controllerDsn.editdosen);
+router.put("/:id",  extractFile, controllerDsn.update);
 
-router.get("", controllerDsn.tambahdosen);
+router.get("", controllerDsn.findAll);
 
-router.get("/:id", controllerDsn.tampildsnid);
+router.get("/:idDsn/:idMhs", controllerDsn.insertMhs);
 
-router.delete("/:id",  controllerDsn.hapusdsn);
+router.get("/:id", controllerDsn.findOne);
+
+router.delete("/:id",  controllerDsn.delete);
 
 module.exports = router;

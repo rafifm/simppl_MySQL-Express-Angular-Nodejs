@@ -29,8 +29,6 @@ export class PilihTmptMhsComponent implements OnInit {
   banyakPerHalaman = [10, 20];
   formPilihSekolah: FormGroup;
   private idMhs: string;
-  private idSekolah;
-  private idMahasiswa;
 
   kolomMhs: string[] = ["namaMahasiswa", "nim_mhs", "penempatan"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
@@ -52,7 +50,6 @@ export class PilihTmptMhsComponent implements OnInit {
       }
     });
     this.ambilData();
-    console.log(this.mhs);
   }
 
   getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
@@ -97,16 +94,9 @@ export class PilihTmptMhsComponent implements OnInit {
     console.log(event.value);
   }
 
-  // {
-  //   pilihSekolah: this.formPilihSekolah.value.pilihSekolah
-  // }
   insertSekolah(vidSekolah, vidMhs){
-    let idSekolah = vidSekolah.value;
-    console.log("idSekolah :",idSekolah);
-    let idMhs = vidMhs;
-    console.log("idMhs :",idMhs);
     this.dataPenempatan.insertSekolah(
-      idMhs, idSekolah
+      vidMhs, vidSekolah.value
     ).subscribe(inSekolah => {
       console.log(inSekolah);
     }, error => {

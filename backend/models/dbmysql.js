@@ -28,4 +28,8 @@ db.akundosen = require("./akundosen") (database,Sequelize);
 
 db.sekolah.hasMany(db.mhs,{ foreignKey: 'idSklh' });
 db.mhs.belongsTo(db.sekolah,{ foreignKey: 'idSklh' });
+
+db.mhs.hasMany(db.akundosen, { foreignKey: 'idMhs'});
+db.akundosen.belongsTo(db.mhs, { foreignKey: 'idMhs'});
+
 module.exports = db ;

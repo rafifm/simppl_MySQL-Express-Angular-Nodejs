@@ -9,14 +9,14 @@ import { PenempatanService } from '../penempatan.service';
 })
 export class PilihTmptDosenComponent implements OnInit {
 
-  sekolah: any;
+  mhs: any;
   datadosen: any;
   dataDosenSekarang = null;
   nama_dosen = '';
   currentIndex = -1;
 
   halaman = 1;
-  totalDataSekolah = 0;
+  totalDataMhs = 0;
   totalDataDosen = 0;
   totalDataPerHalaman = 10;
   banyakPerHalaman = [ 10, 20];
@@ -58,10 +58,10 @@ export class PilihTmptDosenComponent implements OnInit {
       });error => {
         console.log(error);
       };
-    this.dataPenempatan.ambilSemuaSekolah(params)
-      .subscribe((ambilDataSekolah: { sekolah: any, totalDataSekolah: number }) => {
-        this.sekolah = ambilDataSekolah.sekolah;
-        this.totalDataSekolah = ambilDataSekolah.totalDataSekolah;
+    this.dataPenempatan.ambilSemuaMhs(params)
+      .subscribe((ambilDataMhs: { mhs: any, totalDataMhs: number }) => {
+        this.mhs = ambilDataMhs.mhs;
+        this.totalDataMhs = ambilDataMhs.totalDataMhs;
       });error => {
         console.log(error);
       };
@@ -96,4 +96,15 @@ export class PilihTmptDosenComponent implements OnInit {
           console.log(error);
         });
   }
+
+  insertMhs(vIdMhs, vIdDsn){
+    this.dataPenempatan.insertMhs(
+      vIdDsn, vIdMhs.value
+    ).subscribe(insertMhs => {
+      console.log(insertMhs);
+    }), error => {
+      console.log(error);
+    }
+  }
+
 }

@@ -1,5 +1,6 @@
 const db = require("../../models/dbmysql");
 const dbAkunDosen = db.akundosen;
+const dbMhs = db.mhs;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -139,3 +140,20 @@ exports.deleteAll = (req, res) => {
           });
       });
 };
+
+exports.insertMhs = (req, res) => {
+  dbAkunDosen.findOne({
+    where: { id: req.params.idDsn }
+  }).then(dosen => {
+    return dbMhs.findOne({
+      where: {id: req.params.idMhs}
+    }).then(mhs => {
+      dosen.setMahasiswa(mhs);
+      res.send(dosen);
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message: "error insert mhs " + err
+    });
+  });
+}

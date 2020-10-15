@@ -51,6 +51,10 @@ export class PenempatanService {
     return this.http.get(`${urlMhs}/${idMhs}/${idSekolah}`);
   }
 
+  insertMhs(idMhs, idDsn): Observable<any> {
+    return this.http.get(`${urlDosen}/${idMhs}/${idDsn}`);
+  }
+
   hapus(id): Observable<any> {
     return this.http.delete(`${urlMhs}/${id}`);
   }
