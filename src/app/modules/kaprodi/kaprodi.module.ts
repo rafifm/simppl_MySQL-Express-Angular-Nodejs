@@ -9,7 +9,6 @@ import { TambahSekolahComponent } from './penentuan/tambah-sekolah/tambah-sekola
 import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekolah.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
-import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
 import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tampilan-dosen.component';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tam
     TambahSekolahComponent,
     TampilSekolahComponent,
     PilihTmptMhsComponent,
-    TampilanMhsComponent,
     TampilanDosenComponent
   ],
   imports: [
