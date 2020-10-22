@@ -15,7 +15,7 @@ export class TampilanDosenComponent implements OnInit {
   dosen:any;
   totalAkunDosen:number;
 
-  kolomDosen: string[] = ["nama", "nidn", "mahasiswa"];
+  kolomDosen: string[] = ["nama", "nidn", "mahasiswa", "sekolah"];
 
   constructor(private dataDosen: PenempatanService) { }
 
@@ -27,7 +27,7 @@ export class TampilanDosenComponent implements OnInit {
     let params = {};
 
     if (searchTitle) {
-      params[`nama_mhs`] = searchTitle;
+      params[`nama_dosen`] = searchTitle;
     }
 
     if (halaman) {
@@ -43,10 +43,10 @@ export class TampilanDosenComponent implements OnInit {
 
   ambilPenempatanDosen() {
     const params = this.getRequestParams(this.nama_dosen, this.halaman, this.totalDataPerHalaman);
-    this.dataDosen.ambilSemuaDosen(params)
-      .subscribe(ambilData => {
-        this.dosen = ambilData;
-        console.log(this.dosen);
+    this.dataDosen.ambilDosenMhs(params)
+      .subscribe(ambilDataDsnMhs => {
+        this.dosen = ambilDataDsnMhs;
+        console.log(ambilDataDsnMhs);
       })
       error => {
         console.log(error);

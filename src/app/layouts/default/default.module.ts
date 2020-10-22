@@ -13,8 +13,8 @@ import { PenilaianMhsGuruInputComponent } from 'src/app/modules/mhs/penilaian-mh
 import { PenilaianMhsDosenInputComponent } from 'src/app/modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-input/penilaian-mhs-dosen-input.component';
 import { PenilaianMhsDosenTampilComponent } from 'src/app/modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-tampil/penilaian-mhs-dosen-tampil.component';
 import { StaffModule } from '../../modules/staff/staff.module';
-import { DosenModule } from '../../modules/dosen/dosen.module';
-import { GuruModule } from '../../modules/guru/guru.module';
+import { DosenModule } from '../../modules/penilaian/dosen/dosen.module';
+import { GuruModule } from '../../modules/penilaian/guru/guru.module';
 import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
 import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
 import { AuthModule } from '../auth/auth.module';

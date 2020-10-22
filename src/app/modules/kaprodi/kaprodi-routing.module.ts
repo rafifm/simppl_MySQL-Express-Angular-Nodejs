@@ -8,6 +8,7 @@ import { SidebarkaprodiComponent } from 'src/app/shared/component/sidebar/sideba
 import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekolah.component';
 import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
 import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tampilan-dosen.component';
+import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
   }, {
     path: 'tampildosen',
     component: TampilanDosenComponent   
+  }, {
+    path: 'tampilmhs',
+    component: TampilanMhsComponent   
   }
 ];
 

@@ -49,13 +49,12 @@ exports.ambilMhsSekolah = (req, res) => {
   const { page, size, nama_mhs } = req.query;
   var condition = nama_mhs? { nama_mhs: {[Op.like]: `%${nama_mhs}`}} : null;
 
-  return dbMhs.findAll({ where: condition, include: [
-    {model: dbSekolah}
-  ]})
-  .then(sekolahan => {
+  return dbMhs.findAll({ 
+    where: condition, 
+    include: [{model: dbSekolah}]
+  }).then(sekolahan => {
     res.send(sekolahan);
-  })
-  .catch(err => {
+  }).catch(err => {
     res.status(500).send({ message: err.message || "error pengambilan data"});
   });
 

@@ -6,6 +6,7 @@ import { DosentambahnilaiComponent } from './dosentambahnilai/dosentambahnilai.c
 import { DosentampilnilaiComponent } from './dosentampilnilai/dosentampilnilai.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     DosenRoutingModule,
     AngularMaterialModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class DosenModule { }

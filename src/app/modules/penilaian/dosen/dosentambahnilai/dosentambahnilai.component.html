@@ -1,0 +1,344 @@
+<div style="text-align: center;">
+  <h4> Penilaian Dosen </h4>
+</div>
+<form [formGroup]="formNilaiDosen" (submit)="tombolNilai()">
+<div >
+  <mat-grid-tile-header >A.PENENTUAN BAHAN PEMBELAJARAN DAN MERUMUSKAN TUJUAN</mat-grid-tile-header>
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="8"></mat-grid-tile>
+    <mat-grid-tile colspan="1">Sangat Kurang</mat-grid-tile>
+    <mat-grid-tile colspan="1">Kurang</mat-grid-tile>
+    <mat-grid-tile colspan="1">Baik</mat-grid-tile>
+    <mat-grid-tile colspan="1">Amat Baik</mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">1.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Kesesuaian bahan pembelajaran yang digunakan dengan kurikulum.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno1">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">2.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Keseuaian rumusan kompetensi dasar, indikator dan tujuan pembelajaran.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno2">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-tile-header >B.PEMILIHAN DAN PENGORGANISASIAN MATERI, MEDIA, DAN SUMBER</mat-grid-tile-header>
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">3.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Kesesuaian materi dengan tujuan, perkembangan siswa, dan urutkan, kedalaman, dan kemutakhiran materi.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno3">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">4.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Kesesuaian media (alat bantu mengajar) dengan tujuan, materi, metoda, dan lingkungan (daya cerna) siswa.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno4">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">5.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Kesesuaian sumber belajar dengan tujuan, materi, metoda, dan lingkungan(daya cerna) siswa.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno5">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-tile-header >C. RANCANGAN SKENARIO/STRATEGI PEMBELAJARAN</mat-grid-tile-header>
+  <mat-grid-list cols="12" rowHeight="55px">
+    <mat-grid-tile colspan="1">6.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Kesesuaian kegiatan belajar yang dipilih dengan tujuan, bahan, waktu, sarana, lingkungan, dan bervariasi serta memungkinkan keterlibatan siswa.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno6">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="55px">
+    <mat-grid-tile colspan="1">7.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Kesesuaian langkah kegitan belajar yang dipilih dengan tujuan, bahan, waktu, sarana, lingkungan, dan memungkinkan keterlibatan siswa.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno7">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">8.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Cara-cara pengorganisasian siswa seperti bahan, kegiatan, media yang menarik, dan melibatkan siswa.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno8">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">9.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Alokasi waktu belajar-mengajar (pembukaan, inti, penutup) dicantumkan rinci, dan proposional.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno9">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">10.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Cara-cara pengorganisasian siswa agr berpartisipasi aktif dalam kegiatan pembelajaran.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno10">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-tile-header >E. RANCANGAN PROSEDUR BENTUK DAN JENIS PENILAIAN</mat-grid-tile-header>
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">11.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Cara-cara pengorganisasian siswa agr berpartisipasi aktif dalam kegiatan pembelajaran.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno11">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">12.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Teknik penilaian yang direncanakan mencakup tes, unjuk kerja, hasil karya, dan penugasan.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno12">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">13.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Layanan remedial dan pengayaan dicantumkan dan diuraikan secara lengkap.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno13">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-tile-header >F. KESAN UMUM RENCANA PEMBELAJARAN</mat-grid-tile-header>
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">14.</mat-grid-tile>
+    <mat-grid-tile colspan="7"> Kebersihan dan kerapian tulisan, dan ilustrasi menarik.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno14">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div >
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="1">15.</mat-grid-tile>
+    <mat-grid-tile colspan="7">Penggunaan bahasa tulis tepat, baku, komunikatif, dan sesuai dengan EYD.</mat-grid-tile>
+    <mat-radio-group formControlName="soalno15">
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="1"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="2"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="3"></mat-radio-button>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <mat-radio-button value="4"></mat-radio-button>
+      </mat-grid-tile>
+    </mat-radio-group>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<div>
+  <mat-grid-list cols="12" rowHeight="50px">
+    <mat-grid-tile colspan="8"> Nilai </mat-grid-tile>
+    <mat-grid-tile colspan="4"> {{vNilai}} </mat-grid-tile>
+  </mat-grid-list>
+  <mat-divider></mat-divider>
+</div>
+<button 
+  mat-raised-button
+  color="primary"
+  type="submit"> Simpan 
+</button>
+</form>

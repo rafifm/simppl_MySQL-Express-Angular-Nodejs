@@ -31,10 +31,10 @@ const routes: Routes = [{
       component: PendaftaranMhsCreateComponent
     }, {
       path: 'dosen',
-      loadChildren: () => import('./modules/dosen/dosen.module').then(m => m.DosenModule)
+      loadChildren: () => import('./modules/penilaian/dosen/dosen.module').then(m => m.DosenModule)
     }, {
       path: 'guru',
-      loadChildren: () => import('./modules/guru/guru.module').then(m => m.GuruModule)
+      loadChildren: () => import('./modules/penilaian/guru/guru.module').then(m => m.GuruModule)
     }, {
       path: 'kaprodi',
       loadChildren: () => import('./modules/kaprodi/kaprodi.module').then(m => m.KaprodiModule)

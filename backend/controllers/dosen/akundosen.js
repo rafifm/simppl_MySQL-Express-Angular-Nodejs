@@ -1,6 +1,7 @@
 const db = require("../../models/dbmysql");
 const dbAkunDosen = db.akundosen;
 const dbMhs = db.mhs;
+const dbSekolah = db.sekolah;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -159,12 +160,12 @@ exports.insertMhs = (req, res) => {
 }
 
 exports.ambilDosenMhs = (req, res) => {
-  const { page, size, nama_mhs } = req.query;
+  const { page, size, nama_dosen } = req.query;
   var condition = nama_dosen? { nama_dosen: {[Op.like]: `%${nama_dosen}`}} : null;
 
   return dbAkunDosen.findAll({
     where: condition,
-    include: [{model: dbMhs}]
+    include: [{model: dbMhs, include:[dbSekolah]}]
   }).then(mahasiswa => {
     res.send(mahasiswa)
   }).catch(err => {

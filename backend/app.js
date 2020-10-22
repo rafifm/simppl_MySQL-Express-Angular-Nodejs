@@ -4,23 +4,11 @@ const path = require("path");
 const cors = require("cors");
 const db = require("./models/dbmysql");
 
-const mongoose = require("mongoose");
-// const mysql = require("mysql");
-
 const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
 const userRoutes = require("./routes/user");
 const dosenRoutes = require("./routes/datadosen");
 
 const app = express();
-
-mongoose.connect(
-    "mongodb+srv://rafif:mkGq2uhkmCpiVZQG@simppl-xgalo.mongodb.net/simppl",
-    { useNewUrlParser: true , useUnifiedTopology: true}
-  ).then(() => {
-    console.log("Database berhasil terkoneksi");
-  }).catch(() => {
-    console.log("Koneksi gagal");
-  });
 
 // var corsOptions = {
 //   origin: "http://localhost:4000"
@@ -48,7 +36,7 @@ app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
 
-db.databaseConf.sync({force: true}).then(() => {
+db.databaseConf.sync().then(() => {
   console.log('table direfresh');
 });
 
@@ -59,6 +47,8 @@ require("./routes/guru")(app);
 require("./routes/mhs")(app);
 require("./routes/datasekolah")(app);
 require("./routes/akundosen")(app);
+require("./routes/nilai")(app);
+
 app.listen(PORT, () => {
   console.log("server jalan di port : " + PORT);
 });
