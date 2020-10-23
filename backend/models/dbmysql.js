@@ -25,12 +25,30 @@ db.guru = require("./guru") (database, Sequelize);
 db.mhs = require("./mhs") (database, Sequelize);
 db.sekolah = require("./datasekolah") (database, Sequelize);
 db.akundosen = require("./akundosen") (database,Sequelize);
-db.nilai=require("./nilai") (database, Sequelize);
+db.nilai = require("./nilai") (database, Sequelize);
+db.peran = require("./peran") (database, Sequelize);
+db.pengguna = require("./pengguna") (database, Sequelize);
 
+//sekolah one to many mahasiswa
 db.sekolah.hasMany(db.mhs,{ foreignKey: 'idSklh' });
 db.mhs.belongsTo(db.sekolah,{ foreignKey: 'idSklh' });
 
+//mahasiswa one to many dosen
 db.mhs.hasMany(db.akundosen, { foreignKey: 'idMhs'});
 db.akundosen.belongsTo(db.mhs, { foreignKey: 'idMhs'});
+
+//pengguna many to many peran
+db.peran.belongsToMany(db.pengguna, {
+  through: "pengguna_peran",
+  foreignKey: "peranId",
+  otherKey: "penggunaId"
+});
+db.pengguna.belongsToMany(db.peran, {
+  through: "pengguna_peran",
+  foreignKey: "penggunaId",
+  otherKey: "peranId"
+});
+
+db.PERAN = ["dosen", "admin", "guru", "mhs", "kaprodi", "koorsekolah", "staff"];
 
 module.exports = db ;

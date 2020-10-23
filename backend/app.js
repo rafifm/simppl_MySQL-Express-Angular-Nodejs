@@ -2,13 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
-const db = require("./models/dbmysql");
 
 const pendaftaranMhsRoutes = require("./routes/pendaftaranMhs");
 const userRoutes = require("./routes/user");
 const dosenRoutes = require("./routes/datadosen");
 
 const app = express();
+
+const db = require("./models/dbmysql");
+const peran = db.peran;
 
 // var corsOptions = {
 //   origin: "http://localhost:4000"
@@ -36,9 +38,47 @@ app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
 
-db.databaseConf.sync().then(() => {
+db.databaseConf.sync({force: true}).then(() => {
   console.log('table direfresh');
+  initial();
 });
+
+function initial(){
+  peran.create({
+    id: 1,
+    nama_peran: "admin"
+  });
+
+  peran.create({
+    id: 2,
+    nama_peran: "dosen"
+  });
+
+  peran.create({
+    id: 3,
+    nama_peran: "guru"
+  });
+
+  peran.create({
+    id: 4,
+    nama_peran: "kaprodi"
+  });
+
+  peran.create({
+    id: 5,
+    nama_peran: "koorsekolah"
+  });
+
+  peran.create({
+    id: 6,
+    nama_peran: "staff"
+  });
+
+  peran.create({
+    id: 7,
+    nama_peran: "mahasiswa"
+  });
+}
 
 const PORT = process.env.PORT || 4000;
 
@@ -48,6 +88,8 @@ require("./routes/mhs")(app);
 require("./routes/datasekolah")(app);
 require("./routes/akundosen")(app);
 require("./routes/nilai")(app);
+require("./routes/auth.routes")(app);
+require("./routes/pengguna.routes")(app);
 
 app.listen(PORT, () => {
   console.log("server jalan di port : " + PORT);
