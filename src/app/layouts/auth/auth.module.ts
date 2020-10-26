@@ -33,7 +33,6 @@ import { AuthRoutingModule } from './auth-routing.module';
     FormsModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    RouterModule,
     AuthRoutingModule
   ],
   exports: [

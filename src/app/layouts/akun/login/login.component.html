@@ -1,0 +1,41 @@
+<mat-card>
+  <img src="assets/logoulm.png">
+  <form [formGroup]="formLogin" (submit)="onSubmit()">
+    <div *ngIf = "isLoggedIn">Login Berhasil</div>
+    <div *ngIf = "isLoginFailed">Loggin gagal</div>  
+      <mat-form-field>
+          
+          <input
+          matInput
+          type="text"
+          formControlName="email_pengguna"
+          placeholder="Email">
+          <mat-error *ngIf="formLogin.get('email_pengguna').invalid">Masukkan nama</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input
+          matInput
+          type="text"
+          formControlName="password_pengguna"
+          placeholder="Password">
+          <mat-error *ngIf="formLogin.get('password_pengguna').invalid">Masukkan nama</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="accent" type="submit" >Log In</button>
+      <button mat-raised-button color="primary" (click)="logout()"  >Log Out</button>
+  </form>
+  <ng-template *ngIf = "isLoginFailed">
+      <h2 matDialogTitle>Error</h2>
+      <p matDialogContent><em>LogIn gagal</em></p>
+          <mat-dialog-actions align="end">
+              <button mat-button matDialogClose>Dismiss</button>
+          </mat-dialog-actions>
+  </ng-template>
+  <ng-template *ngIf = "isLoggedIn">
+      <h2 matDialogTitle>Success</h2>
+      <p matDialogContent><em>LogIn Berhasil</em></p>
+          <mat-dialog-actions align="end">
+              <button mat-button matDialogClose>Dismiss</button>
+          </mat-dialog-actions>
+  </ng-template>
+  
+</mat-card>

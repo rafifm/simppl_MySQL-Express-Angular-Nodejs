@@ -66,10 +66,12 @@ const routes: Routes = [{
       path: 'datadosentampil',
       component: DatadosentampilComponent
     },] 
-  },
-  { 
+  },{ 
     path: 'login',
     loadChildren: () => import('./layouts/auth/auth.module').then(m => m.AuthModule)
+  },{ 
+    path: 'auth',
+    loadChildren: () => import('./layouts/akun/akun.module').then(m => m.AkunModule)
   },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:postId', component: PendaftaranMhsCreateComponent},
