@@ -37,6 +37,10 @@ db.mhs.belongsTo(db.sekolah,{ foreignKey: 'idSklh' });
 db.mhs.hasMany(db.akundosen, { foreignKey: 'idMhs'});
 db.akundosen.belongsTo(db.mhs, { foreignKey: 'idMhs'});
 
+//pengguna one to one dosen
+db.akundosen.hasOne(db.pengguna);
+db.pengguna.belongsTo(db.akundosen);
+
 //pengguna many to many peran
 db.peran.belongsToMany(db.pengguna, {
   through: "pengguna_peran",

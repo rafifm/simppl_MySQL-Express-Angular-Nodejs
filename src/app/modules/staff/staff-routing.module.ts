@@ -15,7 +15,7 @@ const routes: Routes = [
     component: SidebarstaffComponent,
     outlet: 'sidebarstaff'
   }, {
-    path: 'tambahdosen',
+    path: 'tambahdosen/:idLogin',
     component: DatadosentambahComponent
   }, {
     path: 'tampildosen/ubahdata/:id',

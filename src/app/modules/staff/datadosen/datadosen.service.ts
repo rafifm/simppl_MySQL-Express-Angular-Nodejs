@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 
 const urlAkunDosen = 'http://localhost:4000/api/akundosen';
 
@@ -9,7 +8,7 @@ const urlAkunDosen = 'http://localhost:4000/api/akundosen';
   providedIn: 'root'
 })
 export class DatadosenService {
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   ambilSemua(params): Observable<any> {
     return this.http.get(urlAkunDosen, { params }); 
@@ -21,6 +20,10 @@ export class DatadosenService {
 
   buat(data): Observable<any> {
     return this.http.post(`${urlAkunDosen}/buat`, data);
+  }
+
+  tambahDosen(idPengguna, data): Observable<any> {
+    return this.http.put(`${urlAkunDosen}/profil/${idPengguna}`, data);
   }
 
   update(id, data): Observable<any> {

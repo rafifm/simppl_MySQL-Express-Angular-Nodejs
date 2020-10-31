@@ -2,6 +2,7 @@ const db = require("../../models/dbmysql");
 const dbAkunDosen = db.akundosen;
 const dbMhs = db.mhs;
 const dbSekolah = db.sekolah;
+const dbPengguna = db.pengguna;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -26,23 +27,22 @@ exports.create = (req, res) => {
     });
     return;
   }
-  const dataDosen = {
+
+  dbAkunDosen.create({
     nama_dosen: req.body.nama_dosen,
     nip: req.body.nip,
     no_hp_dosen: req.body.no_hp_dosen,
     pangkat_dosen: req.body.pangkat_dosen,
-  }
-
-  dbAkunDosen.create(dataDosen)
-    .then(akundosen => {
-      res.send(akundosen);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "error saat pembuatan akun"
-      });
+  })
+  .then(akundosen => {
+    res.send(akundosen);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "error saat pembuatan akun"
     });
+  });
 };
 
 exports.findAll = (req, res) => {
@@ -54,6 +54,7 @@ exports.findAll = (req, res) => {
     .then(data => {
       const response = getPagingData(data, page, limit);
       res.send(response);
+      console.log('dosen' + data);
     })
     .catch(err => {
       res.status(500).send({
@@ -142,6 +143,35 @@ exports.deleteAll = (req, res) => {
       });
 };
 
+exports.tambahDosen = (req, res) => {
+  if(!req.body.nama_dosen) {
+    res.status(400).send({
+      message: " input kosong "
+    });
+    return;
+  }
+  dbAkunDosen.create({
+    nama_dosen: req.body.nama_dosen,
+    nip: req.body.nip,
+    no_hp_dosen: req.body.no_hp_dosen,
+    pangkat_dosen: req.body.pangkat_dosen,
+  })
+  .then(akundosen => {
+    console.log(akundosen);
+    return dbPengguna.findOne({
+      where: { id: req.params.idPengguna}
+    }).then(pengguna => {
+      pengguna.setAkundosen(akundosen.id);
+    });
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "error saat pembuatan akun"
+    });
+  });
+}
+
 exports.insertMhs = (req, res) => {
   dbAkunDosen.findOne({
     where: { id: req.params.idDsn }
@@ -172,4 +202,20 @@ exports.ambilDosenMhs = (req, res) => {
     res.status(500).send({message: err.message || "error pengambilan datanya"});
   });
 
+}
+
+exports.ambilDosenNilai = (req, res) => {
+  console.log('id pengguna nih: ' + req.params.idPengguna);
+  dbAkunDosen.findAll({
+    where: { id: req.params.idPengguna },
+    include: [{ model: dbMhs, required: false}]
+  }).then(dosen => {
+    // if(dosen.idMhs == null){
+    //   dosen.idMhs = 'kosong'
+    // }
+    console.log('nilai ' + dosen);
+    res.send(dosen)
+  }).catch(err => {
+    res.status(500).send({message: err.message || "mengambil dosen error"});
+  })
 }

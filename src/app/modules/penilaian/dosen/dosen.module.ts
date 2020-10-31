@@ -10,7 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [DosentambahnilaiComponent, DosentampilnilaiComponent],
+  declarations: [
+    DosentambahnilaiComponent, 
+    DosentampilnilaiComponent
+  ],
   imports: [
     CommonModule,
     DosenRoutingModule,

@@ -2,6 +2,7 @@ const db = require("../models/dbmysql");
 const config = require("../config/auth.config");
 const pengguna = db.pengguna;
 const peran = db.peran;
+const dosen = db.akundosen;
 
 const Op = db.Sequelize.Op;
 
@@ -39,8 +40,13 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
     pengguna.findOne({
         where: {
-            email_pengguna: req.body.email_pengguna
-        }
+            email_pengguna: req.body.email_pengguna, 
+        },
+        include: [{
+            model: dosen,
+            required: false,
+            status: 'active'
+        }]
     }).then(pengguna => {
         if(!pengguna) {
             return res.status(404).send({ message: "akun tidak ditemukan"});
@@ -62,6 +68,14 @@ exports.signin = (req, res) => {
             expiresIn: 86400
         });
 
+        var idPengguna;
+        if(pengguna.akundosen ){
+            idPengguna = pengguna.akundosen.id
+        } else {
+            idPengguna = 'kosong'
+            
+        }
+
         var authorities = [];
         pengguna.getPerans().then(peran => {
             for(let i = 0; i < peran.length; i++) {
@@ -71,7 +85,8 @@ exports.signin = (req, res) => {
                 id: pengguna.id,
                 email_pengguna: pengguna.email_pengguna,
                 peran: authorities,
-                accessToken: token
+                accessToken: token,
+                idPengguna: idPengguna
             });
         });
     }).catch(err => {

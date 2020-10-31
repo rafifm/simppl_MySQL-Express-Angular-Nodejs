@@ -27,7 +27,6 @@ export class DatamhstampilComponent implements OnInit {
 
   ngOnInit(): void {
     this.ambilDataMhs();
-    console.log(this.mhs.nama_mhs)
   }
 
   getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {

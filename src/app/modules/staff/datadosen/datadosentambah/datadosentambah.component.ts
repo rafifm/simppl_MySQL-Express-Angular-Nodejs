@@ -14,6 +14,8 @@ export class DatadosentambahComponent implements OnInit {
   formAkunDosen: FormGroup;
   private mode = 'buat';
   private idDosen: string;
+  private idPengguna: string;
+
 
   constructor(
     private datadosenService: DatadosenService, 
@@ -45,6 +47,7 @@ export class DatadosentambahComponent implements OnInit {
         this.idDosen = null;
       }
     });
+    this.idPengguna = this.route.snapshot.paramMap.get('idLogin');
   }
 
   simpanAkunDosen(formAkunDosen: NgForm){
@@ -52,7 +55,8 @@ export class DatadosentambahComponent implements OnInit {
       return;
     }
     if (this.mode === 'buat'){
-      this.datadosenService.buat({
+      this.datadosenService.tambahDosen(
+        this.idPengguna, this.dataDosen = {
         nama_dosen: this.formAkunDosen.value.nama_dosen,
         nip: this.formAkunDosen.value.nip,
         no_hp_dosen: this.formAkunDosen.value.no_hp_dosen,
