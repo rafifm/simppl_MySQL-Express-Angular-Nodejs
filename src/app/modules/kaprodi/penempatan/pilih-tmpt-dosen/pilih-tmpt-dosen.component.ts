@@ -55,6 +55,7 @@ export class PilihTmptDosenComponent implements OnInit {
       .subscribe((ambilDataDosen: { akundosen: any, totalDataDosen: number }) => {
         this.datadosen = ambilDataDosen.akundosen;
         this.totalDataDosen = ambilDataDosen.totalDataDosen;
+        console.log(ambilDataDosen);
       });error => {
         console.log(error);
       };

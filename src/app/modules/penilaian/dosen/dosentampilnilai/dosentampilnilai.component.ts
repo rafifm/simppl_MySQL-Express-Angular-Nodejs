@@ -53,13 +53,13 @@ export class DosentampilnilaiComponent implements OnInit {
     this.idPengguna = this.tokenStorage.getPengguna().idPengguna;
     this.dbMhs.ambilDosen(this.idPengguna)
       .subscribe(ambilData => {
-        this.dosen = ambilData;
+        this.dosen = ambilData[0].mahasiswas;
         console.log(this.dosen);
       })
       error => {
         console.log(error);
       }
-
+    
   }
 
 }

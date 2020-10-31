@@ -173,14 +173,14 @@ exports.tambahDosen = (req, res) => {
 }
 
 exports.insertMhs = (req, res) => {
-  dbAkunDosen.findOne({
-    where: { id: req.params.idDsn }
-  }).then(dosen => {
-    return dbMhs.findOne({
-      where: {id: req.params.idMhs}
-    }).then(mhs => {
-      dosen.setMahasiswa(mhs);
-      res.send(dosen);
+  dbMhs.findOne({
+    where: { id: req.params.idMhs }
+  }).then(mhs => {
+    return dbAkunDosen.findOne({
+      where: {id: req.params.idDsn}
+    }).then(dosen => {
+      mhs.setAkundosen(dosen);
+      res.send(mhs);
     });
   }).catch(err => {
     res.status(500).send({
@@ -206,15 +206,15 @@ exports.ambilDosenMhs = (req, res) => {
 
 exports.ambilDosenNilai = (req, res) => {
   console.log('id pengguna nih: ' + req.params.idPengguna);
-  dbAkunDosen.findAll({
+  return dbAkunDosen.findAll({
     where: { id: req.params.idPengguna },
     include: [{ model: dbMhs, required: false}]
-  }).then(dosen => {
-    // if(dosen.idMhs == null){
-    //   dosen.idMhs = 'kosong'
+  }).then(akundosen => {
+    // if(akundosen.idMhs == null){
+    //   akundosen.idMhs = 'kosong'
     // }
-    console.log('nilai ' + dosen);
-    res.send(dosen)
+    console.log('nilai ' + akundosen);
+    res.send(akundosen)
   }).catch(err => {
     res.status(500).send({message: err.message || "mengambil dosen error"});
   })
