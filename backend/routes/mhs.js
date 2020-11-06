@@ -12,6 +12,8 @@ module.exports = app => {
 
   router.put("/:id", mhs.update);
 
+  router.put("/nilaiuas/:idMhsnilai", mhs.nilaiUas);
+
   router.get("/:idmhs/:idSekolah", mhs.insertSekolah);
 
   router.delete("/:id", mhs.delete);

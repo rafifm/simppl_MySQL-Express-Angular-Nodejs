@@ -1,5 +1,6 @@
 const db = require("../../models/dbmysql");
 const dbMhs = db.mhs;
+const dbNilai = db.nilai;
 const dbSekolah = db.sekolah;
 const Op = db.Sequelize.Op;
 
@@ -79,16 +80,15 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  const id = req.params.id;
-
-  dbMhs.findByPk(id)
+  dbMhs.findByPk(req.params.id)
     .then(akunDosen => {
       res.send(akunDosen);
     })
     .catch(err => {
       res.status(500).send({
-        message: "error pengambilan mhs dengan id"
-      });
+        message: err || "error pengambilan mhs dengan id"
+      })
+      console.log(err);
     });
 };
 
@@ -174,3 +174,22 @@ exports.deleteAll = (req, res) => {
           });
       });
 };
+
+exports.nilaiUas = (req, res) => {
+  dbNilai.findOne({
+    where: {nilaiDosen_uas: null}
+  }).then(cekNilai => {
+    return dbNilai.create({
+      nilaiDosen_uas: req.body.nilaiDosen_uas
+    }).then(nilaiUas => {
+      res.status(200).send({status: 1});
+      dbMhs.findOne({
+        where: {id: req.params.idMhsnilai}
+      }).then(mhs => {
+        mhs.setNilai(nilaiUas.id);
+      });
+    });
+  });
+
+  
+}

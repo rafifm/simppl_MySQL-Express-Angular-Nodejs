@@ -51,7 +51,6 @@ export class DatadosentampilComponent implements OnInit {
       .subscribe((ambilDataAkunDosen: { akundosen: any, totalAkunDosen: number}) => {
         this.akundosen = ambilDataAkunDosen.akundosen;
         this.totalAkunDosen = ambilDataAkunDosen.totalAkunDosen;
-        console.log(this.akundosen);
       })
       error => {
         console.log(error);

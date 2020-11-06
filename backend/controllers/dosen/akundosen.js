@@ -1,6 +1,7 @@
 const db = require("../../models/dbmysql");
 const dbAkunDosen = db.akundosen;
 const dbMhs = db.mhs;
+const dbNilai = db.nilai;
 const dbSekolah = db.sekolah;
 const dbPengguna = db.pengguna;
 const Op = db.Sequelize.Op;
@@ -157,7 +158,6 @@ exports.tambahDosen = (req, res) => {
     pangkat_dosen: req.body.pangkat_dosen,
   })
   .then(akundosen => {
-    console.log(akundosen);
     return dbPengguna.findOne({
       where: { id: req.params.idPengguna}
     }).then(pengguna => {
@@ -205,15 +205,10 @@ exports.ambilDosenMhs = (req, res) => {
 }
 
 exports.ambilDosenNilai = (req, res) => {
-  console.log('id pengguna nih: ' + req.params.idPengguna);
   return dbAkunDosen.findAll({
     where: { id: req.params.idPengguna },
-    include: [{ model: dbMhs, required: false}]
+    include: [{ model: dbMhs, required: false, include:[dbNilai]}]
   }).then(akundosen => {
-    // if(akundosen.idMhs == null){
-    //   akundosen.idMhs = 'kosong'
-    // }
-    console.log('nilai ' + akundosen);
     res.send(akundosen)
   }).catch(err => {
     res.status(500).send({message: err.message || "mengambil dosen error"});

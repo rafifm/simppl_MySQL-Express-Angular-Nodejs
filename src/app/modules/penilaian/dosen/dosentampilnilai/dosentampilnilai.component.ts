@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 import { DosenService } from '../dosen.service';
 
@@ -23,11 +23,12 @@ export class DosentampilnilaiComponent implements OnInit {
   constructor(
     private dbMhs: DosenService,
     private tokenStorage: TokenStorageService,
-    private route: ActivatedRoute
+    private router: Router
     ) { }
 
   ngOnInit(): void {
     this.ambilDataMhs();
+    
   }
 
   getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
@@ -49,17 +50,35 @@ export class DosentampilnilaiComponent implements OnInit {
   }
 
   ambilDataMhs() {
+    var tombolnilai;
     const params = this.getRequestParams(this.nama_mhs, this.halaman, this.totalDataPerHalaman);
     this.idPengguna = this.tokenStorage.getPengguna().idPengguna;
     this.dbMhs.ambilDosen(this.idPengguna)
       .subscribe(ambilData => {
         this.dosen = ambilData[0].mahasiswas;
         console.log(this.dosen);
+        for(var i=0;i<= this.dosen.length; i++){
+          console.log(this.dosen[i].nilaiId);
+          if(this.dosen[i].nilaiId == null){
+            tombolnilai = true;
+          } else if (this.dosen[i].nilaiId != null) {
+            tombolnilai = false;
+          }
+          console.log(tombolnilai);
+        }
+        // if(this.dosen[0].nilaiId == null){
+        //   this.tombolnilai = true;
+        // } 
       })
       error => {
         console.log(error);
       }
     
+  }
+
+  nilai(idMhs){
+    let idPengguna = this.idPengguna;
+    this.router.navigate(['/dashboard/dosen/tambahnilai', idMhs, idPengguna]);
   }
 
 }

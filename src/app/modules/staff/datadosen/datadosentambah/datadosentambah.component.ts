@@ -61,9 +61,7 @@ export class DatadosentambahComponent implements OnInit {
         nip: this.formAkunDosen.value.nip,
         no_hp_dosen: this.formAkunDosen.value.no_hp_dosen,
         pangkat_dosen: this.formAkunDosen.value.pangkat_dosen
-      })
-      .subscribe(akunDosen => {
-        console.log(akunDosen);
+      }).subscribe(akunDosen => {
         this.submitted = true;
       },
       error => {

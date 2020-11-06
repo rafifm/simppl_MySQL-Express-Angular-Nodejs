@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DosenService } from '../dosen.service';
 
 @Component({
   selector: 'app-dosentambahnilai',
@@ -8,10 +10,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class DosentambahnilaiComponent implements OnInit {
 
+  private idMhs;
   vNilai;
   formNilaiDosen: FormGroup;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private dosenService: DosenService) { }
 
   ngOnInit(): void {
     this.formNilaiDosen = new FormGroup({
@@ -31,6 +37,14 @@ export class DosentambahnilaiComponent implements OnInit {
       soalno14: new FormControl('', {validators: [Validators.required]}),
       soalno15: new FormControl('', {validators: [Validators.required]})
     });
+    this.idMhs = this.route.snapshot.paramMap.get('idMhs');
+    this.dosenService.ambilSatuMhs(this.idMhs)
+      .subscribe(mhs => {
+        console.log(mhs);
+      },error => {
+        console.log(error);
+      });
+    
   }
 
   tombolNilai(){
@@ -50,8 +64,17 @@ export class DosentambahnilaiComponent implements OnInit {
     var no14 = this.formNilaiDosen.value.soalno14;
     var no15 = this.formNilaiDosen.value.soalno15;
 
+    let idPengguna = this.route.snapshot.paramMap.get('idPengguna');
     this.vNilai = (((parseInt(no1)+parseInt(no2)+parseInt(no3)+parseInt(no4)+parseInt(no5)+parseInt(no6)+parseInt(no7)+parseInt(no8)+parseInt(no9)+parseInt(no10)+parseInt(no11)+parseInt(no12)+parseInt(no13)+parseInt(no14)+parseInt(no15))/60)*100).toFixed(2);
-    console.log(this.vNilai);
+    let dbNilai;
+    this.dosenService.nilaiUas(this.idMhs, dbNilai={
+      nilaiDosen_uas: this.vNilai
+    }).subscribe(nilai => {
+      console.log(nilai);
+      this.router.navigate(['/dashboard/dosen/tampilnilai']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

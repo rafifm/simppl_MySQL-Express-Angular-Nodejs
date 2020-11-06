@@ -12,7 +12,7 @@ const routes: Routes = [
     outlet: 'sidebardosen'
   },
   {
-    path: 'tambahnilai',
+    path: 'tambahnilai/:idMhs/:idPengguna',
     component: DosentambahnilaiComponent
   },
   {
