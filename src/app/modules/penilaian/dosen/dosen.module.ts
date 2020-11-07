@@ -7,12 +7,13 @@ import { DosentampilnilaiComponent } from './dosentampilnilai/dosentampilnilai.c
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DosentambahnilaiutsComponent } from './dosentambahnilaiuts/dosentambahnilaiuts.component';
 
 
 @NgModule({
   declarations: [
     DosentambahnilaiComponent, 
-    DosentampilnilaiComponent
+    DosentampilnilaiComponent, DosentambahnilaiutsComponent
   ],
   imports: [
     CommonModule,

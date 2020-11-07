@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 import { DosenService } from 'src/app/modules/penilaian/dosen/dosen.service';
 
 @Component({
@@ -8,64 +9,14 @@ import { DosenService } from 'src/app/modules/penilaian/dosen/dosen.service';
 })
 export class SidebardosenComponent implements OnInit {
 
-  ddmhs = [
-    {
-        label: 'Mahasiswa',
-        items: [
-          {
-            label: ' - Nilai UAS',
-            link: '/dashboard/dosen/tambahnilai'
-          },{
-            label: ' Lihat Nilai UAS',
-            link: '/dashboard/dosen/tampilnilai'
-          }
-        ]
-    }
-  ];
+  nama_dosen;
+  email_dosen;
 
-  config = {
-    highlightOnSelect: true,
-    interfaceWithRoute: true,
-    collapseOnSelect: true
-  }
-
-  nama_dosen = '';
-  halaman = 1;
-  totalDataPerHalaman = 10;
-
-  dosen: any;
-  totalDosen = 0;
-
-  constructor(private dbDosen: DosenService) { }
+  constructor(private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-  }
-
-  getRequestParams(searchTitle, halaman, totalDataPerHalaman): any {
-    let params = {};
-
-    if (searchTitle) {
-      params[`nama_dosen`] = searchTitle;
-    }
-
-    if (halaman) {
-      params[`page`] = halaman - 1;
-    }
-
-    if (totalDataPerHalaman) {
-      params[`size`] = totalDataPerHalaman;
-    }
-
-    return params;
-  }
-
-  ambilDosen(){
-    const params = this.getRequestParams(this.nama_dosen, this.halaman, this.totalDataPerHalaman);
-
-    this.dbDosen.ambilDosen(params)
-      .subscribe((ambilAkunDosen => {
-        console.log(ambilAkunDosen);
-      }))
+    this.nama_dosen = this.tokenService.getPengguna().nama_dosen;
+    this.email_dosen = this.tokenService.getPengguna().email_pengguna;
   }
 
 }

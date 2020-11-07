@@ -187,7 +187,20 @@ exports.nilaiUas = (req, res) => {
         where: {id: req.params.idMhsnilai}
       }).then(mhs => {
         mhs.setNilai(nilaiUas.id);
+      }).catch(err => {
+        res.status(500).send({
+          message: "error set nilai " + err
+        });
       });
+    }).catch(err => {
+      res.status(500).send({
+        message: "error cari mhs " + err
+      });
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "error saat simpan nilai"
     });
   });
 

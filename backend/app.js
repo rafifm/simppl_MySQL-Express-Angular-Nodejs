@@ -38,7 +38,7 @@ app.use("/api/posts", pendaftaranMhsRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/dosen", dosenRoutes);
 
-db.databaseConf.sync({force: true}).then(() => {
+db.databaseConf.sync().then(() => {
   console.log('table direfresh');
   initial();
 });

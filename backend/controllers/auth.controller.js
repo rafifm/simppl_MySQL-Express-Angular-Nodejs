@@ -86,7 +86,8 @@ exports.signin = (req, res) => {
                 email_pengguna: pengguna.email_pengguna,
                 peran: authorities,
                 accessToken: token,
-                idPengguna: idPengguna
+                idPengguna: idPengguna,
+                nama_dosen:pengguna.akundosen.nama_dosen
             });
         });
     }).catch(err => {

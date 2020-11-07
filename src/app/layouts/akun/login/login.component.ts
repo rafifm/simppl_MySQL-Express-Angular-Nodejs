@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       this.idLogin = this.tokenStorage.getPengguna().id;
       this.idPengguna = this.tokenStorage.getPengguna().idPengguna;
       this.getPeran();
+      console.log(this.tokenStorage.getPengguna());
       // this.reloadPage();
     }, err => {
       this.errorMessage = err.error.message;
