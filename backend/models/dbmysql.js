@@ -28,6 +28,7 @@ db.akundosen = require("./akundosen") (database,Sequelize);
 db.nilai = require("./nilai") (database, Sequelize);
 db.peran = require("./peran") (database, Sequelize);
 db.pengguna = require("./pengguna") (database, Sequelize);
+db.kaprodi = require("./kaprodi") (database, Sequelize);
 
 //sekolah one to many mahasiswa
 db.sekolah.hasMany(db.mhs,{ foreignKey: 'idSklh' });
@@ -38,8 +39,24 @@ db.akundosen.hasMany(db.mhs, { foreignKey: 'idDsnMhs'});
 db.mhs.belongsTo(db.akundosen, { foreignKey: 'idDsnMhs'});
 
 //pengguna one to one dosen
-db.akundosen.hasOne(db.pengguna);
-db.pengguna.belongsTo(db.akundosen);
+db.pengguna.hasOne(db.akundosen);
+db.akundosen.belongsTo(db.pengguna);
+
+//pengguna one to one guru
+db.pengguna.hasOne(db.guru);
+db.guru.belongsTo(db.pengguna);
+
+//pengguna one to one staff
+db.pengguna.hasOne(db.staff);
+db.staff.belongsTo(db.pengguna);
+
+//pengguna one to one mahasiswa
+db.pengguna.hasOne(db.mhs);
+db.mhs.belongsTo(db.pengguna);
+
+//pengguna one to one kaprodi
+db.pengguna.hasOne(db.kaprodi);
+db.kaprodi.belongsTo(db.pengguna);
 
 //mhs one to one nilai
 db.nilai.hasOne(db.mhs);

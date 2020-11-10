@@ -87,8 +87,7 @@ exports.findOne = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message: err || "error pengambilan mhs dengan id"
-      })
-      console.log(err);
+      });
     });
 };
 
@@ -103,6 +102,10 @@ exports.insertSekolah = (req, res) => {
       }).then(sekolahId => {
         idMahasiswa.setSekolah(sekolahId);
         res.send(idMahasiswa);
+      }).catch(err => {
+        res.status(500).send({
+          message: "error set data sekolah "+ err
+        });
       });
     }).catch(err => {
       res.status(500).send({
@@ -140,19 +143,17 @@ exports.delete = (req, res) => {
 
   dbMhs.destroy({
       where: { id: id}
-  })
-  .then(num => {
-      if (num == 1){
-          res.send({
-              message: "akun mahasiswa sdh dihapus"
-          });
-      } else {
-          res.send({
-              message: `Gagal menghapus akun mahasiswa dengan id = ${id}.`
-          });
-      }
-  })
-  .catch(err => {
+  }).then(num => {
+    if (num == 1){
+      res.send({
+          message: "akun mahasiswa sdh dihapus"
+      });
+    } else {
+      res.send({
+          message: `Gagal menghapus akun mahasiswa dengan id = ${id}.`
+      });
+    }
+  }).catch(err => {
       res.status(500).send ({
           message: "gagal delete akun mahasiswa id = "+ id
       });
@@ -163,16 +164,14 @@ exports.deleteAll = (req, res) => {
   dbMhs.destroy({
       where: {},
       truncate: false
-  })
-      .then(num => {
-          res.send({ message: `${num} akun mhs sdh dihapus`})
-      })
-      .catch(err => {
-          res.status(500).send({
-              message: 
-                  err.message || "error dalam proses penghapusan"
-          });
+  }).then(num => {
+      res.send({ message: `${num} akun mhs sdh dihapus`})
+  }).catch(err => {
+      res.status(500).send({
+        message: 
+          err.message || "error dalam proses penghapusan"
       });
+  });
 };
 
 exports.nilaiUas = (req, res) => {

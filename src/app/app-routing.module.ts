@@ -13,9 +13,6 @@ import { PenilaianMhsDosenInputComponent } from './modules/mhs/penilaian-mhs-dos
 import { PenilaianMhsDosenTampilComponent } from './modules/mhs/penilaian-mhs-dosen/penilaian-mhs-dosen-tampil/penilaian-mhs-dosen-tampil.component';
 import { DatadosentambahComponent } from './modules/staff/datadosen/datadosentambah/datadosentambah.component';
 import { DatadosentampilComponent } from './modules/staff/datadosen/datadosentampil/datadosentampil.component';
-import { SidebarComponent } from './shared/component/sidebar/sidebar.component';
-import { SidebarguruComponent } from './shared/component/sidebar/sidebarguru/sidebarguru.component';
-
 
 const routes: Routes = [{ 
   path: 'dashboard', 
@@ -38,9 +35,6 @@ const routes: Routes = [{
     }, {
       path: 'kaprodi',
       loadChildren: () => import('./modules/kaprodi/kaprodi.module').then(m => m.KaprodiModule)
-    }, {
-      path: 'laporan',
-      loadChildren: () => import('./modules/admin/laporan/laporan.module').then(m => m.LaporanModule)
     }, {
       path: 'staff',
       loadChildren: () => import('./modules/staff/staff.module').then(m => m.StaffModule)
@@ -72,6 +66,9 @@ const routes: Routes = [{
   },{ 
     path: 'auth',
     loadChildren: () => import('./layouts/akun/akun.module').then(m => m.AkunModule)
+  }, {
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
   { path: 'create', component: PendaftaranMhsCreateComponent, canActivate: [AuthGuard] },
   { path: 'edit/:postId', component: PendaftaranMhsCreateComponent},

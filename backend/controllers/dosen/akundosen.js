@@ -86,7 +86,6 @@ exports.update = (req, res) => {
     where: {id: id}
   })
     .then(ubah => {
-      console.log(ubah);
       if(ubah == 1 ) {
         res.send({
           message: "Akun mhs telah terupdate"
@@ -109,8 +108,7 @@ exports.delete = (req, res) => {
 
   dbAkunDosen.destroy({
       where: { id: id}
-  })
-  .then(num => {
+  }).then(num => {
       if (num == 1){
           res.send({
               message: "akun mahasiswa sdh dihapus"
@@ -120,8 +118,7 @@ exports.delete = (req, res) => {
               message: `Gagal menghapus akun mahasiswa dengan id = ${id}.`
           });
       }
-  })
-  .catch(err => {
+  }).catch(err => {
       res.status(500).send ({
           message: "gagal delete akun mahasiswa id = "+ id
       });
@@ -132,16 +129,14 @@ exports.deleteAll = (req, res) => {
   dbAkunDosen.destroy({
       where: {},
       truncate: false
-  })
-      .then(num => {
-          res.send({ message: `${num} akun mhs sdh dihapus`})
-      })
-      .catch(err => {
-          res.status(500).send({
-              message: 
-                  err.message || "error dalam proses penghapusan"
-          });
+  }).then(num => {
+      res.send({ message: `${num} akun mhs sdh dihapus`})
+  }).catch(err => {
+      res.status(500).send({
+        message: 
+          err.message || "error dalam proses penghapusan"
       });
+  });
 };
 
 exports.tambahDosen = (req, res) => {
@@ -156,15 +151,18 @@ exports.tambahDosen = (req, res) => {
     nip: req.body.nip,
     no_hp_dosen: req.body.no_hp_dosen,
     pangkat_dosen: req.body.pangkat_dosen,
-  })
-  .then(akundosen => {
+  }).then(akundosen => {
     return dbPengguna.findOne({
       where: { id: req.params.idPengguna}
     }).then(pengguna => {
       pengguna.setAkundosen(akundosen.id);
+    }).catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "error saat set akun dosen setelah pembuatan"
+      });
     });
-  })
-  .catch(err => {
+  }).catch(err => {
     res.status(500).send({
       message:
         err.message || "error saat pembuatan akun"
@@ -181,6 +179,10 @@ exports.insertMhs = (req, res) => {
     }).then(dosen => {
       mhs.setAkundosen(dosen);
       res.send(mhs);
+    }).catch(err => {
+      res.status(500).send({
+        message: "error set dosen " + err
+      });
     });
   }).catch(err => {
     res.status(500).send({

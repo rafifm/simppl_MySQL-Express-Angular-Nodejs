@@ -89,7 +89,9 @@ export class LoginComponent implements OnInit {
     } else if(vStaff){
       this.router.navigate(['/dashboard/staff/tambahstaff']);
     } else if(vAdmin){
-      this.router.navigate(['/dashboard/staff'])
+      this.router.navigate(['/admin/kelolaperan']);
+    } else if(vKaprodi){
+      this.router.navigate(['/dashboard/kaprodi']);
     }
 
 

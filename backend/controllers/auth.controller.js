@@ -17,15 +17,19 @@ exports.signup = (req, res) => {
         if(req.body.peran){
             peran.findAll({
                 where: {
-                    nama_peran: {
-                        [Op.or]: req.body.peran
-                    }
+                    nama_peran: req.body.peran
+                    // {
+                    //     [Op.or]: 
+                    // }
                 }
             }).then( peran =>{
-                console.log("perans" + peran);
                 pengguna.setPerans(peran).then(() => {
                     res.send({ message: "registrasi berhasil"});
+                }).catch(err =>{
+                    res.status(500).send({ message: ' set peran gagal' + err.message});
                 });
+            }).catch(err =>{
+                res.status(500).send({ message: 'cari peran ' + err.message});
             });
         } else {
             pengguna.setPerans([1]).then(()=>{
@@ -33,8 +37,8 @@ exports.signup = (req, res) => {
             });
         }
     }).catch(err =>{
-        res.status(500).send({ message: err.message});
-    })
+        res.status(500).send({ message: 'tambah pengguna ' + err.message});
+    });
 }
 
 exports.signin = (req, res) => {
@@ -89,8 +93,25 @@ exports.signin = (req, res) => {
                 idPengguna: idPengguna,
                 nama_dosen:pengguna.akundosen.nama_dosen
             });
+        }).catch(err => {
+            res.status(500).send({ message: err.message});
         });
     }).catch(err => {
         res.status(500).send({ message: err.message});
     });
 };
+
+exports.ambilPengguna = (req, res) => {
+    return pengguna.findAll({
+        include: [{
+            model: peran,
+            through: "pengguna_peran"
+        }]
+    }).then(semuaPengguna => {
+        // for(let i=0;i<=semuaPengguna.length;i++){
+        // }
+        res.status(200).send(semuaPengguna);
+    }).catch(err => {
+        res.status(500).send({message: 'ambil semua pengguna error'+ err.message});
+    });
+}

@@ -15,9 +15,9 @@ import { PenilaianMhsDosenTampilComponent } from 'src/app/modules/mhs/penilaian-
 import { StaffModule } from '../../modules/staff/staff.module';
 import { DosenModule } from '../../modules/penilaian/dosen/dosen.module';
 import { GuruModule } from '../../modules/penilaian/guru/guru.module';
-import { LaporanModule } from 'src/app/modules/admin/laporan/laporan.module';
 import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
 import { AuthModule } from '../auth/auth.module';
+import { AdminModule } from 'src/app/modules/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -42,8 +42,8 @@ import { AuthModule } from '../auth/auth.module';
     DosenModule,
     GuruModule,
     KaprodiModule,
-    LaporanModule,
-    AuthModule
+    AuthModule,
+    AdminModule
   ]
 })
 export class DefaultModule { }

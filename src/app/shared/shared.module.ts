@@ -49,7 +49,8 @@ import { SidebarstaffComponent } from './component/sidebar/sidebarstaff/sidebars
     SidebardosenComponent,
     SidebarkaprodiComponent,
     SidebardosenComponent,
-    SidebarguruComponent
+    SidebarguruComponent,
+    SidebaradminComponent
   ]
 })
 export class SharedModule { }

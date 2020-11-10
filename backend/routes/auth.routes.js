@@ -7,6 +7,8 @@ module.exports = app => {
 
     router.post("/signin", authController.signin);
 
+    router.get("/admin", authController.ambilPengguna);
+
     app.use("/api/auth", router);
 
     app.use((req, res, next) => {

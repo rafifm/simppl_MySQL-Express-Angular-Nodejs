@@ -65,13 +65,12 @@ export class TambahSekolahComponent implements OnInit {
         this.dataSekolah.id, this.dataSekolah = {
           nama_sekolah: this.formSekolah.value.nama_sekolah,
           kuotamhs: this.formSekolah.value.kuotamhs
-        }
-      ).subscribe(dataUploadSekolah => {
+        }).subscribe(dataUploadSekolah => {
         console.log(dataUploadSekolah);
         this.submitted = true;
-      }, error=> {
-        console.log(error);
-      });
+        }, error=> {
+          console.log(error);
+        });
     }
    
     this.formSekolah.reset();

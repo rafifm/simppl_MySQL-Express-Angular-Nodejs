@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { AuthModule } from './layouts/auth/auth.module';
 import { AkunModule } from './layouts/akun/akun.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AkunModule } from './layouts/akun/akun.module';
     DefaultModule,
     FormsModule,
     AuthModule,
-    AkunModule
+    AkunModule,
+    AdminModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
