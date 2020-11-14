@@ -9,9 +9,13 @@ import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekola
 import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
 import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tampilan-dosen.component';
 import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
+import { KaprodiComponent } from './kaprodi.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: KaprodiComponent
+  }, {
     path: '',
     component:SidebarkaprodiComponent,
     outlet: 'sidebarkaprodi'

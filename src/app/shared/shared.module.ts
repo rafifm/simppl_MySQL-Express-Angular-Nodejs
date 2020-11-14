@@ -17,6 +17,7 @@ import { SidebardosenComponent } from './component/sidebar/sidebardosen/sidebard
 import { SidebaradminComponent } from './component/sidebar/sidebaradmin/sidebaradmin.component';
 import { SidebarkaprodiComponent } from './component/sidebar/sidebarkaprodi/sidebarkaprodi.component';
 import { SidebarstaffComponent } from './component/sidebar/sidebarstaff/sidebarstaff.component';
+import { SidebarmhsComponent } from './component/sidebar/sidebarmhs/sidebarmhs.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SidebarstaffComponent } from './component/sidebar/sidebarstaff/sidebars
     SidebardosenComponent,
     SidebaradminComponent,
     SidebarkaprodiComponent,
-    SidebarstaffComponent
+    SidebarstaffComponent,
+    SidebarmhsComponent
   ],
   imports: [
     CommonModule,

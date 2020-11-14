@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 
 @Component({
   selector: 'app-sidebaradmin',
@@ -7,53 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebaradminComponent implements OnInit {
 
-  ddsekolah = [
-    {
-        label: 'sekolah',
-        items: [
-          {
-            label: ' - Nilai Ujian',
-            link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
+    nama_admin;
+    email_admin;
 
-  ddpenempatan = [
-    {
-        label: 'Penempatan',
-        items: [
-          {
-              label: ' - Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: ' - Dosen Pembimbing',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
-  constructor() { }
+  constructor(
+    private tokenService: TokenStorageService,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
+    this.nama_admin = this.route.snapshot.queryParams['nama'];
+    this.email_admin = this.tokenService.getPengguna().email_pengguna;
   }
 
 }

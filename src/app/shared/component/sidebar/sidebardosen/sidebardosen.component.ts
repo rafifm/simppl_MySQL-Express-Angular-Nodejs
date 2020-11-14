@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
-import { DosenService } from 'src/app/modules/penilaian/dosen/dosen.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sidebardosen',
@@ -12,11 +11,11 @@ export class SidebardosenComponent implements OnInit {
   nama_dosen;
   email_dosen;
 
-  constructor(private tokenService: TokenStorageService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.nama_dosen = this.tokenService.getPengguna().nama_dosen;
-    this.email_dosen = this.tokenService.getPengguna().email_pengguna;
+    this.nama_dosen = this.route.snapshot.queryParams['nama'];
+    this.email_dosen = this.route.snapshot.queryParams['email'];
   }
 
 }

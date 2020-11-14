@@ -3,6 +3,8 @@ const config = require("../config/auth.config");
 const pengguna = db.pengguna;
 const peran = db.peran;
 const dosen = db.akundosen;
+const mhs = db.mhs;
+const kaprodi = db.kaprodi;
 
 const Op = db.Sequelize.Op;
 
@@ -18,9 +20,6 @@ exports.signup = (req, res) => {
             peran.findAll({
                 where: {
                     nama_peran: req.body.peran
-                    // {
-                    //     [Op.or]: 
-                    // }
                 }
             }).then( peran =>{
                 pengguna.setPerans(peran).then(() => {
@@ -50,6 +49,14 @@ exports.signin = (req, res) => {
             model: dosen,
             required: false,
             status: 'active'
+        },{
+            model: mhs,
+            required: false,
+            status: 'active'
+        },{
+            model: kaprodi,
+            required: false,
+            status: 'active'
         }]
     }).then(pengguna => {
         if(!pengguna) {
@@ -73,13 +80,21 @@ exports.signin = (req, res) => {
         });
 
         var idPengguna;
+        var nama;
         if(pengguna.akundosen ){
-            idPengguna = pengguna.akundosen.id
+            idPengguna = pengguna.akundosen.id;
+            nama = pengguna.akundosen.nama_dosen;
+        } else if(pengguna.mahasiswa) {
+            idPengguna = pengguna.mahasiswa.id;
+            nama = pengguna.mahasiswa.nama_mhs;
+        } else if (pengguna.kaprodi) {
+            idPengguna = pengguna.kaprodi.id;
+            nama = pengguna.kaprodi.nama;
         } else {
-            idPengguna = 'kosong'
-            
+            idPengguna = 'kosong';
+            nama = 'belum ada';
         }
-
+        console.log(pengguna);
         var authorities = [];
         pengguna.getPerans().then(peran => {
             for(let i = 0; i < peran.length; i++) {
@@ -91,7 +106,7 @@ exports.signin = (req, res) => {
                 peran: authorities,
                 accessToken: token,
                 idPengguna: idPengguna,
-                nama_dosen:pengguna.akundosen.nama_dosen
+                nama: nama
             });
         }).catch(err => {
             res.status(500).send({ message: err.message});
@@ -108,8 +123,6 @@ exports.ambilPengguna = (req, res) => {
             through: "pengguna_peran"
         }]
     }).then(semuaPengguna => {
-        // for(let i=0;i<=semuaPengguna.length;i++){
-        // }
         res.status(200).send(semuaPengguna);
     }).catch(err => {
         res.status(500).send({message: 'ambil semua pengguna error'+ err.message});

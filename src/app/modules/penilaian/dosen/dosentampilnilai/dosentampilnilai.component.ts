@@ -31,7 +31,6 @@ export class DosentampilnilaiComponent implements OnInit {
     this.dbMhs.ambilDosen(this.idPengguna)
       .subscribe(ambilData => {
         this.dosen = ambilData[0].mahasiswas;
-        console.log(this.dosen);
         for(var i=0;i<= this.dosen.length; i++){
           if(this.dosen[i].nilaiId == null){
             tombolnilai = true;

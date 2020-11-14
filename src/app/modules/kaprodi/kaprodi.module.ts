@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
 import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tampilan-dosen.component';
 import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
+import { KaprodiComponent } from './kaprodi.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampila
     TampilSekolahComponent,
     PilihTmptMhsComponent,
     TampilanDosenComponent,
-    TampilanMhsComponent
+    TampilanMhsComponent,
+    KaprodiComponent
   ],
   imports: [
     CommonModule,
     KaprodiRoutingModule,
     AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class KaprodiModule { }

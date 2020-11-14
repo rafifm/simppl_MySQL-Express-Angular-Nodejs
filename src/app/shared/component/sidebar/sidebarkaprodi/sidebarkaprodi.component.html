@@ -1,8 +1,8 @@
 <mat-nav-list>
   <div class="profile-card">
     <div class="header">
-      <h2>Dr. H. Karim, M.Si.</h2>
-      <h4>karim334@gmail.com</h4>
+      <h2>{{nama_kaprodi}}</h2>
+      <h4>{{email_kaprodi}}</h4>
     </div>
     <img src="assets/logoprofile.png">
   </div>
@@ -12,6 +12,5 @@
   <ng-material-multilevel-menu [configuration]='config' [items]='ddsklh'></ng-material-multilevel-menu>
   <ng-material-multilevel-menu [configuration]='config' [items]='ddmhs'></ng-material-multilevel-menu>
   <mat-divider></mat-divider>
-
 
 </mat-nav-list>

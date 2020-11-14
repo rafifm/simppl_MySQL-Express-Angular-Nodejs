@@ -3,26 +3,18 @@
     <button *ngIf="userIsAuthenticated" mat-icon-button (click)="toggleSideBar()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span style="color:yellow">SIMPPL</span>
-    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+    <div fxFlex fxLayout="row" fxLayoutAlign="space-between">
+      <span fxLayout="row" fxLayoutAlign="center center " style="color:yellow">SIMPPL</span>
+      <h3 fxLayout="row" fxLayoutAlign="center center">{{peran}}</h3>  
       <ul fxLayout="row" fxLayoutGap="20px">
-        <!-- <li>
-          <button mat-icon-button>
-            <mat-icon>settings</mat-icon>
-          </button>
-        </li>
-        <li>
-          <button mat-icon-button>
-            <mat-icon>help_outline</mat-icon>
-          </button>
-        </li> -->
         <li>
           <button mat-icon-button (click)="toggleSideBar()">
             <mat-icon>menu</mat-icon>
           </button>
-          <!-- <button mat-button [matMenuTriggerFor]="menu">
-            <mat-icon>person_outline</mat-icon>
+          <button mat-raised-button color="primary" (click)="logout()"  >
+            Log Out
           </button>
+          <!-- 
           <mat-menu #menu="matMenu">
             <li mat-menu-item>
               <a mat-button routerLink="/login" routerLinkActive="mat-accent">

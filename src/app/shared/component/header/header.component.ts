@@ -1,39 +1,42 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { AuthService } from 'src/app/layouts/auth/auth.service';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   userIsAuthenticated = false;
-  private authListenerSubs: Subscription;
+  peran;
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private router: Router
+    ) { }
 
-  ngOnInit() {
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
-      });
+  ngOnInit(): void {
+    if(this.tokenStorage.getPengguna().peran == 'PERAN_DOSEN') {
+      this.peran = "DOSEN";
+    } else if (this.tokenStorage.getPengguna().peran == 'PERAN_ADMIN'){
+      this.peran = "ADMIN";
+    } else if (this.tokenStorage.getPengguna().peran == 'PERAN_MAHASISWA'){
+      this.peran = "MAHASISWA";
+    } else if (this.tokenStorage.getPengguna().peran == 'PERAN_KAPRODI'){
+      this.peran = "KAPRODI";
+    }
   }
 
-  onLogout() {
-    this.authService.logout();
-    this.toggleSideBarForMe.emit();
+  logout(): void {
+    this.router.navigate(['/auth/login']);
+    this.tokenStorage.signOut();
+    // window.location.reload();
+    
   }
 
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
   }
-
-  ngOnDestroy() {
-    this.authListenerSubs.unsubscribe();
-  }
-
 }

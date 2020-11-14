@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SidebarstaffComponent } from 'src/app/shared/component/sidebar/sidebarstaff/sidebarstaff.component';
+import { SidebarmhsComponent } from 'src/app/shared/component/sidebar/sidebarmhs/sidebarmhs.component';
 import { DatamhstambahComponent } from './datamhs/datamhstambah/datamhstambah.component';
 import { DatamhstampilComponent } from './datamhs/datamhstampil/datamhstampil.component';
 
@@ -8,8 +8,8 @@ import { DatamhstampilComponent } from './datamhs/datamhstampil/datamhstampil.co
 const routes: Routes = [
   {
     path: '',
-    component: SidebarstaffComponent,
-    outlet: 'sidebarstaff'
+    component: SidebarmhsComponent,
+    outlet: 'sidebarmhs'
   }, {
     path: 'tambahmhs',
     component: DatamhstambahComponent

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sidebarkaprodi',
@@ -9,7 +10,7 @@ export class SidebarkaprodiComponent implements OnInit {
 
   ddmhs = [
     {
-        label: 'Dosen Pembimbing',
+        label: 'Dosen',
         items: [
           {
               label: 'Penempatan Dosen',
@@ -24,17 +25,9 @@ export class SidebarkaprodiComponent implements OnInit {
         label: 'Mahasiswa',
         items: [
           {
-              label: 'Penempatan',
+              label: 'Penempatan Mahasiswa',
               link: '/dashboard/kaprodi/pilihtempatmhs'
-          },
-          // {
-          //     label: 'Penilaian Dosen',
-          //     link: '/nilaidosentampil'
-          // },
-          // {
-          //     label: 'Penilaian Guru',
-          //     link: '/nilaigurutampil'
-          // }
+          }
         ]
     }
   ];
@@ -46,11 +39,7 @@ export class SidebarkaprodiComponent implements OnInit {
           {
               label: 'Tambah Sekolah',
               link: '/dashboard/kaprodi/tambahsekolah'
-          },
-          // {
-          //     label: 'Tambah Kuota Sekolah',
-          //     link: '/dashboard/kaprodi/tambahkuota'
-          // }
+          }
         ]
     }
   ];
@@ -61,9 +50,14 @@ export class SidebarkaprodiComponent implements OnInit {
     collapseOnSelect: true
   }
 
-  constructor() { }
+  nama_kaprodi;
+  email_kaprodi;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.nama_kaprodi = this.route.snapshot.queryParams['nama'];
+    this.email_kaprodi = this.route.snapshot.queryParams['email'];
   }
 
 }

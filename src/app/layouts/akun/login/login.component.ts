@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
       this.idLogin = this.tokenStorage.getPengguna().id;
       this.idPengguna = this.tokenStorage.getPengguna().idPengguna;
       this.getPeran();
-      console.log(this.tokenStorage.getPengguna());
-      // this.reloadPage();
     }, err => {
       this.errorMessage = err.error.message;
       this.isLoggedInFailed = true;
@@ -61,37 +59,23 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 
-  logout(): void {
-    this.tokenStorage.signOut();
-    window.location.reload();
-  }
-
   getPeran() {
-    let vDosen = this.roles.includes('PERAN_DOSEN');
-    let vGuru = this.roles.includes('PERAN_GURU');
-    let vAdmin = this.roles.includes('PERAN_ADMIN');
-    let vKaprodi = this.roles.includes('PERAN_KAPRODI');
-    let vMhs = this.roles.includes('PERAN_MAHASISWA');
-    let vStaff = this.roles.includes('PERAN_STAFF');
-    let vKoorSekolah = this.roles.includes('PERAN_KOORSEKOLAH');
-
-    if(vDosen) {
+    if(this.roles.includes('PERAN_DOSEN')) {
       if(this.idPengguna == 'kosong'){
         this.router.navigate(['/dashboard/staff/tambahdosen', this.idLogin]);
       } else {
-        this.router.navigate(['/dashboard/dosen/tampilnilai']);
+        this.router.navigate(['/dashboard/dosen/tampilnilai'],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
       }
-      
-    } else if(vGuru){
+    } else if(this.roles.includes('PERAN_GURU')){
       this.router.navigate(['/dashboard/staff/tambahguru']);
-    } else if(vMhs){
-      this.router.navigate(['/dashboard/mhs/tambahmhs']);
-    } else if(vStaff){
+    } else if(this.roles.includes('PERAN_MAHASISWA')){
+      this.router.navigate(['/dashboard/mhs/tambahmhs'],{queryParams: {nama:'',email: this.tokenStorage.getPengguna().email_pengguna}});
+    } else if(this.roles.includes('PERAN_STAFF')){
       this.router.navigate(['/dashboard/staff/tambahstaff']);
-    } else if(vAdmin){
-      this.router.navigate(['/admin/kelolaperan']);
-    } else if(vKaprodi){
-      this.router.navigate(['/dashboard/kaprodi']);
+    } else if(this.roles.includes('PERAN_ADMIN')){
+      this.router.navigate(['/admin/kelolaperan'], {queryParams: {nama:'admin',email: this.tokenStorage.getPengguna().email_pengguna}});
+    } else if(this.roles.includes('PERAN_KAPRODI')){
+      this.router.navigate(['/dashboard/kaprodi'], {queryParams: {nama:'kaprodi',email: this.tokenStorage.getPengguna().email_pengguna}});
     }
 
 
