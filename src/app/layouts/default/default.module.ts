@@ -16,7 +16,6 @@ import { AdminModule } from 'src/app/modules/admin/admin.module';
   declarations: [
     DefaultComponent,
     DashboardComponent
-    
   ],
   imports: [
     CommonModule,
