@@ -1,9 +1,8 @@
 <div style="text-align: center;">
   <h4> Pendaftaran Mahasiswa </h4>
 </div>
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="formMhs" (submit)="simpanAkunMhs()" *ngIf="!isLoading">
+<div>
+  <form [formGroup]="formMhs" (submit)="simpanAkunMhs()" >
     <mat-form-field>
         <input
           matInput
@@ -46,4 +45,4 @@
       type="submit">Simpan
     </button>
   </form>
-</mat-card>
+</div>

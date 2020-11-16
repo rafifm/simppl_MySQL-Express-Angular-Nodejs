@@ -24,15 +24,14 @@
       <ng-container matColumnDef="aksi">
         <th mat-header-cell *matHeaderCellDef> Aksi </th>
         <td mat-cell *matCellDef="let akundosen"> 
-          <mat-action-row >
+          <div >
             <a mat-button color="primary" [routerLink]="['ubahdata', akundosen.id]">EDIT</a>
             <button mat-button color="warn" (click)="hapusDosen(akundosen.id)">DELETE</button>
-          </mat-action-row>
+          </div>
         </td>
       </ng-container>      
       <tr mat-header-row *matHeaderRowDef="kolomDosen"></tr>
       <tr mat-row *matRowDef="let row; columns: kolomDosen;"></tr>
     </table>
-    <mat-paginator [length]="totalAkunDosen" [pageSize]="postsPerPage" [pageSizeOptions]="banyakPerHalaman" (page)="handlePageChange($event)"></mat-paginator>    
   </div>
 </div>

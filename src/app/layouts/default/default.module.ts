@@ -11,6 +11,7 @@ import { DosenModule } from '../../modules/penilaian/dosen/dosen.module';
 import { GuruModule } from '../../modules/penilaian/guru/guru.module';
 import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
 import { AdminModule } from 'src/app/modules/admin/admin.module';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,7 @@ import { AdminModule } from 'src/app/modules/admin/admin.module';
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularMaterialModule,
-    StaffModule,
-    DosenModule,
-    GuruModule,
-    KaprodiModule,
-    AdminModule
+    MatSidenavModule
   ]
 })
 export class DefaultModule { }

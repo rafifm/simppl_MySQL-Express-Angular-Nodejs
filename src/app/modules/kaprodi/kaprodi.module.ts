@@ -13,15 +13,20 @@ import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tam
 import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
 import { KaprodiComponent } from './kaprodi.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     PilihTmptDosenComponent, 
     PilihTmptGuruComponent,
+    PilihTmptMhsComponent,
     TambahKuotaComponent,
     TambahSekolahComponent,
     TampilSekolahComponent,
-    PilihTmptMhsComponent,
     TampilanDosenComponent,
     TampilanMhsComponent,
     KaprodiComponent
@@ -29,9 +34,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     KaprodiRoutingModule,
-    AngularMaterialModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatTableModule,
+    MatExpansionModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatIconModule
   ]
 })
 export class KaprodiModule { }

@@ -5,6 +5,11 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -13,9 +18,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    AngularMaterialModule,
+    MatCardModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSidenavModule
   ]
 })
 export class AdminModule { }

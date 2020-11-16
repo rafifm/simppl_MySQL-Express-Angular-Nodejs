@@ -3,9 +3,6 @@
       <button mat-icon-button routerLink="/dashboard/kaprodi/tambahsekolah">
         <mat-icon>add_box</mat-icon>
       </button>
-      <!-- <button class="m-3 btn btn-sm btn-danger" (click)="hapusSemuaDataSekolah()">
-        Remove All
-      </button> -->
       <table mat-table [dataSource]="sekolah" class="mat-elevation-z8">
         <!-- Position Column -->
         <ng-container matColumnDef="nama_sekolah">
@@ -29,6 +26,5 @@
         <tr mat-header-row *matHeaderRowDef="kolomSekolah"></tr>
         <tr mat-row *matRowDef="let row; columns: kolomSekolah;"></tr>
       </table>
-      <mat-paginator [length]="totalAkunSekolah" [pageSize]="ukuranHalaman" [pageSizeOptions]="banyakPerHalaman" (page)="handlePageChange($event)"></mat-paginator>    
     </div>
   </div>

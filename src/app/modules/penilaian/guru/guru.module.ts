@@ -6,6 +6,8 @@ import { GurutampilnilaiComponent } from './gurutampilnilai/gurutampilnilai.comp
 import { GurutampbahnilaiComponent } from './gurutampbahnilai/gurutampbahnilai.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatGridTile } from '@angular/material/grid-list';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -15,8 +17,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     GuruRoutingModule,
-    AngularMaterialModule,
-    SharedModule
+    SharedModule,
+    MatGridTile,
+    MatRadioModule
   ]
 })
 export class GuruModule { }

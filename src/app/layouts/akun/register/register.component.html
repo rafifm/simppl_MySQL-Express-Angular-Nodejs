@@ -1,38 +1,36 @@
-<mat-card>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <img src="assets/logoulm.png">
-    <form [formGroup]="formRegister" (submit)="onSubmit()">
-        <mat-form-field>
-            <input
-            matInput
-            type="text"
-            formControlName="email_pengguna"
-            placeholder="Email">
-            <mat-error *ngIf="formRegister.get('email_pengguna').invalid">Masukkan email</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input
-            matInput
-            type="text"
-            formControlName="password_pengguna"
-            placeholder="Password">
-            <mat-error *ngIf="formRegister.get('password_pengguna').invalid">Masukkan Password</mat-error>
-        </mat-form-field>
-        <button mat-raised-button color="accent" type="submit" >Sign In</button>
-    </form>
-    <ng-template *ngIf = "isSignUpFailed">
-        <h2 matDialogTitle>Error</h2>
-        <p matDialogContent><em>Pendaftaran gagal</em></p>
-            <mat-dialog-actions align="end">
-                <button mat-button matDialogClose>Dismiss</button>
-            </mat-dialog-actions>
-    </ng-template>
-    <ng-template *ngIf = "isSignUpFailed">
-        <h2 matDialogTitle>Success</h2>
-        <p matDialogContent><em>Pendaftaran Berhasil</em></p>
-            <mat-dialog-actions align="end">
-                <button mat-button matDialogClose>Dismiss</button>
-            </mat-dialog-actions>
-    </ng-template>
-    
-  </mat-card>
+
+    <div>
+        <img src="assets/logoulm.png">
+        <form [formGroup]="formRegister" (submit)="onSubmit()">
+            <mat-form-field>
+                <input
+                matInput
+                type="text"
+                formControlName="email_pengguna"
+                placeholder="Email">
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                matInput
+                type="text"
+                formControlName="password_pengguna"
+                placeholder="Password">
+            </mat-form-field>
+            <button mat-raised-button color="accent" type="submit" >Sign In</button>
+        </form>
+        <ng-template *ngIf = "isSignUpFailed">
+            <h2 matDialogTitle>Error</h2>
+            <p matDialogContent><em>Pendaftaran gagal</em></p>
+                <mat-dialog-actions align="end">
+                    <button mat-button matDialogClose>Dismiss</button>
+                </mat-dialog-actions>
+        </ng-template>
+        <ng-template *ngIf = "isSignUpFailed">
+            <h2 matDialogTitle>Success</h2>
+            <p matDialogContent><em>Pendaftaran Berhasil</em></p>
+                <mat-dialog-actions align="end">
+                    <button mat-button matDialogClose>Dismiss</button>
+                </mat-dialog-actions>
+        </ng-template>
+        
+      </div>

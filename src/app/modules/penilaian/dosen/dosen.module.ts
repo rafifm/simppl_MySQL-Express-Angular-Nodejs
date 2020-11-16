@@ -8,20 +8,24 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DosentambahnilaiutsComponent } from './dosentambahnilaiuts/dosentambahnilaiuts.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatGridTile } from '@angular/material/grid-list';
 
 
 @NgModule({
   declarations: [
     DosentambahnilaiComponent, 
-    DosentampilnilaiComponent, DosentambahnilaiutsComponent
+    DosentampilnilaiComponent, 
+    DosentambahnilaiutsComponent
   ],
   imports: [
     CommonModule,
     DosenRoutingModule,
-    AngularMaterialModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatGridTile
   ]
 })
 export class DosenModule { }

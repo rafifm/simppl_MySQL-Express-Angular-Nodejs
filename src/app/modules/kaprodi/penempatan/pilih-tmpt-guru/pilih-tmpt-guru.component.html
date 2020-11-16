@@ -19,6 +19,5 @@
       <tr mat-header-row *matHeaderRowDef="kolomGuru"></tr>
       <tr mat-row *matRowDef="let row; columns: kolomGuru;"></tr>
     </table>
-    <mat-paginator [length]="totalDataGuru" [pageSize]="ukuranHalaman" [pageSizeOptions]="banyakPerHalaman" (page)="handlePageChange($event)"></mat-paginator>    
   </div>
 </div>

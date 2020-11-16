@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DefaultModule } from './layouts/default/default.module';
@@ -21,15 +19,12 @@ import { AdminModule } from './modules/admin/admin.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    NgxPaginationModule,
     HttpClientModule,
-    DefaultModule,
-    FormsModule,
+    AdminModule,
     AkunModule,
-    AdminModule
+    DefaultModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

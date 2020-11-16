@@ -4,8 +4,8 @@ import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-kelolaperan',
-  templateUrl: './kelolaperan.component.html',
-  styleUrls: ['./kelolaperan.component.css']
+  templateUrl: 'kelolaperan.component.html',
+  styleUrls: ['kelolaperan.component.css']
 })
 export class KelolaperanComponent implements OnInit {
 

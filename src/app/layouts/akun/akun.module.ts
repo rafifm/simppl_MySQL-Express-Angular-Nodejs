@@ -6,6 +6,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { AkunRoutingModule } from './akun-routing.module';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -17,8 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AkunRoutingModule,
-    AngularMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularMaterialModule
+    // MatFormFieldModule
   ]
 })
 export class AkunModule { }

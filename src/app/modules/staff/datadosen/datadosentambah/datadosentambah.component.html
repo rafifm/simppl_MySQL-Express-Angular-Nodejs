@@ -1,6 +1,5 @@
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="formAkunDosen" (submit)="simpanAkunDosen()" *ngIf="!isLoading">
+<div>
+  <form [formGroup]="formAkunDosen" (submit)="simpanAkunDosen()">
     <mat-form-field>
         <input
           matInput
@@ -36,4 +35,4 @@
       type="submit">Save post
     </button>
   </form>
-</mat-card>
+</div>
