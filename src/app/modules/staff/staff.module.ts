@@ -8,6 +8,12 @@ import { DatadosentambahComponent } from './datadosen/datadosentambah/datadosent
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -19,11 +25,15 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
     CommonModule,
     StaffRoutingModule,
     ReactiveFormsModule,
-    AngularMaterialModule,
     SharedModule,
     NgxPaginationModule,
     FormsModule,
-
+    MatGridListModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatTableModule,
+    MatButtonModule
   ]
 })
 export class StaffModule { }

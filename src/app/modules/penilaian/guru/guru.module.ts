@@ -6,9 +6,12 @@ import { GurutampilnilaiComponent } from './gurutampilnilai/gurutampilnilai.comp
 import { GurutampbahnilaiComponent } from './gurutampbahnilai/gurutampbahnilai.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatGridTile } from '@angular/material/grid-list';
+import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -18,8 +21,12 @@ import { MatRadioModule } from '@angular/material/radio';
     CommonModule,
     GuruRoutingModule,
     SharedModule,
-    MatGridTile,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatGridListModule,
+    MatExpansionModule
   ]
 })
 export class GuruModule { }

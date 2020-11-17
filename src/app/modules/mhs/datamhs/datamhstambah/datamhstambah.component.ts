@@ -50,7 +50,7 @@ export class DatamhstambahComponent implements OnInit {
     });
   }
 
-  simpanAkunMhs(formMhs: NgForm){
+  simpanAkunMhs(){
     if(this.formMhs.invalid){
       return;
     }

@@ -26,6 +26,11 @@ export class KelolaperanComponent implements OnInit {
     this.ambilData();
   }
 
+  sidebarToggler($event){
+    let toggler;
+    toggler = $event;
+  }
+
   ambilData(){
     this.adminService.ambilDataPengguna().subscribe(ambilPengguna=> {
       this.pengguna = ambilPengguna;

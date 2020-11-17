@@ -14,10 +14,10 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   isLoggedIn = false;
   isLoggedInFailed = false;
-  errorMessage = '';
   roles: string[] = [];
   private idPengguna;
   private idLogin;
+  errorMessage= '';
 
   constructor(
     private authService: AuthService,
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.idPengguna = this.tokenStorage.getPengguna().idPengguna;
       this.getPeran();
     }, err => {
-      this.errorMessage = err.error.message;
+      console.log(err);
       this.isLoggedInFailed = true;
     });
   }

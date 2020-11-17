@@ -7,7 +7,7 @@ import { KaprodiRoutingModule } from './kaprodi-routing.module';
 import { TambahKuotaComponent } from './penentuan/tambah-kuota/tambah-kuota.component';
 import { TambahSekolahComponent } from './penentuan/tambah-sekolah/tambah-sekolah.component';
 import { TampilSekolahComponent } from './penentuan/tampil-sekolah/tampil-sekolah.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mhs.component';
 import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tampilan-dosen.component';
 import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
@@ -18,6 +18,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -34,13 +36,16 @@ import {MatIconModule} from '@angular/material/icon';
   imports: [
     CommonModule,
     KaprodiRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatGridListModule,
     MatSelectModule,
     MatTableModule,
     MatExpansionModule,
-    ReactiveFormsModule,
     SharedModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class KaprodiModule { }

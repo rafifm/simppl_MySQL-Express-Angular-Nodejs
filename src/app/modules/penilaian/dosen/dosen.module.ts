@@ -9,7 +9,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DosentambahnilaiutsComponent } from './dosentambahnilaiuts/dosentambahnilaiuts.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatGridTile } from '@angular/material/grid-list';
+import { MatGridListModule, MatGridTile } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -25,7 +31,12 @@ import { MatGridTile } from '@angular/material/grid-list';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatGridTile
+    MatDividerModule,
+    MatGridListModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatButtonModule
   ]
 })
 export class DosenModule { }

@@ -7,7 +7,6 @@
           type="text"
           formControlName="email_pengguna"
           placeholder="Email">
-          <mat-error *ngIf="formLogin.get('email_pengguna').invalid">Masukkan nama</mat-error>
       </mat-form-field>
       <mat-form-field>
           <input
@@ -15,7 +14,6 @@
           type="password"
           formControlName="password_pengguna"
           placeholder="Password">
-          <mat-error *ngIf="formLogin.get('password_pengguna').invalid">Masukkan nama</mat-error>
       </mat-form-field>
       <button mat-raised-button color="accent" type="submit" >Log In</button>
   </form>

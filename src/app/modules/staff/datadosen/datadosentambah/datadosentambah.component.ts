@@ -50,7 +50,7 @@ export class DatadosentambahComponent implements OnInit {
     this.idPengguna = this.route.snapshot.paramMap.get('idLogin');
   }
 
-  simpanAkunDosen(formAkunDosen: NgForm){
+  simpanAkunDosen(){
     if(this.formAkunDosen.invalid){
       return;
     }
