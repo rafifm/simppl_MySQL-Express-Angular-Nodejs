@@ -2,13 +2,13 @@
   "name": "simppl",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "ngcc",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "postinstall": "ng build --output-path dist",
     "start:server": "nodemon ./backend/server.js"
   },
   "private": true,
