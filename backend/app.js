@@ -6,26 +6,27 @@ const cors = require("cors");
 const app = express();
 
 const db = require("./models/dbmysql");
-const { Http2ServerRequest } = require("http2");
 const peran = db.peran;
 
 var corsOptions = {
   origin: "http://localhost:4000"
 };
 
+// view engine setup
+app.set('views', path.join(__dirname, '/server/views'));
+app.set('view engine', 'jade');
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("backend/images")));
-app.use(express.favicon());
+app.use(express.favicon(path.join(__dirname,'dist/favicon.ico')));
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
-app.use(express.methodOverride());
 app.set('port', process.env.PORT || 4000);
-
-app.use(express.static(__dirname + "/dist"));
-app.use((req, res, next) => {
-  res.sendFile(__dirname + "/dist/index.html");
+app.listen(app.get('port'));
+app.use(express.static(path.join(__dirname + "dist")));
+app.get('*',(req, res, next) => {
+  res.sendFile(path.join(__dirname + "dist/index.html"));
 });
 
 // app.use((req, res, next) => {
@@ -42,9 +43,7 @@ app.use((req, res, next) => {
 // });
 
 db.databaseConf.sync().then(() => {
-  Http.createServer(app).listen(app.get('port'), ()=> {
     console.log('server jalan di port' + app.get('port'));
-  });
   // initial();
 });
 
