@@ -2,12 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
-const http = require("http");
 
 const app = express();
 
 const db = require("./models/dbmysql");
-const { Http2ServerRequest } = require("http2");
 const peran = db.peran;
 
 var corsOptions = {
@@ -41,9 +39,7 @@ app.get('/',(req, res, next) => {
 // });
 
 db.databaseConf.sync().then(() => {
-   http.createServer(app).listen(app.get('port'),() => {
      console.log( 'server jalan di port: '+ app.get('port'));
-   });
   // initial();
 });
 
