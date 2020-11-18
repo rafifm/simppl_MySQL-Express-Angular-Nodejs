@@ -21,7 +21,6 @@ app.listen(app.get('port'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(app.router);
 app.use(express.static(path.join(__dirname + "dist")));
 app.get('/',(req, res, next) => {
   res.sendFile(path.join(__dirname + "dist/index.html"));
