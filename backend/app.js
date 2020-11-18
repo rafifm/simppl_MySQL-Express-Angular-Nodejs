@@ -19,7 +19,7 @@ app.use("/images", express.static(path.join("backend/images")));
 
 app.use(express.static(__dirname + "/dist/"));
 app.use((req, res, next) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "../src/index.html");
 })
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
