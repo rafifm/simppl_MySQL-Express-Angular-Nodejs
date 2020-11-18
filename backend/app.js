@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 
 const db = require("./models/dbmysql");
+const { Http2ServerRequest } = require("http2");
 const peran = db.peran;
 
 var corsOptions = {
@@ -17,9 +18,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('port', process.env.PORT || 4000);
 app.listen(app.get('port'));
-app.use(app.static(path.join(__dirname + "/dist")));
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname + "dist")));
 app.get('/',(req, res, next) => {
-  res.sendFile(path.join(__dirname + "/dist/index.html"));
+  res.sendFile(path.join(__dirname + "dist/index.html"));
 });
 
 // app.use((req, res, next) => {
@@ -36,7 +45,9 @@ app.get('/',(req, res, next) => {
 // });
 
 db.databaseConf.sync().then(() => {
-    console.log('server jalan di port' + app.get('port'));
+   http.createServer(app).listen(app.get('port'),() => {
+     console.log( 'server jalan di port: '+ app.get('port'));
+   });
   // initial();
 });
 
