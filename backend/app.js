@@ -6,6 +6,7 @@ const cors = require("cors");
 const app = express();
 
 const db = require("./models/dbmysql");
+const { Http2ServerRequest } = require("http2");
 const peran = db.peran;
 
 var corsOptions = {
@@ -16,11 +17,20 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.set('port', process.env.PORT || 4000);
 
 app.use(express.static(__dirname + "/dist"));
 app.use((req, res, next) => {
   res.sendFile(__dirname + "/dist/index.html");
-})
+});
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
+
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader(
@@ -35,7 +45,9 @@ app.use((req, res, next) => {
 // });
 
 db.databaseConf.sync().then(() => {
-  console.log('table direfresh');
+  Http.createServer(app).listen(app.get('port'), ()=> {
+    console.log('server jalan di port' + app.get('port'));
+  });
   // initial();
 });
 
@@ -76,8 +88,6 @@ db.databaseConf.sync().then(() => {
 //   });
 // }
 
-const PORT = process.env.PORT || 4000;
-
 require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
@@ -86,9 +96,5 @@ require("./routes/akundosen")(app);
 require("./routes/nilai")(app);
 require("./routes/auth.routes")(app);
 require("./routes/pengguna.routes")(app);
-
-app.listen(PORT || 4000, () => {
-  console.log("server jalan di port : " + PORT);
-});
 
 module.exports = app;
