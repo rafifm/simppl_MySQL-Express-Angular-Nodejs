@@ -21,10 +21,6 @@ app.listen(app.get('port'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname + "dist")));
 app.get('/',(req, res, next) => {
