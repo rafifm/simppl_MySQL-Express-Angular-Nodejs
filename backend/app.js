@@ -12,10 +12,6 @@ var corsOptions = {
   origin: "http://localhost:4000"
 };
 
-// view engine setup
-app.set('views', path.join(__dirname, '/server/views'));
-app.set('view engine', 'jade');
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
