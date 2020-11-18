@@ -17,8 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/images", express.static(path.join("backend/images")));
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+app.use(express.static(__dirname + "/dist/"));
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader(

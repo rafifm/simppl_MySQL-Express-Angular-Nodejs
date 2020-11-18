@@ -15,8 +15,10 @@
   "dependencies": {
     "@angular/animations": "^11.0.0",
     "@angular/cdk": "^11.0.0",
+    "@angular/cli": "^11.0.1",
     "@angular/common": "^11.0.0",
     "@angular/compiler": "^11.0.0",
+    "@angular/compiler-cli": "^11.0.0",
     "@angular/core": "^11.0.0",
     "@angular/flex-layout": "^11.0.0-beta.33",
     "@angular/forms": "^11.0.0",
@@ -24,8 +26,6 @@
     "@angular/platform-browser": "^11.0.0",
     "@angular/platform-browser-dynamic": "^11.0.0",
     "@angular/router": "^11.0.0",
-    "@angular/cli": "^11.0.1",
-    "@angular/compiler-cli": "^11.0.0",
     "bcryptjs": "^2.4.3",
     "body": "^5.1.0",
     "body-parser": "^1.19.0",
@@ -46,6 +46,7 @@
     "parser": "^0.1.4",
     "rxjs": "^6.6.2",
     "sequelize": "^6.3.4",
+    "sequelize-cli": "^6.2.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
