@@ -15,14 +15,14 @@ var corsOptions = {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.favicon(path.join(__dirname,'dist/favicon.ico')));
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
+app.use(app.favicon(path.join(__dirname,'/dist/favicon.ico')));
+app.use(app.logger('dev'));
+app.use(app.bodyParser());
 app.set('port', process.env.PORT || 4000);
 app.listen(app.get('port'));
-app.use(express.static(path.join(__dirname + "dist")));
-app.get('*',(req, res, next) => {
-  res.sendFile(path.join(__dirname + "dist/index.html"));
+app.use(app.static(path.join(__dirname + "/dist")));
+app.get('/',(req, res, next) => {
+  res.sendFile(path.join(__dirname + "/dist/index.html"));
 });
 
 // app.use((req, res, next) => {
