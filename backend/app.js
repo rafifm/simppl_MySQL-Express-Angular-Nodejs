@@ -19,7 +19,7 @@ app.use("/images", express.static(path.join("backend/images")));
 
 app.use(express.static(__dirname + "/dist/"));
 app.use((req, res, next) => {
-  res.sendFile(path.join("dist", "index.html"));
+  res.sendFile(__dirname + "/index.html");
 })
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -36,45 +36,45 @@ app.use((req, res, next) => {
 
 db.databaseConf.sync().then(() => {
   console.log('table direfresh');
-  initial();
+  // initial();
 });
 
-function initial(){
-  peran.create({
-    id: 1,
-    nama_peran: "admin"
-  });
+// function initial(){
+//   peran.create({
+//     id: 1,
+//     nama_peran: "admin"
+//   });
 
-  peran.create({
-    id: 2,
-    nama_peran: "dosen"
-  });
+//   peran.create({
+//     id: 2,
+//     nama_peran: "dosen"
+//   });
 
-  peran.create({
-    id: 3,
-    nama_peran: "guru"
-  });
+//   peran.create({
+//     id: 3,
+//     nama_peran: "guru"
+//   });
 
-  peran.create({
-    id: 4,
-    nama_peran: "kaprodi"
-  });
+//   peran.create({
+//     id: 4,
+//     nama_peran: "kaprodi"
+//   });
 
-  peran.create({
-    id: 5,
-    nama_peran: "koorsekolah"
-  });
+//   peran.create({
+//     id: 5,
+//     nama_peran: "koorsekolah"
+//   });
 
-  peran.create({
-    id: 6,
-    nama_peran: "staff"
-  });
+//   peran.create({
+//     id: 6,
+//     nama_peran: "staff"
+//   });
 
-  peran.create({
-    id: 7,
-    nama_peran: "mahasiswa"
-  });
-}
+//   peran.create({
+//     id: 7,
+//     nama_peran: "mahasiswa"
+//   });
+// }
 
 const PORT = process.env.PORT || 4000;
 
