@@ -15,9 +15,6 @@ var corsOptions = {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(app.favicon(path.join(__dirname,'/dist/favicon.ico')));
-app.use(app.logger('dev'));
-app.use(app.bodyParser());
 app.set('port', process.env.PORT || 4000);
 app.listen(app.get('port'));
 app.use(app.static(path.join(__dirname + "/dist")));
