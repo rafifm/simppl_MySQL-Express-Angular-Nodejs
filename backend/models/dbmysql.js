@@ -1,4 +1,4 @@
-const dbconfig = require("../config/config.js");
+const dbconfig = require("../config/db.config.mysql");
 const Sequelize = require("sequelize");
 
 const database = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,
@@ -7,7 +7,7 @@ const database = new Sequelize(dbconfig.DB, dbconfig.USER, dbconfig.PASSWORD,
     dialect: dbconfig.dialect,
     operatorsAliases: false,
     pool: {
-      max: dbconfig.pool.max,
+      max: dbconfig.max,
       min: dbconfig.pool.min,
       acquire: dbconfig.pool.acquire,
       idle: dbconfig.pool.idle
