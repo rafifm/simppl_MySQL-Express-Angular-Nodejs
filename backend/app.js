@@ -18,9 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(app.get('port'));
-
-app.set('views', __dirname + '/dist');
-app.set('view engine', 'jade');
+s
 app.use("/",express.static(path.join(__dirname,"dist")));
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname,"dist","index.html"));
