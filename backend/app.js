@@ -22,9 +22,9 @@ app.listen(app.get('port'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use("/",express.static(path.join(__dirname,"dist")));
+app.use("/*",express.static(path.join(__dirname,"dist","simppl")));
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname,"dist","index.html"));
+  res.sendFile(path.join(__dirname,"dist","simppl","index.html"));
 });
 
 // app.use((req, res, next) => {
@@ -42,28 +42,28 @@ app.use((req, res, next) => {
 
 db.databaseConf.sync().then(() => {
      console.log( 'server jalan di port: '+ app.get('port'));
-  initial();
+  // initial();
 });
 
-function initial(){
-  pengguna.create({
-    email_pengguna: "admin@admin",
-    password_pengguna: bcrypt.hashSync("12345", 8)
-  }).then(pengguna => {
-    peran.findAll({
-      where: {nama_peran: "admin"}
-    }).then(peran => {
-      pengguna.setPerans(peran).then(() =>{
-        console.log( "registrasi berhasil");
-      }).catch(err => {
-        console.log('set peran gagal'+err);
-      });
-    }).catch(err=> {
-      console.log('cari peran'+ err);
-    });
-  }).catch(err=> {
-    console.log('buat admin gagal'+err);
-  });
+// function initial(){
+//   pengguna.create({
+//     email_pengguna: "admin@admin",
+//     password_pengguna: bcrypt.hashSync("12345", 8)
+//   }).then(pengguna => {
+//     peran.findAll({
+//       where: {nama_peran: "admin"}
+//     }).then(peran => {
+//       pengguna.setPerans(peran).then(() =>{
+//         console.log( "registrasi berhasil");
+//       }).catch(err => {
+//         console.log('set peran gagal'+err);
+//       });
+//     }).catch(err=> {
+//       console.log('cari peran'+ err);
+//     });
+//   }).catch(err=> {
+//     console.log('buat admin gagal'+err);
+//   });
 //   peran.create({
 //     id: 1,
 //     nama_peran: "admin"
@@ -98,7 +98,7 @@ function initial(){
 //     id: 7,
 //     nama_peran: "mahasiswa"
 //   });
-}
+// }
 
 require("./routes/staff")(app);
 require("./routes/guru")(app);
