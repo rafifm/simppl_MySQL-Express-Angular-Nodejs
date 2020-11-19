@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(app.get('port'));
-app.use(express.static(__dirname + '/dist/'));
+app.use(express.static(__dirname , '/dist/'));
 app.get('/',(req, res, next) => {
   res.sendFile(__dirname,'dist','index.html');
 });
