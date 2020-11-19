@@ -6,9 +6,9 @@ const cors = require("cors");
 const app = express();
 
 const db = require("./models/dbmysql");
-const peran = db.peran;
-const pengguna = db.pengguna;
-var bcrypt = require("bcryptjs");
+// const peran = db.peran;
+// const pengguna = db.pengguna;
+// var bcrypt = require("bcryptjs");
 
 var corsOptions = {
   origin: "http://localhost:4000"
@@ -18,9 +18,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(app.get('port'));
-app.use(express.static(__dirname + "/dist/"));
-app.get('/',(req, res, next) => {
-  res.sendFile(__dirname + "/dist/" + "index.html");
+app.use("/",express.static(path.join(__dirname,"dist")));
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname,"dist","index.html"));
 });
 
 // app.use((req, res, next) => {
