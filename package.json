@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --prod --base-href /simppl/",
+    "build": "ng build --prod ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --output-path dist ",
+    "postinstall": "ng build --base-href simppl/ --output-path dist ",
     "start:server": "nodemon server.js"
   },
   "private": true,
