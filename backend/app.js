@@ -17,14 +17,13 @@ var corsOptions = {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.set('port', process.env.PORT || 4000);
 app.listen(app.get('port'));
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
-app.use("/*",express.static(path.join(__dirname,"dist","simppl")));
+app.use("/",express.static(path.join(__dirname,"dist")));
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname,"dist","simppl","index.html"));
+  res.sendFile(path.join(__dirname,"dist","index.html"));
 });
 
 // app.use((req, res, next) => {
