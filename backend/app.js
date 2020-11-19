@@ -7,6 +7,8 @@ const app = express();
 
 const db = require("./models/dbmysql");
 const peran = db.peran;
+const pengguna = db.pengguna;
+var bcrypt = require("bcryptjs");
 
 var corsOptions = {
   origin: "http://localhost:4000"
@@ -40,10 +42,28 @@ app.use((req, res, next) => {
 
 db.databaseConf.sync().then(() => {
      console.log( 'server jalan di port: '+ app.get('port'));
-  // initial();
+  initial();
 });
 
-// function initial(){
+function initial(){
+  pengguna.create({
+    email_pengguna: "admin@admin",
+    password_pengguna: bcrypt.hashSync("12345", 8)
+  }).then(pengguna => {
+    peran.findAll({
+      where: {nama_peran: "admin"}
+    }).then(peran => {
+      pengguna.setPerans(peran).then(() =>{
+        console.log( "registrasi berhasil");
+      }).catch(err => {
+        console.log('set peran gagal'+err);
+      });
+    }).catch(err=> {
+      console.log('cari peran'+ err);
+    });
+  }).catch(err=> {
+    console.log('buat admin gagal'+err);
+  });
 //   peran.create({
 //     id: 1,
 //     nama_peran: "admin"
@@ -78,7 +98,7 @@ db.databaseConf.sync().then(() => {
 //     id: 7,
 //     nama_peran: "mahasiswa"
 //   });
-// }
+}
 
 require("./routes/staff")(app);
 require("./routes/guru")(app);
