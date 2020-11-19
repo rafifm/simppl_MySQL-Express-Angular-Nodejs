@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --base-href /simppl/",
+    "postinstall": "ng build --prod --baseDir='dist/simppl'",
     "start:server": "nodemon server.js"
   },
   "private": true,
