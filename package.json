@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "node backend/app.js",
-    "build": "ng build --env=prod",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --prod --base-href /simppl/",
+    "postinstall": "ng build --env=prod --base-href /simppl/",
     "start:server": "nodemon server.js"
   },
   "private": true,
