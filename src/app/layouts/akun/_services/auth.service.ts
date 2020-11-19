@@ -17,14 +17,14 @@ export class AuthService {
     return this.http.post(AUTH_API + 'signin', {
       email_pengguna: rahasia.email,
       password_pengguna: rahasia.password
-    }, httpOptions);
+    });
   }
 
   register(pengguna): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       email_pengguna: pengguna.email,
       password_pengguna: pengguna.password
-    }, httpOptions);
+    });
   }
 
 }
