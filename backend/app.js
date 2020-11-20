@@ -21,9 +21,10 @@ app.use('/',express.static(path.join(__dirname,'dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/',(req, res, next) => {
+app.get('/',(req, res, next) => {
   res.sendFile(path.join(__dirname,'dist','index.html'));
 });
+
 require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
