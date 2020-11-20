@@ -11,6 +11,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { HeaderComponent } from 'src/app/shared/component/header/header.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class AdminModule { }
