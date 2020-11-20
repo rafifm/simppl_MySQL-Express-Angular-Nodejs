@@ -14,6 +14,16 @@ var corsOptions = {
   origin: "http://localhost:4000"
 };
 
+// app.use(cors());
+// app.listen(PORT);
+app.use('/',express.static(path.join(__dirname,'dist')));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/',(req, res, next) => {
+  res.sendFile(path.join(__dirname,'dist','index.html'));
+});
 require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
@@ -23,14 +33,6 @@ require("./routes/nilai")(app);
 require("./routes/auth.routes")(app);
 require("./routes/pengguna.routes")(app);
 
-app.use(cors());
-// app.listen(PORT);
-app.use('/',express.static(path.join(__dirname,'dist')));
-app.use('/',(req, res, next) => {
-  res.sendFile(path.join(__dirname,'dist','index.html'));
-});
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
