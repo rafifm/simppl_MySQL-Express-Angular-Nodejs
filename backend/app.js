@@ -18,9 +18,6 @@ var corsOptions = {
 // app.listen(PORT);
 app.use(express.static(path.join(__dirname,'dist')));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 db.databaseConf.sync().then(() => {
   console.log( 'server jalan di port: '+ PORT);
 // initial();
@@ -29,6 +26,10 @@ db.databaseConf.sync().then(() => {
 app.get('/',(req, res, next) => {
   res.sendFile(path.join(__dirname,'dist','index.html'));
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
