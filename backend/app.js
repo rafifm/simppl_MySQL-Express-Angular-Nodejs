@@ -17,11 +17,6 @@ var corsOptions = {
 // app.listen(PORT);
 app.use('/',express.static(path.join(__dirname,'dist')));
 
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 const db = require("./models/dbmysql");
 
 db.databaseConf.sync().then(() => {
@@ -32,6 +27,9 @@ db.databaseConf.sync().then(() => {
 app.get('/',(req, res, next) => {
   res.sendFile(path.join(__dirname,'dist','index.html'));
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 require("./routes/staff")(app);
 require("./routes/guru")(app);
