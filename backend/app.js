@@ -9,35 +9,44 @@ const db = require("./models/dbmysql");
 // const peran = db.peran;
 // const pengguna = db.pengguna;
 // var bcrypt = require("bcryptjs");
-
+const PORT = process.env.PORT || 4000;
 var corsOptions = {
   origin: "http://localhost:4000"
 };
 
+require("./routes/staff")(app);
+require("./routes/guru")(app);
+require("./routes/mhs")(app);
+require("./routes/datasekolah")(app);
+require("./routes/akundosen")(app);
+require("./routes/nilai")(app);
+require("./routes/auth.routes")(app);
+require("./routes/pengguna.routes")(app);
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.listen(app.get('port'));
+app.listen(PORT);
 app.use('/',express.static(path.join(__dirname,'dist')));
-app.get('*',(req, res, next) => {
+app.use('/',(req, res, next) => {
   res.sendFile(path.join(__dirname,'dist','index.html'));
 });
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-//   );
-//   next();
-// });
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+  );
+  next();
+});
 
 db.databaseConf.sync().then(() => {
-     console.log( 'server jalan di port: '+ app.get('port'));
+     console.log( 'server jalan di port: '+ PORT);
   // initial();
 });
 
@@ -95,14 +104,5 @@ db.databaseConf.sync().then(() => {
 //     nama_peran: "mahasiswa"
 //   });
 // }
-
-require("./routes/staff")(app);
-require("./routes/guru")(app);
-require("./routes/mhs")(app);
-require("./routes/datasekolah")(app);
-require("./routes/akundosen")(app);
-require("./routes/nilai")(app);
-require("./routes/auth.routes")(app);
-require("./routes/pengguna.routes")(app);
 
 module.exports = app;

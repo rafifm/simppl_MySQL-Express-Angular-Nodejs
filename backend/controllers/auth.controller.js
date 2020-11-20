@@ -125,6 +125,6 @@ exports.ambilPengguna = (req, res) => {
     }).then(semuaPengguna => {
         res.status(200).send(semuaPengguna);
     }).catch(err => {
-        res.status(500).send({message: 'ambil semua pengguna error'+ err.message});
+        res.status(500).json({message: 'ambil semua pengguna error'+ err.message});
     });
 }

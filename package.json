@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ng build --base-href /simppl/",
-    "start:server": "nodemon server.js"
+    "start:server": "nodemon backend/app.js"
   },
   "private": true,
   "dependencies": {
