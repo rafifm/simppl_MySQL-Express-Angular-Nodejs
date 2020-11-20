@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 const URL_AUTH = environment.API_URL + '/api/auth/';
-const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
-
 
 @Injectable({
   providedIn: 'root'
