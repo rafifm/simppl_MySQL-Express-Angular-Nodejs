@@ -16,13 +16,18 @@ var corsOptions = {
 
 // app.use(cors());
 // app.listen(PORT);
-app.use('/',express.static(path.join(__dirname,'dist')));
+app.use(express.static(__dirname,'dist'));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+db.databaseConf.sync().then(() => {
+  console.log( 'server jalan di port: '+ PORT);
+// initial();
+});
 
 app.get('/',(req, res, next) => {
-  res.sendFile(path.join(__dirname,'dist','index.html'));
+  res.sendFile(__dirname,'dist','index.html');
 });
 
 require("./routes/staff")(app);
@@ -47,11 +52,6 @@ require("./routes/pengguna.routes")(app);
 //   );
 //   next();
 // });
-
-db.databaseConf.sync().then(() => {
-     console.log( 'server jalan di port: '+ PORT);
-  // initial();
-});
 
 // function initial(){
 //   pengguna.create({
