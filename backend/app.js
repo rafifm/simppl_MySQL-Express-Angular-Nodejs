@@ -24,26 +24,26 @@ require("./routes/auth.routes")(app);
 require("./routes/pengguna.routes")(app);
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 // app.listen(PORT);
 app.use('/',express.static(path.join(__dirname,'dist')));
 app.use('/',(req, res, next) => {
   res.sendFile(path.join(__dirname,'dist','index.html'));
 });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+//   );
+//   next();
+// });
 
 db.databaseConf.sync().then(() => {
      console.log( 'server jalan di port: '+ PORT);
