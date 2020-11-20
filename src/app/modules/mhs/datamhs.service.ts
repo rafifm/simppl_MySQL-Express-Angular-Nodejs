@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
-const urlMhs = 'http://localhost:4000/api/mhs';
+const urlMhs = environment.API_URL + '/api/mhs';
 
 @Injectable({
   providedIn: 'root'

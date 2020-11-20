@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
-const urlGuru = 'http://localhost:4000/api/guru';
-const urlDosen = 'http://localhost:4000/api/akundosen';
-const urlMhs = 'http://localhost:4000/api/mhs';
-const urlSekolah = 'http://localhost:4000/api/sekolah';
+const urlGuru = environment.API_URL + '/api/guru';
+const urlDosen = environment.API_URL + '/api/akundosen';
+const urlMhs = environment.API_URL + '/api/mhs';
+const urlSekolah = environment.API_URL + '/api/sekolah';
 
 @Injectable({
   providedIn: 'root'
