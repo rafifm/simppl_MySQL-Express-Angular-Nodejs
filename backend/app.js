@@ -16,7 +16,7 @@ var corsOptions = {
 
 // app.use(cors());
 // app.listen(PORT);
-app.use(express.static(path.join(__dirname,'dist')));
+app.use('/',express.static(path.join(__dirname,'dist')));
 
 db.databaseConf.sync().then(() => {
   console.log( 'server jalan di port: '+ PORT);
