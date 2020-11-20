@@ -5,7 +5,6 @@ const cors = require("cors");
 
 const app = express();
 
-const db = require("./models/dbmysql");
 // const peran = db.peran;
 // const pengguna = db.pengguna;
 // var bcrypt = require("bcryptjs");
@@ -16,15 +15,23 @@ var corsOptions = {
 
 // app.use(cors());
 // app.listen(PORT);
-app.use('/',express.static(path.join(__dirname,'dist')));
+app.use(express.static(__dirname,'dist'));
 
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./models/dbmysql");
+
+db.databaseConf.sync().then(() => {
+  console.log( 'server jalan di port: '+ PORT);
+// initial();
+});
 
 app.get('/',(req, res, next) => {
   res.sendFile(path.join(__dirname,'dist','index.html'));
 });
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 require("./routes/staff")(app);
 require("./routes/guru")(app);
@@ -35,10 +42,6 @@ require("./routes/nilai")(app);
 require("./routes/auth.routes")(app);
 require("./routes/pengguna.routes")(app);
 
-db.databaseConf.sync().then(() => {
-  console.log( 'server jalan di port: '+ PORT);
-// initial();
-});
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
