@@ -26,9 +26,8 @@ export class KelolaperanComponent implements OnInit {
     this.ambilData();
   }
 
-  sidebarToggler($event){
-    let toggler;
-    toggler = $event;
+  sideBarToggler($event) {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 
   ambilData(){

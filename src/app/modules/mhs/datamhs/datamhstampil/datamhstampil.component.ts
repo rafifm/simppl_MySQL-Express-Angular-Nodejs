@@ -62,22 +62,6 @@ export class DatamhstampilComponent implements OnInit {
 
   }
 
-  handlePageChange(event): void {
-    this.halaman = event;
-    this.ambilDataMhs();
-  }
-
-  handlePageSizeChange(event): void {
-    this.totalDataPerHalaman = event.target.value;
-    this.halaman = 1;
-    this.ambilDataMhs();
-  }
-
-  setActiveTutorial(mhsTampil, index): void {
-    this.dataMhsSekarang = mhsTampil;
-    this.currentIndex = index;
-  }
-
   hapusMhs(id){
     this.dataMhs.hapus(id)
       .subscribe(

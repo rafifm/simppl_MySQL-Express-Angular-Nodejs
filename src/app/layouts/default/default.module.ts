@@ -5,13 +5,6 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularMaterialModule } from '../../angular-material.module';
-import { StaffModule } from '../../modules/staff/staff.module';
-import { DosenModule } from '../../modules/penilaian/dosen/dosen.module';
-import { GuruModule } from '../../modules/penilaian/guru/guru.module';
-import { KaprodiModule } from 'src/app/modules/kaprodi/kaprodi.module';
-import { AdminModule } from 'src/app/modules/admin/admin.module';
-import { HeaderComponent } from 'src/app/shared/component/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -29,7 +22,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     CommonModule,
     RouterModule,
     SharedModule,
-    FormsModule,
     ReactiveFormsModule,
     MatSidenavModule,
     MatTableModule,

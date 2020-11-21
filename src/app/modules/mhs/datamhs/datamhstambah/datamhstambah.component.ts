@@ -63,7 +63,6 @@ export class DatamhstambahComponent implements OnInit {
         nokwitansi_mhs: this.formMhs.value.nokwitansi_mhs
       })
       .subscribe(akunMhs => {
-        console.log(akunMhs);
         this.submitted = true;
       },
       error => {
@@ -80,14 +79,13 @@ export class DatamhstambahComponent implements OnInit {
           nokwitansi_mhs: this.formMhs.value.nokwitansi_mhs
         }
       ).subscribe(dataUploadMhs => {
-        console.log(dataUploadMhs);
         this.submitted = true;
       }, error=> {
         console.log(error);
       });
     }    
     this.formMhs.reset();
-    this.router.navigate(["/dashboard/mhs/tampilmhs"]);
+    this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
   }
 
 }

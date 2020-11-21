@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   userIsAuthenticated = false;
   peran;
 
-  @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
+  @Output() toggleSideBarForMe = new EventEmitter<any>();
 
   constructor(
     private tokenStorage: TokenStorageService,
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
     
   }
 
-  toggleSideBar() {
-    this.toggleSideBarForMe.emit();
+  toggleSideBar(eventObject: any) {
+    this.toggleSideBarForMe.emit(eventObject);
   }
 }
