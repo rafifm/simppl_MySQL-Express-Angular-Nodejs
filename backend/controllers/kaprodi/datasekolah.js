@@ -73,13 +73,11 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
   const id = req.params.id;
-  console.log(req.body);
   dbSekolah.update(req.body, {
     where: {id: id}
   })
     .then(status => {
       if(status == 1 ) {
-        console.log(status);
         res.send({
           message: "Akun Sekolah telah terupdate"
         });

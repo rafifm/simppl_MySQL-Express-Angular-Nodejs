@@ -34,7 +34,6 @@ export class KelolaperanComponent implements OnInit {
   ambilData(){
     this.adminService.ambilDataPengguna().subscribe(ambilPengguna=> {
       this.pengguna = ambilPengguna;
-      console.log(ambilPengguna);
     });
   }
 

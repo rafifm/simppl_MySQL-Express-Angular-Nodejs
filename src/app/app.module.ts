@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AuthInterceptor } from './layouts/akun/_helpers/auth.interceptor';
+import { DefaultModule } from './layouts/default/default.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthInterceptor } from './layouts/akun/_helpers/auth.interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    DefaultModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

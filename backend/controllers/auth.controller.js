@@ -94,7 +94,6 @@ exports.signin = (req, res) => {
             idPengguna = 'kosong';
             nama = 'belum ada';
         }
-        console.log(pengguna);
         var authorities = [];
         pengguna.getPerans().then(peran => {
             for(let i = 0; i < peran.length; i++) {
@@ -125,6 +124,6 @@ exports.ambilPengguna = (req, res) => {
     }).then(semuaPengguna => {
         res.status(200).send(semuaPengguna);
     }).catch(err => {
-        res.status(500).json({message: 'ambil semua pengguna error'+ err.message});
+        res.status(500).send({message: 'ambil semua pengguna error'+ err.message});
     });
 }

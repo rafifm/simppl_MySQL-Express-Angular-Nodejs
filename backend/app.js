@@ -9,20 +9,36 @@ const db = require("./models/dbmysql");
 // const peran = db.peran;
 // const pengguna = db.pengguna;
 // var bcrypt = require("bcryptjs");
-// const PORT = process.env.PORT || 4000;
-// app.listen(PORT,()=>{
-//   console.log(`server jalan di ${PORT}`);
-// });
+const PORT = process.env.PORT || 4000;
+app.listen(PORT,()=>{
+  console.log(`server jalan di ${PORT}`);
+});
+
 var corsOptions = {
   origin: "http://localhost:4000"
 };
+app.use(cors());
 
-// app.use(cors());
-
-db.databaseConf.sync();
+db.databaseConf.sync().then(()=>{
+  console.log('table sudah direfresh');
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname,'dist')));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    );
+  next();
+});
+    
 
 require("./routes/staff")(app);
 require("./routes/guru")(app);
@@ -32,27 +48,14 @@ require("./routes/akundosen")(app);
 require("./routes/nilai")(app);
 require("./routes/auth.routes")(app);
 require("./routes/pengguna.routes")(app);
-app.use(express.static(path.join(__dirname,'dist')));
+
 app.use('/',(req, res, next) => {
-  res.sendFile(path.join(__dirname,'dist','index.html'));
-});
-
-
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-//   );
-//   next();
-// });
-
-// function initial(){
-//   pengguna.create({
+    res.sendFile(path.join(__dirname,'dist','index.html'));
+  });
+  
+  
+  // function initial(){
+    //   pengguna.create({
 //     email_pengguna: "admin@admin",
 //     password_pengguna: bcrypt.hashSync("12345", 8)
 //   }).then(pengguna => {

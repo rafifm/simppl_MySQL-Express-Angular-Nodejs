@@ -55,7 +55,6 @@ exports.findAll = (req, res) => {
     .then(data => {
       const response = getPagingData(data, page, limit);
       res.send(response);
-      console.log('dosen' + data);
     })
     .catch(err => {
       res.status(500).send({
