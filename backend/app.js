@@ -9,18 +9,17 @@ const db = require("./models/dbmysql");
 // const peran = db.peran;
 // const pengguna = db.pengguna;
 // var bcrypt = require("bcryptjs");
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
+// app.listen(PORT,()=>{
+//   console.log(`server jalan di ${PORT}`);
+// });
 var corsOptions = {
   origin: "http://localhost:4000"
 };
 
 // app.use(cors());
-// app.listen(PORT);
-app.use('/',express.static(path.join(__dirname,'dist')));
 
-app.get('/',(req, res, next) => {
-  res.sendFile(path.join(__dirname,'dist','index.html'));
-});
+db.databaseConf.sync();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,11 +32,11 @@ require("./routes/akundosen")(app);
 require("./routes/nilai")(app);
 require("./routes/auth.routes")(app);
 require("./routes/pengguna.routes")(app);
-
-db.databaseConf.sync().then(() => {
-  console.log( 'server jalan di port: '+ PORT);
-// initial();
+app.use(express.static(path.join(__dirname,'dist')));
+app.use('/',(req, res, next) => {
+  res.sendFile(path.join(__dirname,'dist','index.html'));
 });
+
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
