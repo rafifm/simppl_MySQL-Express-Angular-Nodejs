@@ -2,6 +2,7 @@ const db = require("../../models/dbmysql");
 const dbMhs = db.mhs;
 const dbNilai = db.nilai;
 const dbSekolah = db.sekolah;
+const dbPengguna = db.pengguna;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -45,6 +46,33 @@ exports.create = (req, res) => {
       });
     });
 };
+
+exports.tambahMhs = (req, res) => {
+  if(!req.body.nama_mhs){
+    res.status(400).send({
+      message:"input kosong"
+    });
+    return;
+  }
+
+  dbMhs.create({
+    nama_mhs: req.body.nama_mhs,
+    nim_mhs: req.body.nim_mhs,
+    no_hp_mhs: req.body.no_hp_mhs,
+    ipk_mhs: req.body.ipk_mhs,
+    nokwitansi_mhs: req.body.nokwitansi_mhs
+  }).then(akunMhs => {
+    return dbPengguna.findOne({
+      where: {id: req.params.idPengguna}
+    }).then(pengguna => {
+      pengguna.setMahasiswa(akunMhs.id);
+    }).catch(err => {
+      res.status(500).send({ message: err.message || "error tambah mhs ke pengguna"});
+    });
+  }).catch(err => {
+    res.status(500).send({ message: err.message || "error saat pembuatan akun"});
+  });
+}
 
 exports.ambilMhsSekolah = (req, res) => {
   const { page, size, nama_mhs } = req.query;

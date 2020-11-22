@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { DatadosenService } from '../datadosen.service';
 import { Router, ParamMap, ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 @Component({
   selector: 'app-datadosentambah',
   templateUrl: './datadosentambah.component.html',
@@ -18,7 +19,8 @@ export class DatadosentambahComponent implements OnInit {
 
 
   constructor(
-    private datadosenService: DatadosenService, 
+    private datadosenService: DatadosenService,
+    private tokenStorage: TokenStorageService,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -63,6 +65,7 @@ export class DatadosentambahComponent implements OnInit {
         pangkat_dosen: this.formAkunDosen.value.pangkat_dosen
       }).subscribe(akunDosen => {
         this.submitted = true;
+        this.router.navigate(["/dashboard/dosen/tampilnilai"],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
       },
       error => {
         console.log(error);
@@ -83,7 +86,7 @@ export class DatadosentambahComponent implements OnInit {
       });
     }
     this.formAkunDosen.reset();
-    this.router.navigate(["/dashboard/staff/tampildosen"]);
+    
   }
 
 }

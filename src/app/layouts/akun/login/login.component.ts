@@ -69,7 +69,12 @@ export class LoginComponent implements OnInit {
     } else if(this.roles.includes('PERAN_GURU')){
       this.router.navigate(['/dashboard/staff/tambahguru']);
     } else if(this.roles.includes('PERAN_MAHASISWA')){
-      this.router.navigate(['/dashboard/mhs/tambahmhs'],{queryParams: {nama:'',email: this.tokenStorage.getPengguna().email_pengguna}});
+      if(this.idPengguna == 'kosong'){
+        this.router.navigate(['/dashboard/mhs/tambahmhs',this.idLogin]);
+      } else {
+        this.router.navigate(["/dashboard/mhs/berhasildaftar"],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
+      }
+      
     } else if(this.roles.includes('PERAN_STAFF')){
       this.router.navigate(['/dashboard/staff/tambahstaff']);
     } else if(this.roles.includes('PERAN_ADMIN')){

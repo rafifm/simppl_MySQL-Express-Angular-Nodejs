@@ -15,6 +15,7 @@ export class DatamhstambahComponent implements OnInit {
   dataMhs: any;
   private mode = 'buat';
   private idMhs: string;
+  private idPengguna: string;
 
   constructor(
     private datamhsService: DatamhsService, 
@@ -48,6 +49,7 @@ export class DatamhstambahComponent implements OnInit {
         this.idMhs = null;
       }
     });
+    this.idPengguna = this.route.snapshot.paramMap.get('idLogin');
   }
 
   simpanAkunMhs(){
@@ -55,7 +57,7 @@ export class DatamhstambahComponent implements OnInit {
       return;
     }
     if( this.mode === 'buat' ) {
-      this.datamhsService.buat({
+      this.datamhsService.tambahMhs(this.idPengguna,{
         nama_mhs: this.formMhs.value.nama_mhs,
         nim_mhs: this.formMhs.value.nim_mhs,
         no_hp_mhs: this.formMhs.value.no_hp_mhs,
@@ -64,6 +66,7 @@ export class DatamhstambahComponent implements OnInit {
       })
       .subscribe(akunMhs => {
         this.submitted = true;
+        this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
       },
       error => {
         console.log(error);
@@ -80,12 +83,12 @@ export class DatamhstambahComponent implements OnInit {
         }
       ).subscribe(dataUploadMhs => {
         this.submitted = true;
+        this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
       }, error=> {
         console.log(error);
       });
     }    
     this.formMhs.reset();
-    this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
   }
 
 }

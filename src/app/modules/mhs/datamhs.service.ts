@@ -26,6 +26,10 @@ export class DatamhsService {
     return this.http.post(`${urlMhs}/buat`, data);
   }
 
+  tambahMhs(idPengguna, data): Observable<any>{
+    return this.http.put(`${urlMhs}/profil/${idPengguna}`, data);
+  }
+
   update(id, data): Observable<any> {
     return this.http.put(`${urlMhs}/${id}`, data);
   }
