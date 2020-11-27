@@ -16,6 +16,8 @@ module.exports = app => {
 
   router.put("/nilaiuas/:idMhsnilai", mhs.nilaiUas);
 
+  router.put("/nilaiuts/:idMhsnilai", mhs.nilaiUTS);
+
   router.get("/:idmhs/:idSekolah", mhs.insertSekolah);
 
   router.delete("/:id", mhs.delete);

@@ -202,6 +202,36 @@ exports.deleteAll = (req, res) => {
   });
 };
 
+exports.nilaiUTS = (req, res) => {
+  dbNilai.findOne({
+    where: {nilaiDosen_uts: null}
+  }).then(cekNilai => {
+    return dbNilai.create({
+      nilaiDosen_uts: req.body.nilaiDosen_uts
+    }).then(nilaiUTS => {
+      res.status(200).send({status: 1});
+      dbMhs.findOne({
+        where: {id: req.params.idMhsnilai}
+      }).then(mhs => {
+        mhs.setNilai(nilaiUTS.id);
+      }).catch(err => {
+        res.status(500).send({
+          message: "error set nilai " + err
+        });
+      });
+    }).catch(err => {
+      res.status(500).send({
+        message: "error cari mhs " + err
+      });
+    });
+  }).catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "error saat simpan nilai"
+    });
+  });
+}
+
 exports.nilaiUas = (req, res) => {
   dbNilai.findOne({
     where: {nilaiDosen_uas: null}
@@ -231,5 +261,4 @@ exports.nilaiUas = (req, res) => {
     });
   });
 
-  
 }

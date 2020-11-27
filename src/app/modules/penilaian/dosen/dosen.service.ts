@@ -21,6 +21,10 @@ export class DosenService {
     return this.http.put(`${urlMhs}/nilaiuas/${idMhsNilai}`, nilai);
   }
 
+  nilaiUTS(idMhsNilai, nilai): Observable<any> {
+    return this.http.put(`${urlMhs}/nilaiuts/${idMhsNilai}`, nilai);
+  }
+
   ambilSatuMhs(idMhs): Observable<any> {
     return this.http.get(`${urlMhs}/${idMhs}`);
   }

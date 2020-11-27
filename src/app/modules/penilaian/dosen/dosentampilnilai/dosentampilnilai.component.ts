@@ -13,7 +13,7 @@ export class DosentampilnilaiComponent implements OnInit {
   dosen: any;
   private idPengguna;
 
-  kolomNilai: string[] = ["nama", "nim", "aksi"];
+  kolomNilai: string[] = ["nama", "nim", "nilaiuts", "nilaiuas"];
 
   constructor(
     private dbMhs: DosenService,
@@ -30,14 +30,7 @@ export class DosentampilnilaiComponent implements OnInit {
     this.idPengguna = this.tokenStorage.getPengguna().idPengguna;
     this.dbMhs.ambilDosen(this.idPengguna)
       .subscribe(ambilData => {
-        this.dosen = ambilData[0].mahasiswas;
-        for(var i=0;i<= this.dosen.length; i++){
-          if(this.dosen[i].nilaiId == null){
-            tombolnilai = true;
-          } else if (this.dosen[i].nilaiId != null) {
-            tombolnilai = false;
-          }
-        }
+        this.dosen = ambilData[0].mahasiswas; 
       })
       error => {
         console.log(error);
@@ -46,8 +39,11 @@ export class DosentampilnilaiComponent implements OnInit {
   }
 
   nilai(idMhs){
-    let idPengguna = this.idPengguna;
-    this.router.navigate(['/dashboard/dosen/tambahnilai', idMhs, idPengguna]);
+    this.router.navigate(['/dashboard/dosen/tambahnilai', idMhs, this.idPengguna]);
+  }
+
+  nilaiUTS(idMhs){
+    this.router.navigate(['/dashboard/dosen/tambahnilaiuts', idMhs, this.idPengguna]);
   }
 
 }
