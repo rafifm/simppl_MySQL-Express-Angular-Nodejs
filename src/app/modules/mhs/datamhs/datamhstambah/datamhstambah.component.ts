@@ -66,7 +66,6 @@ export class DatamhstambahComponent implements OnInit {
       })
       .subscribe(akunMhs => {
         this.submitted = true;
-        this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
       },
       error => {
         console.log(error);
@@ -87,8 +86,9 @@ export class DatamhstambahComponent implements OnInit {
       }, error=> {
         console.log(error);
       });
-    }    
+    }
     this.formMhs.reset();
+    this.router.navigate(["/dashboard/mhs/berhasildaftar"]);    
   }
 
 }

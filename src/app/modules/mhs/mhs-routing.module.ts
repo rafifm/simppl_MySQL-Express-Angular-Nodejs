@@ -12,7 +12,7 @@ const routes: Routes = [
     component: SidebarmhsComponent,
     outlet: 'sidebarmhs'
   }, {
-    path: 'tambahmhs',
+    path: 'tambahmhs/:idLogin',
     component: DatamhstambahComponent
   }, {
     path: 'tampilmhs',
