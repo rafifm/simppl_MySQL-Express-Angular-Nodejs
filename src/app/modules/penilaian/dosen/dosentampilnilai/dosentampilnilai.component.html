@@ -21,7 +21,7 @@
       <ng-container matColumnDef="nilaiuas">
         <th mat-header-cell *matHeaderCellDef > UAS </th>
         <td mat-cell *matCellDef="let dosen" > 
-          <p *ngIf="dosen.nilai?.nilaiDosen_uas">{{dosen.nilai.nilaiDosen_uas}}</p>
+          <p *ngIf="dosen.nilai?.nilaiDosen_uas">{{dosen.nilai?.nilaiDosen_uas}}</p>
           <mat-action-row >
             <button mat-button color="nilai" (click)="nilai(dosen.id)" *ngIf="!dosen.nilai?.nilaiDosen_uas">Nilai</button>
           </mat-action-row>

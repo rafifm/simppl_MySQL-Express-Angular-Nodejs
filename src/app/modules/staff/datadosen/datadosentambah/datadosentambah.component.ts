@@ -86,6 +86,7 @@ export class DatadosentambahComponent implements OnInit {
       });
     }
     this.formAkunDosen.reset();
+    this.router.navigate(["/dashboard/dosen/tampilnilai"],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
     
   }
 
