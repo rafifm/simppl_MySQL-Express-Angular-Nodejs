@@ -6,3 +6,7 @@ mat-card{
   justify-content:center;
   align-items:center;
 }
+
+mat-card:hover {
+  background-color: yellow;
+}
