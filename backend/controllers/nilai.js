@@ -9,6 +9,7 @@ exports.tambahNilaiUasDosen = (req,res) => {
         });
         return;
     }
+    console.log(req.body);
 
     dbNilai.create({ nilaiDosen_uas: req.body.nilaiDosen_uas})
         .then(nilaiUas => {

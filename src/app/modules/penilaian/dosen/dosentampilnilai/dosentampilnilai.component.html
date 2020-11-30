@@ -12,7 +12,7 @@
       <ng-container matColumnDef="nilaiuts">
         <th mat-header-cell *matHeaderCellDef > UTS </th>
         <td mat-cell *matCellDef="let dosen" >
-          <p *ngIf="dosen.nilai?.nilaiDosen_uts">{{dosen.nilai?.nilaiDosen_uts}}</p>
+          <p >{{dosen.nilai?.nilaiDosen_uts}}</p>
           <mat-action-row >
             <button mat-button color="nilai" (click)="nilaiUTS(dosen.id)" *ngIf="!dosen.nilai?.nilaiDosen_uts">Nilai</button>
           </mat-action-row>
@@ -21,9 +21,10 @@
       <ng-container matColumnDef="nilaiuas">
         <th mat-header-cell *matHeaderCellDef > UAS </th>
         <td mat-cell *matCellDef="let dosen" > 
-          <p *ngIf="dosen.nilai?.nilaiDosen_uas">{{dosen.nilai?.nilaiDosen_uas}}</p>
+          <p >{{dosen.nilai?.nilaiDosen_uas}}</p>
+          <p *ngIf="!dosen.nilai?.nilaiDosen_uas && !dosen.nilai?.nilaiDosen_uts" style="color: grey">isi nilai uts</p>
           <mat-action-row >
-            <button mat-button color="nilai" (click)="nilai(dosen.id)" *ngIf="!dosen.nilai?.nilaiDosen_uas">Nilai</button>
+            <button mat-button color="nilai" (click)="nilai(dosen.id)" *ngIf="dosen.nilai?.nilaiDosen_uts && !dosen.nilai?.nilaiDosen_uas">Nilai</button>
           </mat-action-row>
         </td>
       </ng-container>

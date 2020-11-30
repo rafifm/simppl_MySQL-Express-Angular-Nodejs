@@ -1,13 +1,22 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row >
     <div fxFlex fxLayout="row" fxLayoutAlign="space-between">
-      <span fxLayout="row" fxLayoutAlign="center center " style="color:yellow">SIMPPL</span>
-      <h3 fxLayout="row" fxLayoutAlign="center center">{{peran}}</h3>  
       <ul fxLayout="row" fxLayoutGap="20px">
         <li>
           <button mat-icon-button (click)="toggleSideBar($event)">
             <mat-icon>menu</mat-icon>
           </button>
+        </li>
+        <li>
+          <span style="color:yellow">SIMPPL</span>
+        </li>
+      </ul>
+      <h3 fxLayout="row" fxLayoutAlign="center center">{{peran}}</h3>  
+      <ul fxLayout="row" fxLayoutGap="20px">
+        <li>
+          <h5>{{nama}}</h5>
+        </li>
+        <li>
           <button mat-raised-button color="primary" (click)="logout()"  >
             Log Out
           </button>

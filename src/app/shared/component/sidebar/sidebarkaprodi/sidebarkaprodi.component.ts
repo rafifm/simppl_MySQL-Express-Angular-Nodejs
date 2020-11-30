@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 
 @Component({
   selector: 'app-sidebarkaprodi',
@@ -53,11 +54,11 @@ export class SidebarkaprodiComponent implements OnInit {
   nama_kaprodi;
   email_kaprodi;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.nama_kaprodi = this.route.snapshot.queryParams['nama'];
-    this.email_kaprodi = this.route.snapshot.queryParams['email'];
+    this.nama_kaprodi = this.tokenStorage.getPengguna().nama;
+    this.email_kaprodi = this.tokenStorage.getPengguna().email_pengguna;
   }
 
 }

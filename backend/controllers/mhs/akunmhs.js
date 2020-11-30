@@ -203,8 +203,9 @@ exports.deleteAll = (req, res) => {
 };
 
 exports.nilaiUTS = (req, res) => {
+  console.log(req.body);
   dbNilai.findOne({
-    where: {nilaiDosen_uts: null}
+    where: {nilaiDosen_uts: null},
   }).then(cekNilai => {
     return dbNilai.create({
       nilaiDosen_uts: req.body.nilaiDosen_uts
@@ -233,32 +234,45 @@ exports.nilaiUTS = (req, res) => {
 }
 
 exports.nilaiUas = (req, res) => {
-  dbNilai.findOne({
-    where: {nilaiDosen_uas: null}
-  }).then(cekNilai => {
-    return dbNilai.create({
-      nilaiDosen_uas: req.body.nilaiDosen_uas
-    }).then(nilaiUas => {
-      res.status(200).send({status: 1});
-      dbMhs.findOne({
-        where: {id: req.params.idMhsnilai}
-      }).then(mhs => {
-        mhs.setNilai(nilaiUas.id);
-      }).catch(err => {
-        res.status(500).send({
-          message: "error set nilai " + err
-        });
-      });
-    }).catch(err => {
-      res.status(500).send({
-        message: "error cari mhs " + err
-      });
-    });
+  dbMhs.findOne({
+    where:{id: req.params.idMhsnilai}
+  }).then(mhs=> {
+    dbNilai.update({ 
+      nilaiDosen_uas: req.body.nilaiDosen_uas 
+    }, {
+      where: {id: mhs.nilaiId}
+    }).then(nilaiUAS => {
+      res.status(200).send({message: "nilai berhasil masuk:" + nilaiUAS})
+    })
   }).catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "error saat simpan nilai"
-    });
+    res.status(500).send({message: "error mengmbil mhs"+ err});
   });
+  // dbNilai.findOne({
+  //   where: {nilaiDosen_uas: null}
+  // }).then(cekNilai => {
+  //   return dbNilai.create({
+  //     nilaiDosen_uas: req.body.nilaiDosen_uas
+  //   }).then(nilaiUas => {
+  //     res.status(200).send({status: 1});
+  //     dbMhs.findOne({
+  //       where: {id: req.params.idMhsnilai}
+  //     }).then(mhs => {
+  //       mhs.setNilai(nilaiUas.id);
+  //     }).catch(err => {
+  //       res.status(500).send({
+  //         message: "error set nilai " + err
+  //       });
+  //     });
+  //   }).catch(err => {
+  //     res.status(500).send({
+  //       message: "error cari mhs " + err
+  //     });
+  //   });
+  // }).catch(err => {
+  //   res.status(500).send({
+  //     message:
+  //       err.message || "error saat simpan nilai"
+  //   });
+  // });
 
 }

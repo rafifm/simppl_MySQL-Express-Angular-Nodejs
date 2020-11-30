@@ -9,6 +9,7 @@ import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storag
 export class HeaderComponent implements OnInit {
   userIsAuthenticated = false;
   peran;
+  nama;
 
   @Output() toggleSideBarForMe = new EventEmitter<any>();
 
@@ -27,6 +28,9 @@ export class HeaderComponent implements OnInit {
     } else if (this.tokenStorage.getPengguna().peran == 'PERAN_KAPRODI'){
       this.peran = "KAPRODI";
     }
+    console.log(this.tokenStorage.getPengguna());
+    this.nama = this.tokenStorage.getPengguna().nama;
+
   }
 
   logout(): void {

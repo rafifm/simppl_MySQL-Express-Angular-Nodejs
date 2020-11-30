@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 
 @Component({
   selector: 'app-sidebarmhs',
@@ -11,11 +12,11 @@ export class SidebarmhsComponent implements OnInit {
   nama_mhs;
   email_mhs;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.nama_mhs = this.route.snapshot.queryParams['nama'];
-    this.email_mhs = this.route.snapshot.queryParams['email'];
+    this.nama_mhs = this.tokenStorage.getPengguna().nama;
+    this.email_mhs = this.tokenStorage.getPengguna().email_pengguna;
   }
 
 }
