@@ -20,6 +20,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MatButtonModule } from '@angular/material/button';
     SharedModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ]
 })
 export class KaprodiModule { }
