@@ -10,6 +10,7 @@ import { PilihTmptMhsComponent } from './penempatan/pilih-tmpt-mhs/pilih-tmpt-mh
 import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tampilan-dosen.component';
 import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
 import { KaprodiComponent } from './kaprodi.component';
+import { TampilNilaiComponent } from './nilai-mhs/tampil-nilai/tampil-nilai.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,9 @@ const routes: Routes = [
   }, {
     path: 'tampilmhs',
     component: TampilanMhsComponent   
+  }, {
+    path: 'tampilnilaimhs',
+    component: TampilNilaiComponent   
   }
 ];
 

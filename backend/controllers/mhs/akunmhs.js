@@ -89,6 +89,17 @@ exports.ambilMhsSekolah = (req, res) => {
 
 }
 
+exports.ambilNilai = (req, res) => {
+  dbMhs.findAll({
+    include: [{model: dbNilai}],
+    attributes: ['nama_mhs']
+  }).then(nilai =>{
+    res.status(200).send(nilai);
+  }).catch(err=> {
+    res.status(500).send({ message: err.message || "error mengambil nilai"});
+  });
+}
+
 exports.findAll = (req, res) => {
   const { page, size, nama_mhs } = req.query;
   var condition = nama_mhs? { nama_mhs: {[Op.like]: `%${nama_mhs}`}} : null;

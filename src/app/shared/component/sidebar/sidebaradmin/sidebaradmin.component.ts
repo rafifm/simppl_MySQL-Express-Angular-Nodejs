@@ -12,13 +12,10 @@ export class SidebaradminComponent implements OnInit {
     nama_admin;
     email_admin;
 
-  constructor(
-    private tokenService: TokenStorageService,
-    private route: ActivatedRoute
-    ) { }
+  constructor(private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.nama_admin = this.route.snapshot.queryParams['nama'];
+    this.nama_admin = this.tokenService.getPengguna().nama;
     this.email_admin = this.tokenService.getPengguna().email_pengguna;
   }
 

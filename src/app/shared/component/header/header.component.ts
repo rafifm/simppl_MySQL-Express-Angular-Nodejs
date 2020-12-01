@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit {
   userIsAuthenticated = false;
   peran;
   nama;
+  link;
 
   @Output() toggleSideBarForMe = new EventEmitter<any>();
 
@@ -21,14 +22,17 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     if(this.tokenStorage.getPengguna().peran == 'PERAN_DOSEN') {
       this.peran = "DOSEN";
+      this.link = "/dashboard/dosen/tampilnilai";
     } else if (this.tokenStorage.getPengguna().peran == 'PERAN_ADMIN'){
       this.peran = "ADMIN";
+      this.link = "/admin/kelolaperan";
     } else if (this.tokenStorage.getPengguna().peran == 'PERAN_MAHASISWA'){
       this.peran = "MAHASISWA";
+      this.link = "/dashboard/mhs/berhasildaftar";
     } else if (this.tokenStorage.getPengguna().peran == 'PERAN_KAPRODI'){
       this.peran = "KAPRODI";
+      this.link = "/dashboard/kaprodi";
     }
-    console.log(this.tokenStorage.getPengguna());
     this.nama = this.tokenStorage.getPengguna().nama;
 
   }

@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
       if(this.idPengguna == 'kosong'){
         this.router.navigate(['/dashboard/staff/tambahdosen', this.idLogin]);
       } else {
-        this.router.navigate(['/dashboard/dosen/tampilnilai'],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
+        this.router.navigate(['/dashboard/dosen/tampilnilai']);
       }
     } else if(this.roles.includes('PERAN_GURU')){
       this.router.navigate(['/dashboard/staff/tambahguru']);
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
       if(this.idPengguna == 'kosong'){
         this.router.navigate(['/dashboard/mhs/tambahmhs',this.idLogin]);
       } else {
-        this.router.navigate(["/dashboard/mhs/berhasildaftar"],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
+        this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
       }
       
     } else if(this.roles.includes('PERAN_STAFF')){

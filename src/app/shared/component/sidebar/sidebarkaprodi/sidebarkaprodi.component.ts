@@ -28,7 +28,10 @@ export class SidebarkaprodiComponent implements OnInit {
           {
               label: 'Penempatan Mahasiswa',
               link: '/dashboard/kaprodi/pilihtempatmhs'
-          }
+          },{
+            label: 'Nilai Mahasiswa',
+            link: '/dashboard/kaprodi/tampilnilaimhs'
+        }
         ]
     }
   ];

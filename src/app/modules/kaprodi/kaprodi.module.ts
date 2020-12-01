@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { TampilNilaiComponent } from './nilai-mhs/tampil-nilai/tampil-nilai.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatInputModule } from '@angular/material/input';
     TampilSekolahComponent,
     TampilanDosenComponent,
     TampilanMhsComponent,
-    KaprodiComponent
+    KaprodiComponent,
+    TampilNilaiComponent
   ],
   imports: [
     CommonModule,
