@@ -9,6 +9,8 @@ module.exports = app => {
   
     router.get("/", akundosen.findAll);
 
+    router.get("/staff", akundosen.ambilDosen);
+
     router.get("/penempatan", akundosen.ambilDosenMhs);
   
     router.get("/:id", akundosen.findOne);

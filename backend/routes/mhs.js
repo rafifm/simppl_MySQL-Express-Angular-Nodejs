@@ -8,6 +8,8 @@ module.exports = app => {
 
   router.get("/kaprodi", mhs.ambilNilai);
 
+  router.get("/staff", mhs.ambilMhs);
+
   router.get("/penempatan", mhs.ambilMhsSekolah);
 
   router.get("/:id", mhs.findOne);

@@ -5,6 +5,7 @@ const peran = db.peran;
 const dosen = db.akundosen;
 const mhs = db.mhs;
 const kaprodi = db.kaprodi;
+const staff = db.staff;
 
 const Op = db.Sequelize.Op;
 
@@ -57,6 +58,10 @@ exports.signin = (req, res) => {
             model: kaprodi,
             required: false,
             status: 'active'
+        },{
+            model: staff,
+            required: false,
+            status: 'active'
         }]
     }).then(pengguna => {
         if(!pengguna) {
@@ -90,6 +95,9 @@ exports.signin = (req, res) => {
         } else if (pengguna.kaprodi) {
             idPengguna = pengguna.kaprodi.id;
             nama = pengguna.kaprodi.nama;
+        } else if (pengguna.staff) {
+            idPengguna = pengguna.staff.id;
+            nama = pengguna.staff.nama_staff;
         } else {
             idPengguna = 'kosong';
             nama = 'belum ada';

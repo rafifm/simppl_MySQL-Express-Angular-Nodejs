@@ -70,7 +70,6 @@ export class DosentambahnilaiComponent implements OnInit {
     this.dosenService.nilaiUas(this.idMhs, dbNilai={
       nilaiDosen_uas: this.vNilai
     }).subscribe(nilai => {
-      console.log(nilai);
       this.router.navigate(['/dashboard/dosen/tampilnilai']);
     }, error => {
       console.log(error);

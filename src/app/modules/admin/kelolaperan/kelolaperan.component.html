@@ -19,13 +19,13 @@
         <mat-form-field>
           <input
             matInput
-            type="text"
+            type="password"
             formControlName="password"
             placeholder="Password">
         </mat-form-field>
         <mat-form-field>
-          <mat-select formControlName = "peran">
-            <mat-option placeholder="Pilih Peran" *ngFor="let perans of peran" [value]= "perans">{{perans}}</mat-option>
+          <mat-select formControlName = "peran" placeholder="Pilih Peran">
+            <mat-option  *ngFor="let perans of peran" [value]= "perans">{{perans}}</mat-option>
           </mat-select>
         </mat-form-field>
         <button

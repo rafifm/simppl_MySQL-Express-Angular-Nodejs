@@ -65,11 +65,12 @@ export class DatadosentambahComponent implements OnInit {
         pangkat_dosen: this.formAkunDosen.value.pangkat_dosen
       }).subscribe(akunDosen => {
         this.submitted = true;
-        this.router.navigate(["/dashboard/dosen/tampilnilai"],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
+        
       },
       error => {
         console.log(error);
       });
+      this.router.navigate(["/dashboard/dosen/tampilnilai"]);
     } else {
       this.datadosenService.update(
         this.dataDosen.id, this.dataDosen = {
@@ -79,14 +80,15 @@ export class DatadosentambahComponent implements OnInit {
           pangkat_dosen: this.formAkunDosen.value.pangkat_dosen          
         }
       ).subscribe(dataUploadDosen => {
-        console.log(dataUploadDosen);
+        this.router.navigate(["/dashboard/staff/dashboardstaff"]);
         this.submitted = true;
       }, error=> {
         console.log(error);
       });
+      this.router.navigate(["/dashboard/dosen/tampilnilai"]);
     }
     this.formAkunDosen.reset();
-    this.router.navigate(["/dashboard/dosen/tampilnilai"],{queryParams: {nama:this.tokenStorage.getPengguna().nama,email: this.tokenStorage.getPengguna().email_pengguna}});
+    
     
   }
 

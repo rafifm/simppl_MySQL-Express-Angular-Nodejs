@@ -76,7 +76,12 @@ export class LoginComponent implements OnInit {
       }
       
     } else if(this.roles.includes('PERAN_STAFF')){
-      this.router.navigate(['/dashboard/staff/tambahstaff']);
+      if(this.idPengguna == 'kosong'){
+        this.router.navigate(['/dashboard/staff/tambahstaff']);
+      }else {
+        this.router.navigate(['/dashboard/staff/dashboardstaff']);
+      }
+      
     } else if(this.roles.includes('PERAN_ADMIN')){
       this.router.navigate(['/admin/kelolaperan'], {queryParams: {nama:'admin',email: this.tokenStorage.getPengguna().email_pengguna}});
     } else if(this.roles.includes('PERAN_KAPRODI')){

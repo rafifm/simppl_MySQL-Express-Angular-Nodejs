@@ -1,0 +1,17 @@
+<div>
+  <form [formGroup]="formStaff" (submit)="simpanStaff()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nama_staff"
+        placeholder="nama">
+    </mat-form-field>
+    <button 
+      mat-raised-button
+      color="primary"
+      type="submit">
+      Simpan
+    </button>
+  </form>
+</div>

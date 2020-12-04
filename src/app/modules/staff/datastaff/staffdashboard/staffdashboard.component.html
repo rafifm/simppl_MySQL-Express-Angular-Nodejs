@@ -1,0 +1,43 @@
+<mat-tab-group>
+  <mat-tab label="Dosen">
+    <table mat-table [dataSource]="dosen" class="mat-elevation-z8">
+      <ng-container matColumnDef="nama">
+        <th mat-header-cell *matHeaderCellDef> Nama. </th>
+        <td mat-cell *matCellDef="let dosen"> {{dosen?.nama_dosen}}</td>
+      </ng-container>
+      <ng-container matColumnDef="nidn">
+        <th mat-header-cell *matHeaderCellDef> NIDN </th>
+        <td mat-cell *matCellDef="let dosen">{{dosen?.nip}} </td>
+      </ng-container>
+      <ng-container matColumnDef="aksi">
+        <th mat-header-cell *matHeaderCellDef> Aksi </th>
+        <td mat-cell *matCellDef="let dosen"> 
+          <div >
+            <a mat-button color="primary" [routerLink]="[dosen.id]">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <button mat-button color="warn" (click)="hapusDosen(dosen.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>    
+      <tr mat-header-row *matHeaderRowDef="kolomDosen"></tr>
+      <tr mat-row *matRowDef="let row; columns: kolomDosen;"></tr>
+    </table>
+  </mat-tab>
+  <mat-tab label="Mahasiswa">
+    <table mat-table [dataSource]="mhs" class="mat-elevation-z8">
+      <ng-container matColumnDef="nama">
+        <th mat-header-cell *matHeaderCellDef> Nama. </th>
+        <td mat-cell *matCellDef="let mhs"> {{mhs?.nama_mhs}}</td>
+      </ng-container>
+      <ng-container matColumnDef="nim">
+        <th mat-header-cell *matHeaderCellDef> NIM</th>
+        <td mat-cell *matCellDef="let mhs">{{mhs?.nim_mhs}} </td>
+      </ng-container>   
+      <tr mat-header-row *matHeaderRowDef="kolomMhs"></tr>
+      <tr mat-row *matRowDef="let row; columns: kolomMhs;"></tr>
+    </table>
+  </mat-tab>
+</mat-tab-group>

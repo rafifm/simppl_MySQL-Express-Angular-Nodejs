@@ -46,6 +46,14 @@ exports.create = (req, res) => {
   });
 };
 
+exports.ambilDosen = (req, res) => {
+  dbAkunDosen.findAll().then(dosen => {
+    res.status(200).send(dosen);
+  }).catch(err => {
+    res.status(500).send({message: err.message || "error mengambil dosen"});
+  });
+}
+
 exports.findAll = (req, res) => {
   const { page, size, nama_dosen } = req.query;
   var condition = nama_dosen? { nama_dosen: {[Op.like]: `%${nama_dosen}`}} : null;

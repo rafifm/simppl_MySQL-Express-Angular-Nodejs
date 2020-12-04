@@ -1,5 +1,6 @@
 const db = require("../models/dbmysql");
 const Staff = db.staff;
+const dbPengguna = db.pengguna;
 const Op = db.Sequelize.Op;
 
 const getPagination = (page, size) => {
@@ -47,6 +48,29 @@ exports.create = (req, res) => {
     });
   
 };
+
+exports.tambahStaff = (req, res) => {
+  if(!req.body.nama_staff){
+    res.status(400).send({
+      message:"tidak boleh kosong"
+    });
+    return;
+  }
+
+  Staff.create({
+    nama_staff: req.body.nama_staff
+  }).then(staff => {
+    return dbPengguna.findOne({
+      where: {id: req.params.idStaff}
+    }).then(pengguna => {
+      pengguna.setStaff(staff.id);
+    }).catch(err => {
+      res.status(500).send({message: err.message || "error set akun staff"});
+    });
+  }).catch(err => {
+    res.status(500).send({message: err.message || "error pembuatan akun staff"});
+  });
+}
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {

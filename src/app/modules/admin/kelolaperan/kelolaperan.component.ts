@@ -49,6 +49,7 @@ export class KelolaperanComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+    this.formDaftar.reset();
   }
 
 }

@@ -32,6 +32,9 @@ export class HeaderComponent implements OnInit {
     } else if (this.tokenStorage.getPengguna().peran == 'PERAN_KAPRODI'){
       this.peran = "KAPRODI";
       this.link = "/dashboard/kaprodi";
+    } else if (this.tokenStorage.getPengguna().peran == 'PERAN_STAFF'){
+      this.peran = "STAFF";
+      this.link = "/dashboard/staff/dashboardstaff";
     }
     this.nama = this.tokenStorage.getPengguna().nama;
 

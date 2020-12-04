@@ -100,6 +100,14 @@ exports.ambilNilai = (req, res) => {
   });
 }
 
+exports.ambilMhs = (req, res) => {
+  dbMhs.findAll().then(mhs=> {
+    res.status(200).send(mhs);
+  }).catch(err => {
+    res.status(500).send({message: err.message || "error mengmbil mahasiswa"});
+  });
+}
+
 exports.findAll = (req, res) => {
   const { page, size, nama_mhs } = req.query;
   var condition = nama_mhs? { nama_mhs: {[Op.like]: `%${nama_mhs}`}} : null;
