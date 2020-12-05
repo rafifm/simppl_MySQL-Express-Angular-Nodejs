@@ -33,7 +33,7 @@ export class DosentampilnilaiComponent implements OnInit {
         this.dosen = ambilData[0].mahasiswas; 
       })
       error => {
-        console.log(error);
+        console.log("error: " + error);
       }
     
   }
