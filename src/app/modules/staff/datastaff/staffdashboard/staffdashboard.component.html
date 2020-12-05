@@ -35,6 +35,21 @@
       <ng-container matColumnDef="nim">
         <th mat-header-cell *matHeaderCellDef> NIM</th>
         <td mat-cell *matCellDef="let mhs">{{mhs?.nim_mhs}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nokwitansi">
+        <th mat-header-cell *matHeaderCellDef> No. Kwitansi</th>
+        <td mat-cell *matCellDef="let mhs">{{mhs?.nokwitansi_mhs}} </td>
+      </ng-container>
+      <ng-container matColumnDef="verifikasi">
+        <th mat-header-cell *matHeaderCellDef> Verifikasi </th>
+        <td mat-cell *matCellDef="let mhs"> 
+          <p *ngIf="mhs?.status_verifikasi == 1">verified</p>
+          <div >
+            <button mat-button color="verifikasi" (click)="verifikasi(mhs.id)" *ngIf="!mhs?.status_verifikasi ">
+              verifikasi
+            </button>
+          </div>
+        </td>
       </ng-container>   
       <tr mat-header-row *matHeaderRowDef="kolomMhs"></tr>
       <tr mat-row *matRowDef="let row; columns: kolomMhs;"></tr>

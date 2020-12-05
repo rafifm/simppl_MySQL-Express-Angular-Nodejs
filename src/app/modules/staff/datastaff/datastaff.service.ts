@@ -30,4 +30,8 @@ export class DatastaffService {
     return this.http.post(`${urlStaff}/buat/${id}`, data);
   }
 
+  verif(id, data): Observable<any> {
+    return this.http.put(`${urlMhs}/verifikasi/${id}`, data);
+  }
+
 }

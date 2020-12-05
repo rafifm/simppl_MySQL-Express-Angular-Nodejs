@@ -10,6 +10,8 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.FLOAT
     }, nokwitansi_mhs : {
       type: Sequelize.BIGINT
+    }, status_verifikasi : {
+      type: Sequelize.INTEGER
     }
   });
 

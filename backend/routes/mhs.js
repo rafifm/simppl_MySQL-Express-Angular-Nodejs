@@ -22,8 +22,10 @@ module.exports = app => {
 
   router.put("/nilaiuts/:idMhsnilai", mhs.nilaiUTS);
 
+  router.put("/verifikasi/:idMhs", mhs.verifikasi);
+  
   router.get("/:idmhs/:idSekolah", mhs.insertSekolah);
-
+  
   router.delete("/:id", mhs.delete);
 
   router.delete("/", mhs.deleteAll);

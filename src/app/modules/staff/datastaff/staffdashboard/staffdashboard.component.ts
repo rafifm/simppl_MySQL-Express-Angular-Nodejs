@@ -8,10 +8,11 @@ import { DatastaffService } from '../datastaff.service';
 })
 export class StaffdashboardComponent implements OnInit {
 
+  status = '1';
   dosen;
   mhs;
   kolomDosen: string[] = ["nama", "nidn", "aksi"];
-  kolomMhs: string[] = ["nama", "nim"];
+  kolomMhs: string[] = ["nama", "nim", "nokwitansi","verifikasi"];
 
   constructor(private data: DatastaffService) { }
 
@@ -38,6 +39,16 @@ export class StaffdashboardComponent implements OnInit {
       error => {
         console.log(error);
       }
+  }
+
+  verifikasi(id){
+    this.data.verif(id, {status_verifikasi: this.status})
+      .subscribe(status => {
+        this.ambilDataMhs();
+      }, error => {
+        console.log(error);
+      });
+    
   }
 
   hapusDosen(idDosen){

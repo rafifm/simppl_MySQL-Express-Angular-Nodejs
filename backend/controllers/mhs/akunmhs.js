@@ -161,6 +161,19 @@ exports.insertSekolah = (req, res) => {
     });
 }
 
+exports.verifikasi = (req, res) => {
+  console.log(req.body);
+  dbMhs.update({
+    status_verifikasi: req.body.status_verifikasi
+  }, {
+    where: {id: req.params.idMhs}
+  }).then(verif =>{
+    res.send({message: "berhasil verifikasi"});
+  }).catch( err => {
+    res.send({message: "verifikasi error "+ err});
+  })
+}
+
 exports.update = (req, res) => {
   const id = req.params.id;
 
@@ -222,7 +235,6 @@ exports.deleteAll = (req, res) => {
 };
 
 exports.nilaiUTS = (req, res) => {
-  console.log(req.body);
   dbNilai.findOne({
     where: {nilaiDosen_uts: null},
   }).then(cekNilai => {

@@ -67,7 +67,7 @@ export class DosentambahnilaiComponent implements OnInit {
     let idPengguna = this.route.snapshot.paramMap.get('idPengguna');
     this.vNilai = (((parseInt(no1)+parseInt(no2)+parseInt(no3)+parseInt(no4)+parseInt(no5)+parseInt(no6)+parseInt(no7)+parseInt(no8)+parseInt(no9)+parseInt(no10)+parseInt(no11)+parseInt(no12)+parseInt(no13)+parseInt(no14)+parseInt(no15))/60)*100).toFixed(2);
     let dbNilai;
-    this.dosenService.nilaiUas(this.idMhs, dbNilai={
+    this.dosenService.nilaiUas(this.idMhs, {
       nilaiDosen_uas: this.vNilai
     }).subscribe(nilai => {
       this.router.navigate(['/dashboard/dosen/tampilnilai']);
