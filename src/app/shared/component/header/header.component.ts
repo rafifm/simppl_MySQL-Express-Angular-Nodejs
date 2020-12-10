@@ -36,15 +36,17 @@ export class HeaderComponent implements OnInit {
       this.peran = "STAFF";
       this.link = "/dashboard/staff/dashboardstaff";
     }
-    this.nama = this.tokenStorage.getPengguna().nama;
 
+    if(this.tokenStorage.getPengguna().peran == 'PERAN_ADMIN'){
+      this.nama = "Admin";
+    } else {
+      this.nama = this.tokenStorage.getPengguna().nama;
+    }
   }
 
   logout(): void {
     this.router.navigate(['/auth/login']);
     this.tokenStorage.signOut();
-    // window.location.reload();
-    
   }
 
   toggleSideBar(eventObject: any) {

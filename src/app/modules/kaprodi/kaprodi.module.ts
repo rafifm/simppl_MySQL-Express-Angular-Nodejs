@@ -22,6 +22,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TampilNilaiComponent } from './nilai-mhs/tampil-nilai/tampil-nilai.component';
+import { TambahprofilComponent } from './profil/tambahprofil/tambahprofil.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TampilNilaiComponent } from './nilai-mhs/tampil-nilai/tampil-nilai.comp
     TampilanDosenComponent,
     TampilanMhsComponent,
     KaprodiComponent,
-    TampilNilaiComponent
+    TampilNilaiComponent,
+    TambahprofilComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SidebardosenComponent } from 'src/app/shared/component/sidebar/sidebardosen/sidebardosen.component';
 import { SidebarstaffComponent } from 'src/app/shared/component/sidebar/sidebarstaff/sidebarstaff.component';
 import { DatadosentambahComponent } from './datadosen/datadosentambah/datadosentambah.component';
 import { DatadosentampilComponent } from './datadosen/datadosentampil/datadosentampil.component';
@@ -10,26 +11,40 @@ import { StaffdashboardComponent } from './datastaff/staffdashboard/staffdashboa
 const routes: Routes = [
   {
     path: '',
-    component: SidebarstaffComponent,
-    outlet: 'sidebarstaff'
+    children: [
+      {
+        path: '',
+        component: SidebarstaffComponent,
+        outlet: "sidebarstaff"
+      },{
+        path: 'dashboardstaff',
+        component: StaffdashboardComponent,
+      }, {
+        path: 'dashboardstaff/:id',
+        component: DatadosentambahComponent
+      }, {
+        path: 'tambahstaff',
+        component: DatastafftambahComponent
+      }
+    ]
   }, {
-    path: 'tambahdosen/:idLogin',
-    component: DatadosentambahComponent
-  }, {
-    path: 'tampildosen/ubahdata/:id',
-    component: DatadosentambahComponent
-  }, {
-    path: 'tampildosen',
-    component: DatadosentampilComponent
-  },{
-    path: 'dashboardstaff',
-    component: StaffdashboardComponent
-  }, {
-    path: 'dashboardstaff/:id',
-    component: DatadosentambahComponent
-  }, {
-    path: 'tambahstaff',
-    component: DatastafftambahComponent
+    path: 'dosen',
+    children: [
+      {
+        path: '',
+        component: SidebardosenComponent,
+        outlet: 'sidebardosen'
+      }, {
+        path: 'tambahdosen/:idLogin',
+        component: DatadosentambahComponent
+      }, {
+        path: 'tampildosen/ubahdata/:id',
+        component: DatadosentambahComponent
+      }, {
+        path: 'tampildosen',
+        component: DatadosentampilComponent
+      }
+    ]
   }
 ];
 

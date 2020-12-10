@@ -11,6 +11,7 @@ import { TampilanDosenComponent } from './penempatan/tampilan/tampilan-dosen/tam
 import { TampilanMhsComponent } from './penempatan/tampilan/tampilan-mhs/tampilan-mhs.component';
 import { KaprodiComponent } from './kaprodi.component';
 import { TampilNilaiComponent } from './nilai-mhs/tampil-nilai/tampil-nilai.component';
+import { TambahprofilComponent } from './profil/tambahprofil/tambahprofil.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,9 @@ const routes: Routes = [
   }, {
     path: 'tampilnilaimhs',
     component: TampilNilaiComponent   
+  }, {
+    path: 'profil',
+    component: TambahprofilComponent   
   }
 ];
 

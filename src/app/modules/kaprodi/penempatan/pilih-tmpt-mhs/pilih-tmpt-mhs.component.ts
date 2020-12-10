@@ -25,8 +25,7 @@ export class PilihTmptMhsComponent implements OnInit {
   halaman = 1;
   totalAkunMhs = 0;
   totalDataSekolah = 0;
-  totalDataPerHalaman = 10;
-  banyakPerHalaman = [10, 20];
+  totalDataPerHalaman = 30;
   formPilihSekolah: FormGroup;
   private idMhs: string;
 

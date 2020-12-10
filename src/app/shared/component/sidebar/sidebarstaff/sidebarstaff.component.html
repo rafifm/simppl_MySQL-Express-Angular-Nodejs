@@ -1,18 +1,10 @@
 <mat-nav-list>
   <div class="profile-card">
     <div class="header">
-      <h2>Rafif</h2>
-      <h4>Email</h4>
+      <h2>{{nama_staff}}</h2>
+      <h4>{{email_staff}}</h4>
     </div>
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+    <img src="assets/logoprofile.png">
   </div>
-
-  <h2 MatSubheader>Tools</h2>
-  <mat-divider></mat-divider>
-  <ng-material-multilevel-menu [configuration]='config' [items]='ddstaff'></ng-material-multilevel-menu>
-  <ng-material-multilevel-menu [configuration]='config' [items]='ddguru'></ng-material-multilevel-menu>
-  <ng-material-multilevel-menu [configuration]='config' [items]='dddosen'></ng-material-multilevel-menu>
-  <ng-material-multilevel-menu [configuration]='config' [items]='ddmhs'></ng-material-multilevel-menu>
-  <mat-divider></mat-divider>
 
 </mat-nav-list>

@@ -86,6 +86,7 @@ exports.signin = (req, res) => {
 
         var idPengguna;
         var nama;
+        console.log(pengguna.akundosen);
         if(pengguna.akundosen ){
             idPengguna = pengguna.akundosen.id;
             nama = pengguna.akundosen.nama_dosen;
@@ -100,7 +101,7 @@ exports.signin = (req, res) => {
             nama = pengguna.staff.nama_staff;
         } else {
             idPengguna = 'kosong';
-            nama = 'belum ada';
+            nama = 'nama';
         }
         var authorities = [];
         pengguna.getPerans().then(peran => {

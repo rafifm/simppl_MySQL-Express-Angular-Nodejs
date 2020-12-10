@@ -70,6 +70,7 @@ export class DatadosentambahComponent implements OnInit {
       error => {
         console.log(error);
       });
+      this.formAkunDosen.reset();
       this.router.navigate(["/dashboard/dosen/tampilnilai"]);
     } else {
       this.datadosenService.update(
@@ -80,16 +81,13 @@ export class DatadosentambahComponent implements OnInit {
           pangkat_dosen: this.formAkunDosen.value.pangkat_dosen          
         }
       ).subscribe(dataUploadDosen => {
-        this.router.navigate(["/dashboard/staff/dashboardstaff"]);
         this.submitted = true;
       }, error=> {
         console.log(error);
       });
+      this.formAkunDosen.reset();
       this.router.navigate(["/dashboard/dosen/tampilnilai"]);
     }
-    this.formAkunDosen.reset();
-    
-    
   }
 
 }

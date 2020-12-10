@@ -18,8 +18,7 @@ export class TampilSekolahComponent implements OnInit {
 
   halaman = 1;
   totalAkunMhs = 0;
-  totalDataPerHalaman = 10;
-  banyakPerHalaman = [5, 10, 15];
+  totalDataPerHalaman = 30;
 
   kolomSekolah: string[] = ["nama_sekolah", "kuotamhs", "aksi"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;

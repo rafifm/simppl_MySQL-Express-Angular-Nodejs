@@ -1,5 +1,6 @@
 <div>
   <img src="assets/logoulm.png">
+  <p style="color: grey;">Silahkan login dengan Email dan password</p>
   <form [formGroup]="formLogin" (submit)="onSubmit()">  
       <mat-form-field>
           <input
@@ -15,6 +16,6 @@
           formControlName="password_pengguna"
           placeholder="Password">
       </mat-form-field>
-      <button mat-raised-button color="accent" type="submit" >Log In</button>
+      <button style="align-self: flex-end;" mat-raised-button color="accent" type="submit" >Log In</button>
   </form>
 </div>

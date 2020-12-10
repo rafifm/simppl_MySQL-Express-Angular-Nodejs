@@ -203,7 +203,6 @@ exports.ambilDosenMhs = (req, res) => {
   var condition = nama_dosen? { nama_dosen: {[Op.like]: `%${nama_dosen}`}} : null;
 
   return dbAkunDosen.findAll({
-    where: condition,
     include: [{model: dbMhs, include:[dbSekolah]}]
   }).then(mahasiswa => {
     res.send(mahasiswa)

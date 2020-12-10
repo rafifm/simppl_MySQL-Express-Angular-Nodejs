@@ -15,7 +15,7 @@ export class SidebaradminComponent implements OnInit {
   constructor(private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.nama_admin = this.tokenService.getPengguna().nama;
+    this.nama_admin = "Admin";
     this.email_admin = this.tokenService.getPengguna().email_pengguna;
   }
 

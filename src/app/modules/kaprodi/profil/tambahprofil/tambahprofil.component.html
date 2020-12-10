@@ -1,0 +1,17 @@
+<div>
+  <form [formGroup]="formKaprodi" (submit)="simpanProfil()">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        formControlName="nama_kaprodi"
+        placeholder="nama">
+    </mat-form-field>
+    <button 
+      mat-raised-button
+      color="primary"
+      type="submit">
+      Simpan
+    </button>
+  </form>
+</div>

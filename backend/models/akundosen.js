@@ -3,7 +3,7 @@ module.exports = (sequelize, Sequelize) => {
       nama_dosen: {
         type: Sequelize.STRING
       }, nip: {
-        type: Sequelize.BIGINT(20)
+        type: Sequelize.STRING
       }, no_hp_dosen: {
         type: Sequelize.STRING
       }, pangkat_dosen: {

@@ -18,8 +18,7 @@ export class PilihTmptDosenComponent implements OnInit {
   halaman = 1;
   totalDataMhs = 0;
   totalDataDosen = 0;
-  totalDataPerHalaman = 10;
-  banyakPerHalaman = [ 10, 20];
+  totalDataPerHalaman = 50;
 
   kolomDosen: string[] = ["namaDosen", "nidn", "penempatan"];
   @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
@@ -55,7 +54,6 @@ export class PilihTmptDosenComponent implements OnInit {
       .subscribe((ambilDataDosen: { akundosen: any, totalDataDosen: number }) => {
         this.datadosen = ambilDataDosen.akundosen;
         this.totalDataDosen = ambilDataDosen.totalDataDosen;
-        console.log(ambilDataDosen);
       });error => {
         console.log(error);
       };
@@ -66,24 +64,6 @@ export class PilihTmptDosenComponent implements OnInit {
       });error => {
         console.log(error);
       };
-    
-
-  }
-
-  handlePageChange(event): void {
-    this.halaman = event;
-    this.ambilData();
-  }
-
-  handlePageSizeChange(event): void {
-    this.totalDataPerHalaman = event.target.value;
-    this.halaman = 1;
-    this.ambilData();
-  }
-
-  setActiveTutorial(akunDosen, index): void {
-    this.dataDosenSekarang = akunDosen;
-    this.currentIndex = index;
   }
 
   hapusSemuaDataDosen(): void {

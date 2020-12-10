@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 
 @Component({
   selector: 'app-sidebarstaff',
@@ -7,103 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarstaffComponent implements OnInit {
 
-  ddstaff = [
-    {
-        label: 'Staff',
-        items: [
-          {
-            label: ' - Nilai UAS',
-            link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
+  nama_staff;
+  email_staff;
 
-  ddguru = [
-    {
-        label: 'Guru Pamong',
-        items: [
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
-  dddosen = [
-    {
-        label: 'Dosen Pembimbing',
-        items: [
-          {
-            label: ' - Nilai UAS',
-            link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
-  ddmhs = [
-    {
-        label: 'Mahasiswa',
-        items: [
-          {
-              label: 'Pendaftaran Mahasiswa',
-              link: '/pendaftaranmhstampil'
-          },
-          {
-              label: 'Penilaian Dosen',
-              link: '/nilaidosentampil'
-          },
-          {
-              label: 'Penilaian Guru',
-              link: '/nilaigurutampil'
-          }
-        ]
-    }
-  ];
-
-  config = {
-    highlightOnSelect: true,
-    interfaceWithRoute: true,
-    collapseOnSelect: true
-  }
-
-  constructor() { }
+  constructor(private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
+  
+    this.nama_staff = this.tokenStorage.getPengguna().nama;
+    this.email_staff = this.tokenStorage.getPengguna().email_pengguna;
+
   }
 
 }

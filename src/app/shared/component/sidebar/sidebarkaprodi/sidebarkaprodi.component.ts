@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from 'src/app/layouts/akun/_services/token-storage.service';
 
 @Component({

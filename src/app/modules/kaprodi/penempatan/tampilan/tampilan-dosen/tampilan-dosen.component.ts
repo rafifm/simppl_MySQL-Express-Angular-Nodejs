@@ -10,7 +10,7 @@ export class TampilanDosenComponent implements OnInit {
 
   nama_dosen = '';
   halaman = 1;
-  totalDataPerHalaman = 10;
+  totalDataPerHalaman = 20;
 
   dosen:any;
   totalAkunDosen:number;
@@ -42,8 +42,7 @@ export class TampilanDosenComponent implements OnInit {
   }
 
   ambilPenempatanDosen() {
-    const params = this.getRequestParams(this.nama_dosen, this.halaman, this.totalDataPerHalaman);
-    this.dataDosen.ambilDosenMhs(params)
+    this.dataDosen.ambilDosenMhs()
       .subscribe(ambilDataDsnMhs => {
         this.dosen = ambilDataDsnMhs;
         console.log(ambilDataDsnMhs);

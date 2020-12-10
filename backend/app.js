@@ -21,25 +21,26 @@ app.use(cors());
 
 db.databaseConf.sync().then(()=>{
   console.log('table sudah direfresh');
+  // initial();
 });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname,'dist')));
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
-    );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
-    );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin,X-Auth-Token, X-Requested-With, Content-Type, Accept, Authorization"
+//     );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+//     );
+//   next();
+// });
     
-
+require("./routes/kaprodi")(app);
 require("./routes/staff")(app);
 require("./routes/guru")(app);
 require("./routes/mhs")(app);
@@ -51,28 +52,28 @@ require("./routes/pengguna.routes")(app);
 
 app.use('/',(req, res, next) => {
     res.sendFile(path.join(__dirname,'dist','index.html'));
-  });
+});
   
   
-  // function initial(){
-    //   pengguna.create({
-//     email_pengguna: "admin@admin",
-//     password_pengguna: bcrypt.hashSync("12345", 8)
-//   }).then(pengguna => {
-//     peran.findAll({
-//       where: {nama_peran: "admin"}
-//     }).then(peran => {
-//       pengguna.setPerans(peran).then(() =>{
-//         console.log( "registrasi berhasil");
-//       }).catch(err => {
-//         console.log('set peran gagal'+err);
-//       });
-//     }).catch(err=> {
-//       console.log('cari peran'+ err);
+// function initial(){
+//   pengguna.create({
+//   email_pengguna: "admin@admin",
+//   password_pengguna: bcrypt.hashSync("12345", 8)
+// }).then(pengguna => {
+//   peran.findAll({
+//     where: {nama_peran: "admin"}
+//   }).then(peran => {
+//     pengguna.setPerans(peran).then(() =>{
+//       console.log( "registrasi berhasil");
+//     }).catch(err => {
+//       console.log('set peran gagal'+err);
 //     });
 //   }).catch(err=> {
-//     console.log('buat admin gagal'+err);
+//     console.log('cari peran'+ err);
 //   });
+// }).catch(err=> {
+//   console.log('buat admin gagal'+err);
+// });
 //   peran.create({
 //     id: 1,
 //     nama_peran: "admin"

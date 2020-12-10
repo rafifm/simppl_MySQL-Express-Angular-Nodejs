@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   getPeran() {
     if(this.roles.includes('PERAN_DOSEN')) {
       if(this.idPengguna == 'kosong'){
-        this.router.navigate(['/dashboard/staff/tambahdosen', this.idLogin]);
+        this.router.navigate(['/dashboard/staff/dosen/tambahdosen', this.idLogin]);
       } else {
         this.router.navigate(['/dashboard/dosen/tampilnilai']);
       }
@@ -74,18 +74,20 @@ export class LoginComponent implements OnInit {
       } else {
         this.router.navigate(["/dashboard/mhs/berhasildaftar"]);
       }
-      
     } else if(this.roles.includes('PERAN_STAFF')){
       if(this.idPengguna == 'kosong'){
         this.router.navigate(['/dashboard/staff/tambahstaff']);
       }else {
         this.router.navigate(['/dashboard/staff/dashboardstaff']);
       }
-      
     } else if(this.roles.includes('PERAN_ADMIN')){
       this.router.navigate(['/admin/kelolaperan'], {queryParams: {nama:'admin',email: this.tokenStorage.getPengguna().email_pengguna}});
     } else if(this.roles.includes('PERAN_KAPRODI')){
-      this.router.navigate(['/dashboard/kaprodi'], {queryParams: {nama:'kaprodi',email: this.tokenStorage.getPengguna().email_pengguna}});
+      if(this.idPengguna == 'kosong'){
+        this.router.navigate(['/dashboard/kaprodi/profil']);
+      } else {
+        this.router.navigate(['/dashboard/kaprodi']);
+      }
     }
 
 

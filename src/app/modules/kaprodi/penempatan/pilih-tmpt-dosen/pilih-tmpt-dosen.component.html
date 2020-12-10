@@ -8,14 +8,18 @@
       <!-- Weight Column -->
       <ng-container matColumnDef="nidn">
         <th mat-header-cell *matHeaderCellDef> NIDN </th>
-        <td mat-cell *matCellDef="let datadosen"> {{datadosen.nidn}} </td>
+        <td mat-cell *matCellDef="let datadosen"> {{datadosen.nip}} </td>
       </ng-container>  
       <ng-container matColumnDef="penempatan">
         <th mat-header-cell *matHeaderCellDef> Penempatan </th>
         <td mat-cell *matCellDef="let datadosen"> 
           <mat-action-row >
             <mat-select (selectionChange)="insertMhs($event, datadosen.id)" placeholder="pilih mhs">
-              <mat-option *ngFor="let pilih of mhs" [value]= "pilih.id" > {{pilih.nama_mhs}} </mat-option>
+              <mat-option *ngFor="let pilih of mhs"   [value]= "pilih.id" > 
+                <p *ngIf="!pilih.idDsnMhs" >
+                  {{pilih.nama_mhs}} 
+                </p>
+              </mat-option>
             </mat-select>
           </mat-action-row>
         </td>

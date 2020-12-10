@@ -70,6 +70,7 @@ export class DatamhstambahComponent implements OnInit {
       error => {
         console.log(error);
       });
+      this.formMhs.reset();
     } else {
       this.datamhsService.update(
         this.dataMhs.id,
@@ -86,8 +87,8 @@ export class DatamhstambahComponent implements OnInit {
       }, error=> {
         console.log(error);
       });
+      this.formMhs.reset();
     }
-    this.formMhs.reset();
     this.router.navigate(["/dashboard/mhs/berhasildaftar"]);    
   }
 

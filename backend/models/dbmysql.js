@@ -21,7 +21,7 @@ db.Sequelize = Sequelize;
 db.databaseConf = database;
 
 db.staff = require("./staff") (database, Sequelize);
-db.guru = require("./guru") (database, Sequelize);
+// db.guru = require("./guru") (database, Sequelize);
 db.mhs = require("./mhs") (database, Sequelize);
 db.sekolah = require("./datasekolah") (database, Sequelize);
 db.akundosen = require("./akundosen") (database,Sequelize);
@@ -43,8 +43,8 @@ db.pengguna.hasOne(db.akundosen);
 db.akundosen.belongsTo(db.pengguna);
 
 //pengguna one to one guru
-db.pengguna.hasOne(db.guru);
-db.guru.belongsTo(db.pengguna);
+// db.pengguna.hasOne(db.guru);
+// db.guru.belongsTo(db.pengguna);
 
 //pengguna one to one staff
 db.pengguna.hasOne(db.staff);

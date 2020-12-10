@@ -24,8 +24,8 @@ export class PenempatanService {
     return this.http.get(`${urlMhs}/penempatan`, { params })
   }
 
-  ambilDosenMhs(params): Observable<any> {
-    return this.http.get(`${urlDosen}/penempatan`, { params })
+  ambilDosenMhs(): Observable<any> {
+    return this.http.get(`${urlDosen}/penempatan`)
   }
 
   ambilSemuaSekolah(params): Observable<any> {
