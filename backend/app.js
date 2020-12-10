@@ -21,7 +21,7 @@ app.use(cors());
 
 db.databaseConf.sync().then(()=>{
   console.log('table sudah direfresh');
-  initial();
+  // initial();
 });
 
 app.use(bodyParser.json());
@@ -109,5 +109,6 @@ app.use('/',(req, res, next) => {
 //     nama_peran: "mahasiswa"
 //   });
 // }
+
 
 module.exports = app;
