@@ -21,7 +21,7 @@ app.use(cors());
 
 db.databaseConf.sync().then(()=>{
   console.log('table sudah direfresh');
-  // initial();
+  initial();
 });
 
 app.use(bodyParser.json());
@@ -55,25 +55,25 @@ app.use('/',(req, res, next) => {
 });
   
   
-// function initial(){
-//   pengguna.create({
-//   email_pengguna: "admin@admin",
-//   password_pengguna: bcrypt.hashSync("12345", 8)
-// }).then(pengguna => {
-//   peran.findAll({
-//     where: {nama_peran: "admin"}
-//   }).then(peran => {
-//     pengguna.setPerans(peran).then(() =>{
-//       console.log( "registrasi berhasil");
-//     }).catch(err => {
-//       console.log('set peran gagal'+err);
-//     });
-//   }).catch(err=> {
-//     console.log('cari peran'+ err);
-//   });
-// }).catch(err=> {
-//   console.log('buat admin gagal'+err);
-// });
+function initial(){
+  pengguna.create({
+  email_pengguna: "admin@admin",
+  password_pengguna: bcrypt.hashSync("12345", 8)
+}).then(pengguna => {
+  peran.findAll({
+    where: {nama_peran: "admin"}
+  }).then(peran => {
+    pengguna.setPerans(peran).then(() =>{
+      console.log( "registrasi berhasil");
+    }).catch(err => {
+      console.log('set peran gagal'+err);
+    });
+  }).catch(err=> {
+    console.log('cari peran'+ err);
+  });
+}).catch(err=> {
+  console.log('buat admin gagal'+err);
+});
 //   peran.create({
 //     id: 1,
 //     nama_peran: "admin"
@@ -108,6 +108,6 @@ app.use('/',(req, res, next) => {
 //     id: 7,
 //     nama_peran: "mahasiswa"
 //   });
-// }
+}
 
 module.exports = app;
