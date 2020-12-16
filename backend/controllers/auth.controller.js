@@ -136,3 +136,24 @@ exports.ambilPengguna = (req, res) => {
         res.status(500).send({message: 'ambil semua pengguna error'+ err.message});
     });
 }
+
+exports.hapus = (req, res) => {
+    pengguna.destroy({
+        where:{id: req.params.idPengguna}
+    }).then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Akun staff sudah dihapus"
+          });
+        } else {
+          res.send({
+            message: `gagal hapus akun staff dengan id=${id}.`
+          });
+        }
+      })
+        .catch(err => {
+          res.status(500).send({
+            message: "gabisa delete akun staff id=" + id
+          });
+        });
+}

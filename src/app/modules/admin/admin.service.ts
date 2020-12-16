@@ -20,4 +20,8 @@ export class AdminService {
     return this.http.get(URL_AUTH + 'admin');
   }
 
+  hapus(idPengguna):Observable<any> {
+    return this.http.delete(`${URL_AUTH}/${idPengguna}`);
+  }
+
 }

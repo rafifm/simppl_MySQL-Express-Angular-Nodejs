@@ -13,7 +13,7 @@ export class KelolaperanComponent implements OnInit {
   sideBarOpen = true;
   formDaftar: FormGroup;
   peran: string[] = ['dosen', 'guru', 'kaprodi','staff', 'mahasiswa', 'koorsekolah'];
-  kolomPengguna: string[] = ['email','peran'];
+  kolomPengguna: string[] = ['email','peran', 'aksi'];
 
   constructor(private adminService: AdminService) { }
 
@@ -50,6 +50,15 @@ export class KelolaperanComponent implements OnInit {
       console.log(error);
     });
     this.formDaftar.reset();
+  }
+
+  hapusPengguna(idPengguna){
+    this.adminService.hapus(idPengguna)
+      .subscribe(pengguna=>{
+        this.ambilData();
+      }, error => {
+        console.log(error);
+      });
   }
 
 }
